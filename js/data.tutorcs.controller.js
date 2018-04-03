@@ -6,4 +6,4 @@
 	
 	// the 'tutorCS' part come from teh name of the app we created in tutorcs.module.js
 	var myApp = angular.module("tutorcs");
-})
+})();
