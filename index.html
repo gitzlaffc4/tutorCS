@@ -49,6 +49,28 @@
 			
 			<!-- This is the menu bar --> 
 			<nav class="navbar navbar-inverse navbar-fixed-top">
+				
+    		<div class="container" style="padding-bottom: 0">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shared-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="http://www.uiowa.edu" tabindex="1" title="The University of Iowa Homepage">
+							<i style="font-size: 1.4em; color: white;" class="fa ui-glyph-icon-domewordsingle text-branded"></i>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="shared-navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href=#><i class="fa fa-user fa-inverse"></i> Please login...</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
@@ -82,7 +104,7 @@
 
 						<!-- log in / log out -->
 							<ul class="navbar-nav">
-								<a href="#">Hello Herky Hawk     |     </a>
+								<a href="#">Hello $FIRSTNAME $LASTNAME |     </a>
 							  <!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
 							  <!--will need to add in when we get further-->
 								<!--<li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">-->
@@ -99,15 +121,11 @@
       
 			<div class="row">
 				<div id="intro">
-					<section class="jumbotron text-center">
-						<div class="container">
-							<h1 class="jumbotron-heading">Find help for your CS course</h1>
-							<p class="lead text-muted">user your allocated tutoring sessions to find help for your course</p>
+					<h1>Find help for your CS course</h1>
+							<p>user your allocated tutoring sessions to find help for your course</p>
 							<p>
 								<a href="#" class="btn btn-primary my-2">Login</a>
 							</p>
-						</div>
-					</section>
 				</div>
 			</div>
 		</div>
