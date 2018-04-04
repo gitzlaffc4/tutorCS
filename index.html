@@ -1,49 +1,58 @@
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
 <html lang="en" ng-app"tutorcs">
-<head>
-	<!-- metadata -->
-	<meta charset="utf-8">
-	<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8">
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy">
 
-	<!-- shows on tabs and bookmarks-->
-	<title>Hawkeye Homework Hackers</title>
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers</title>
 
-	<!-- These are the links to bootstrap code -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
 
-	<!-- link to angular -->
-	<script src="/js/angular.min.js"></script>
+		<!-- link to angular -->
+		<script src="/js/angular.min.js"></script>
 
-	<!-- angular code we wrote -->
-	<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
-	<script src="./js/tutorcs.module.js"></script>
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="./js/tutorcs.module.js"></script>
 
-	<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
-	<script src="./js/data.tutorcs.controller.js"></script>
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="./js/data.tutorcs.controller.js"></script>
 
-	<!--link to font awesome -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-	<!--link to future css file -->
-	<link rel="stylesheet" href="#.css"/>
+		<!--link to future css file -->
+		<link rel="stylesheet" href="#.css"/>
 
-</head>
+	</head>
 
-<body>
-	<!--Nav bar -->
-	<!--Hamburger collapsing System for smaller screens -->
-	<div class = "container" ng-controller="dataControl">
-	<!-- header links from header.html file -->
-	<div ng-include ng-init="menuHighlight = 0;" src="'./pages/header.html'"></div>
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<div class = "container" ng-controller="dataControl">
+		<!-- header links from header.html file -->
+			<div ng-include ng-init="menuHighlight = 0;" src="'./pages/header.html'"></div>
 
-	</div>
+			<section class="jumbotron text-center">
+				<div class="container">
+					<h1 class="jumbotron-heading">Find help for your CS course</h1>
+					<p class="lead text-muted">user your allocated tutoring sessions to find help for your course</p>
+					<p>
+						<a href="#" class="btn btn-primary my-2">Login</a>=
+					</p>
+				</div>
+			</section>
+		</div>
     </body>
 </html>
