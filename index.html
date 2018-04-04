@@ -1,102 +1,100 @@
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
 <html lang="en" ng-app"tutorcs">
-    <head>
-		<!-- metadata -->
-		<meta charset="utf-8">
-		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy">
-		
-		<!-- shows on tabs and bookmarks-->
-		<title>Hawkeye Homework Hackers</title>
+<head>
+	<!-- metadata -->
+	<meta charset="utf-8">
+	<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy">
 
-		<!-- These are the links to bootstrap code -->
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- shows on tabs and bookmarks-->
+	<title>Hawkeye Homework Hackers</title>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!-- These are the links to bootstrap code -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-        
-		
-		<!-- link to angular -->
-		<script src="./js/angular.min.js"></script>
-		
-		<!-- angular code we wrote -->
-		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
-		<script src="./js/tutorcs.module.js"></script>
-		
-		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
-    	<script src="data.movie.controller.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-		<!--link to font awesome -->
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-		<!--link to future css file -->
-		<link rel="stylesheet" href="#.css"/>
 
-    </head>
+	<!-- link to angular -->
+	<script src="./js/angular.min.js"></script>
 
-    <body>
+	<!-- angular code we wrote -->
+	<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+	<script src="./js/tutorcs.module.js"></script>
 
-                <!--Nav bar -->
+	<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+	<script src="data.movie.controller.js"></script>
 
-                <!--Hamburger collapsing System for smaller screens -->
-                <div class = "container">
-                    <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#"> <span class=#></span> Hawkeye Homework Hackers</a> <!--Add Brand Logo here-->
-                                </div>
+	<!--link to font awesome -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li clas=s"active"><a href="#">My Account <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">My Courses</a></li>
-                                    <li><a href="#">Find Help</a></li>
-                                    <li><a href="#">Other Sources</a></li> 
-                                </ul>
-                        
-                                <ul class="nav navbar-nav navbar-right"> 
+	<!--link to future css file -->
+	<link rel="stylesheet" href="#.css"/>
 
-                                     <!-- Do we want a search bar???-->
-                                <!--
-                                   <form class="navbar-form navbar-right">
-                                    <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Search">
-                                    </div>
-                                    <button type="Submit" class="btn btn-default">Submit</button>
-                                  </form>  -->
+</head>
 
-                                <!-- log in / log out -->
-                                    <ul class="navbar-nav">
-                                        <a href="#">Hello Herky Hawk     |     </a>
-                                      <!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
-                                      <!--will need to add in when we get further-->
-                                        <!--<li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">-->
-                                        <!--<a class="nav-link" href="login.html">Log in</a>
-                                        </li>--> 
-                                      <!--<li class="nav-item" ng-show="isloggedin">-->
-                                        <a class="nav-link" href="#" ng-click="logout()">   Log out  </a>
-                                      <!--</li>-->                              
+<body>
+	<!--Nav bar -->
+	<!--Hamburger collapsing System for smaller screens -->
+	<div class = "container" ng-controller="dataControl">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"> <span class=#></span> Hawkeye Homework Hackers</a> <!--Add Brand Logo here-->
+					</div>
 
-                                    </ul>
-                                </ul>
-                    
-                            </div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li clas=s"active"><a href="#">My Account <span class="sr-only">(current)</span></a></li>
+						<li><a href="#">My Courses</a></li>
+						<li><a href="#">Find Help</a></li>
+						<li><a href="#">Other Sources</a></li> 
+					</ul>
 
-                        </div>
-                                  
+					<ul class="nav navbar-nav navbar-right"> 
 
-                    </nav>        
+						 <!-- Do we want a search bar???-->
+					<!--
+					   <form class="navbar-form navbar-right">
+						<div class="form-group">
+						  <input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="Submit" class="btn btn-default">Submit</button>
+					  </form>  -->
 
-                </div>
+					<!-- log in / log out -->
+						<ul class="navbar-nav">
+							<a href="#">Hello Herky Hawk     |     </a>
+						  <!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
+						  <!--will need to add in when we get further-->
+							<!--<li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">-->
+							<!--<a class="nav-link" href="login.html">Log in</a>
+							</li>--> 
+						  <!--<li class="nav-item" ng-show="isloggedin">-->
+							<a class="nav-link" href="#" ng-click="logout()">   Log out  </a>
+						  <!--</li>-->                              
+
+						</ul>
+					</ul>
+
+				</div>
+
+			</div>
+
+
+		</nav>        
+
+	</div>
     </body>
 </html>
