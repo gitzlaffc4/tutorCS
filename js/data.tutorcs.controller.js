@@ -6,4 +6,7 @@
 	
 	// the 'tutorCS' part come from teh name of the app we created in tutorcs.module.js
 	var myApp = angular.module("tutorcs");
+	
+	// 'dataControl' is used in the HTML file when defining ng-controller attribute
+	myApp.controller("dataControl", function($scope, $http))
 })();
