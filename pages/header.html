@@ -1,4 +1,38 @@
 <!doctype html>
+	<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to future css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+	
+	
+	
+	
+	
+	
 <!-- This is the menu bar --> 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
@@ -23,14 +57,6 @@
 
 			<ul class="nav navbar-nav navbar-right"> 
 
-				 <!-- Do we want a search bar???-->
-			<!--
-			   <form class="navbar-form navbar-right">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="Submit" class="btn btn-default">Submit</button>
-			  </form>  -->
 
 			<!-- log in / log out -->
 				<ul class="navbar-nav">
@@ -42,9 +68,11 @@
 					</li>--> 
 				  <!--<li class="nav-item" ng-show="isloggedin">-->
 					<a class="nav-link" href="#" ng-click="logout()">   Log out  </a>
-				  <!--</li>-->                      
+				  <!--</li>-->
 				</ul>
 			</ul>
+			
+			
 		</div>
 	</div>
 </nav>        
