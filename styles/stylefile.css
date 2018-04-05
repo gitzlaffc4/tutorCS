@@ -1,7 +1,13 @@
-@charset "UTF-8";
-/* CSS Document */
-
-
-/*nav bar */
-/* .bd-navbar{min-height:4rem;background-color: #000000;box-shadow:0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1)}
-
+{
+	margin: 0px;
+	padding: 15px;
+	}
+body{
+	background-image: url(../images/stock/tutoring.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: darkblue;
+	
+	}
