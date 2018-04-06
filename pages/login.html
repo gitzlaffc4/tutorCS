@@ -1,89 +1,85 @@
-<head>
-    
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!doctype html>
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8">
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
 
-    <title>Login for Hawkeye Homework Hackers</title>
-
-	<!-- These are the links to bootstrap code -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		<!-- shows on tab and bookmarks -->
+		<title>Login for Hawkeye Homework Hackers</title>
 	
-    <link rel="stylesheet" href="../styles/loginstyles.css">
+		<!-- links to bootstrap-->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <style type="text/css">
-        body {
-            border-top: 5px solid #ffcc00;
-            background-image: -ms-linear-gradient(top, #ffeeaa 0%, #EEEEEE 100%);
-            background-image: -moz-linear-gradient(top, #ffeeaa 0%, #EEEEEE 100%);
-            background-image: -o-linear-gradient(top, #ffeeaa 0%, #EEEEEE 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffeeaa), color-stop(1, #EEEEEE));
-            background-image: -webkit-linear-gradient(top, #ffeeaa 0%, #EEEEEE 100%);
-            background-image: linear-gradient(to bottom, #ffeeaa 0%, #EEEEEE 100%);
-        }
-    </style>
-</head>
-<body>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-<div class="container">
-    <div class="alert-message"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-    <div class="panel panel-default login-panel">
-        <div class="panel-heading"><h1>Login for Hawkeye Homework Hackers</h1></div>
-        <div class="panel-body">
-            <div class="brand">
-                <img class="img img-null" src="../images/tigerhawk.png" alt="University of Iowa Logo">
-            </div>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-            <div class="form-container">
-				<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
-                    <div class="form-group">
-                        <label for="hawkid">Username</label>
-                        <input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input name="uip_password" class="form-control" id="password" value="" required="" type="password">
-                    </div>
+		<!-- link to login style css-->
+		<link rel="stylesheet" href="../styles/loginstyles.css">
+	
+		<!-- link to angular -->
+		<script src="../js/angular.min.js"></script>
 
-                    <div class="login-error"></div>
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="../js/tutorcs.module.js"></script>
 
-                    
-                    <input name="service" value="http://myui.uiowa.edu/my-ui/home.page" type="hidden">
-                    
-                    <input name="uip_nonPassportRequestParameters" value="" type="hidden">
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="../js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="../js/tutorcs.filter.js"></script>
 
-                    <input name="uip_action" value=" Log In " class="btn btn-primary login-button" type="submit">
-                    <div class="help-text">
-                        <a href="https://apps.its.uiowa.edu/pwtool/reset">Forgot your HawkID password?</a>
-                    </div>
-                </form>
-<script type="text/javascript" language="JavaScript">
-  <!--
-  var focusControl = document.forms["loginForm"].elements["uip_hawkid"];
+	</head>
+	<body>
+		<div class="container" ng-controller="dataControl">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h1>Login for Hawkeye Homework Hackers</h1>
+						</div>
+						<div class="panel-body">
+						
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			
+			
+			
+			
+			<div class="panel panel-default login-panel" >
+				<div class="panel-heading"><h1>Login for Hawkeye Homework Hackers</h1></div>
+				<div class="row">
+					<div class"span 4">
+						<div class="panel-body">
+							<div class="col-6 col-md-4">
+								<img class="img img-null" src="../images/tigerhawk.png" alt="University of Iowa Logo">
+							</div>
 
-  if (focusControl.type != "hidden") {
-     focusControl.focus();
-  }
-  // -->
-</script>
+							<div class="col-12 col-sm-6 col-md-8">
+								<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
+									<div class="form-group">
+										<label for="hawkid">Username</label>
+										<input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text" style="max-width: 350px">
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input name="uip_password" class="form-control" id="password" value="" required="" type="password" style="max-width: 350px">
+									</div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="custom-text"><p><a href="https://myui.uiowa.edu/my-ui/guest-login.page">Click here for the guest login page</a></p><p><a href="https://myui.uiowa.edu/my-ui/courses/dashboard.page">Courses</a> - <a href="https://myui.uiowa.edu/my-ui/help/dashboard.page">Help</a> - <a href="https://myui.uiowa.edu/my-ui/home.page">News &amp; Information</a></p></div>
-</div>
-
-
-
-
-
-</body>
+									<input name="uip_action" value=" Log In " class="btn btn-primary login-button" type="submit">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
