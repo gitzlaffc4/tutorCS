@@ -16,7 +16,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 // get each piece of data
 
 // 
-$username = $data['username'];
+$HAWKID = $data['HAWKID'];
 $password = $data['password'];
 
 // set up variables to handle errors
@@ -30,12 +30,12 @@ $errorMessage = "";
 // Validation
 //
 
-// check if username meets criteria
-if (!isset($username) || (strlen($username) < 2)) {
+// check if HAWKID meets criteria
+if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
     $isComplete = false;
-    $errorMessage .= "Please enter a username with at least two characters. ";
+    $errorMessage .= "Please enter a HAWKID with at least two characters. ";
 } else {
-    $username = makeStringSafe($db, $username);
+    $HAWKID = makeStringSafe($db, $HAWKID);
 }
 
 if (!isset($password) || (strlen($password) < 6)) {
@@ -44,29 +44,29 @@ if (!isset($password) || (strlen($password) < 6)) {
 }  
 
 
-// check if we already have a username that matches the one the user entered
+// check if we already have a HAWKID that matches the one the user entered
 if ($isComplete) {
-    // set up a query to check if this username is in the database already
-    $query = "SELECT id FROM account WHERE username='$username'";
+    // set up a query to check if this HAWKID is in the database already
+    $query = "SELECT id FROM ACCOUNT_T WHERE HAWKID='$HAWKID'";
     
     // we need to run the query
     $result = queryDB($query, $db);
     
     // check on the number of records returned
     if (nTuples($result) > 0) {
-        // if we get at least one record back it means the username is taken
+        // if we get at least one record back it means the HAWKID is taken
         $isComplete = false;
-        $errorMessage .= "The username $username is already taken. Please select a different username. ";
+        $errorMessage .= "The HAWKID $HAWKID is already taken. Please select a different HAWKID. ";
     }
 }
 
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
     // create a hashed version of the password
-    $hashedpass = crypt($password, getSalt());
+    $HASHEDPASS = crypt($password, getSalt());
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO account(username, hashedpass) VALUES ('$username', '$hashedpass')";
+    $insertquery = "INSERT INTO ACCOUNT_T(HAWKID, HASHEDPASS) VALUES ('$HAWKID', '$HASHEDPASS')";
     
     // run the insert statement
     queryDB($insertquery, $db);

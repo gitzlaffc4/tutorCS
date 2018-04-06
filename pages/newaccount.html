@@ -70,6 +70,7 @@
                     <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'is-valid': !newAccountForm.password.$invalid && newAccountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
                     <div ng-show="newAccountForm.password.$invalid && newAccountForm.password.$touched" >The password must be at least six characters long</div>
                 </div>
+				
                 
                 <!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
                 <button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
