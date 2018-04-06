@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
-<html lang="en" ng-app"tutorcs">
+<html lang="en" ng-app="tutorcs">
 	<head>
 		<!-- metadata -->
 		<meta charset="utf-8"></meta>
@@ -45,7 +45,7 @@
 		<!--Hamburger collapsing System for smaller screens -->
 		<div class="container" ng-controller="dataControl">
 			<!-- header links from header.html file  -->
-			<div ng-include="'../pages/header.html'"></div>
+			<div ng-include src="'pages/header.html'"></div>
       
 			<div class="row">
 				<div id="intro">
@@ -61,7 +61,7 @@
 					
 					
                             <!-- Footer -->
-                        <div ng-include src="'../pages/footer.html'"></div>
+                        <div ng-include src="'pages/footer.html'"></div>
 					
 					tram rocks
 				</div>
