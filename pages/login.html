@@ -48,17 +48,24 @@
 							</div>
 
 							<div class="col-12 col-sm-6 col-md-8">
-								<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
-									<div class="form-group">
-										<label for="hawkid">HawkID</label>
-										<input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text" style="max-width: 350px">
-									</div>
-									<div class="form-group">
-										<label for="password">Password</label>
-										<input name="uip_password" class="form-control" id="password" value="" required="" type="password" style="max-width: 350px">
+								<form name="loginForm" novalidate>	
+									<!-- HAWKID for account -->
+									<div class="form-group" ng-class="{ 'text-danger': loginForm.HAWKID.$invalid && loginForm.HAWKID.$touched, 'text-success': !loginForm.HAWKID.$invalid && loginForm.HAWKID.$touched }">
+										<label class="form-control-label" for="HAWKID">HawkID</label>
+										<input type="text" class="form-control" ng-class="{ 'is-invalid': loginForm.HAWKID.$invalid && loginForm.HAWKID.$touched, 'is-valid': !loginForm.HAWKID.$invalid && loginForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
+										<div ng-show="loginForm.HAWKID.$invalid && loginForm.HAWKID.$touched" >The HawkID must be at least two characters long</div>
 									</div>
 
-									<input name="uip_action" value=" Log In " class="btn btn-primary login-button" type="submit">
+									<!-- PASSWORD for account -->
+									<div class="form-group" ng-class="{ 'text-danger': loginForm.PASSWORD.$invalid && loginForm.PASSWORD.$touched, 'text-success': !loginForm.PASSWORD.$invalid && loginForm.PASSWORD.$touched }">
+										<label class="form-control-label" for="PASSWORD">Password </label>
+										<input type="password" class="form-control" ng-class="{ 'is-invalid': loginForm.PASSWORD.$invalid && loginForm.PASSWORD.$touched, 'is-valid': !loginForm.PASSWORD.$invalid && loginForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
+										<div ng-show="loginForm.PASSWORD.$invalid && loginForm.PASSWORD.$touched" >The password must be at least six characters long</div>
+									</div>
+									
+									<button class="btn btn-primary" ng-click="login(account)" ng-disabled="loginForm.$invalid">
+										<span>Log in</span>
+									</button>
 								</form>
 							</div>
 						</div>

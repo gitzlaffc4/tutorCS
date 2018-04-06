@@ -17,7 +17,7 @@
     // check if HAWKID meets criteria
     if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a hawkid with at least two characters. ";
+        $errorMessage .= "Please enter a HawkID with at least two characters. ";
     } else {
         $HAWKID = makeStringSafe($db, $HAWKID);
     }
@@ -27,10 +27,11 @@
         $errorMessage .= "Please enter a password with at least six characters. ";
     }      
 	
+ 	echo "hello";
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
-        $query = "SELECT HAWKID, HASHEDPASS FROM account WHERE HAWKID='$HAWKID';";
+        $query = "SELECT HAWKID,HASHEDPASS FROM ACCOUNT_T WHERE HAWKID='$HAWKID';";
         $result = queryDB($query, $db);
         
         if (nTuples($result) == 0) {
@@ -45,7 +46,6 @@
 		// get the hashed password for that account
 		$row = nextTuple($result);
 		$HASHEDPASS = $row['HASHEDPASS'];
-		$id = $row['id'];
 		
 		// compare entered password to the password on the database
         // $HASHEDPASS is the version of hashed password stored in the database for $HAWKID
@@ -57,7 +57,7 @@
             $isComplete = false;
         }
     }
-         
+    echo "world"
     if ($isComplete) {   
         // password was entered correctly
         
@@ -65,7 +65,6 @@
         // if the session variable 'HAWKID' is set, then we assume that the user is logged in
         session_start();
         $_SESSION['HAWKID'] = $HAWKID;
-		$_SESSION['accountid'] = $id;
         
         // send response back
         $response = array();
