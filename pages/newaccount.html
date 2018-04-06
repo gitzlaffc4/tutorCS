@@ -1,51 +1,59 @@
 <!doctype html>
-<!-- ng-app"movie" defines the angular app that we are using, the name is defined under the movie.module.js -->
-<html lang ="en" ng-app="movie">
-<head>
-	<!-- metadata-->
-	<meta charset="utf-8">
-	<meta name="author" content="Cameron Gitzlaff">
-	
-	<!-- shows on tab and bookmarks -->
-	<title>Add Account - Cameron's Favorite Movies</title>
-	
-	<!-- links to bootstrap--> 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-	
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-    
-    <!-- link to angular -->
-    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
-    <script src="angular.min.js"></script>
-    
-    <!-- angular code we wrote -->
-    <!-- movie.module.js is where we define the angular app called 'movie'. We use the name of the app in the html element at the top of the file -->
-    <script src="movie.module.js"></script>
-    <!-- data.movie.controller.js is where we are getting the data from. It defines a controller under the 'movie' app called 'dataControl', and data is under $scope.data -->
-    <script src="data.movie.controller.js"></script>
-    <!-- movie.filter.js enables us to display html code -->
-    <script src="movie.filter.js"></script>
- 
-</head>
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers</title>
+
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to future css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+
+	</head>
 	
 <body>
 	<div class="container" ng-controller="dataControl">
 	<!-- header -->
-	<div ng-include ng-init="menuHighlight = 2;" src="'header.html'">
+	<div ng-include ng-init="menuHighlight = 2;" src="'pages/header.html'">
 		</div>
         
         
-		<div class="row" ng-show="!isloggedin">
+		<!--<div class="row" ng-show="!isloggedin">
 
 			<h1>Access Denied</h1>
-		</div>
+		</div> -->
         <!-- form for entering new account -->
-        <div class="row" ng-show="isloggedin">
-            
+        <div class="row" >
+            <!-- ng-show="isloggedin"-->
               
             <form  name="newAccountForm" novalidate>
                 
@@ -58,7 +66,7 @@
                 
                 <!-- password for account -->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'text-success': !newAccountForm.password.$invalid && newAccountForm.password.$touched }">
-                    <label class="form-control-label" for="password">Password (at least 6 characters long; may not include anything related to hawkeyes): </label>
+                    <label class="form-control-label" for="password">Password (at least 6 characters long;: </label>
                     <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'is-valid': !newAccountForm.password.$invalid && newAccountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
                     <div ng-show="newAccountForm.password.$invalid && newAccountForm.password.$touched" >The password must be at least six characters long</div>
                 </div>
