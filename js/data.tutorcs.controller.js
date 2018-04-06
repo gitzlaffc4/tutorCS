@@ -56,7 +56,7 @@
         
         // function to log the user out
         $scope.logout = function() {
-          $http.post("logout.php")
+          $http.post("../script/logout.php")
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -74,7 +74,7 @@
         
         // function to check if user is logged in
         $scope.checkifloggedin = function() {
-          $http.post("isloggedin.php")
+          $http.post("../script/isloggedin.php")
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {
