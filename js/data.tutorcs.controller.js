@@ -8,7 +8,7 @@
 	var myApp = angular.module("tutorcs");
 	
 	// 'dataControl' is used in the HTML file when defining ng-controller attribute
-	myApp.controller("dataControl", function($scope, $http){
+	myApp.controller("dataControl", function($scope, $http, $window){
 		
 		
 		// this variable will hold the page number that should be highlighted in the menu bar
@@ -19,7 +19,7 @@
         $scope.newAccount = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);
           
-          $http.post("newaccount.php", accountupload)
+          $http.post("../script/newaccount.php", accountupload)
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {

@@ -20,30 +20,30 @@
 
 
 		<!-- link to angular -->
-		<script src="js/angular.min.js"></script>
+		<script src="../js/angular.min.js"></script>
 
 		<!-- angular code we wrote -->
 		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
-		<script src="js/tutorcs.module.js"></script>
+		<script src="../js/tutorcs.module.js"></script>
 
 		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
-		<script src="js/data.tutorcs.controller.js"></script>
+		<script src="../js/data.tutorcs.controller.js"></script>
 		
 		<!-- tutorcs.filter.js enables us to display HTML Code -->
-		<script src="js/tutorcs.filter.js"></script>
+		<script src="../js/tutorcs.filter.js"></script>
 
 		<!--link to font awesome -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 		<!--link to future css file -->
-		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+		<link rel="stylesheet" type="text/css" href="../styles/stylefile.css"/>
 
 	</head>
 	
 <body>
 	<div class="container" ng-controller="dataControl">
 	<!-- header -->
-	<div ng-include ng-init="menuHighlight = 2;" src="'pages/header.html'">
+	<div ng-include ng-init="menuHighlight = 2;" src="'../pages/header.html'">
 		</div>
         
         
@@ -57,18 +57,18 @@
               
             <form  name="newAccountForm" novalidate>
                 
-                <!-- username for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.username.$invalid && newAccountForm.username.$touched, 'text-success': !newAccountForm.username.$invalid && newAccountForm.username.$touched }">
-                    <label class="form-control-label" for="username">Username (at least 2 characters long): </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.username.$invalid && newAccountForm.username.$touched, 'is-valid': !newAccountForm.username.$invalid && newAccountForm.username.$touched }" name="username" ng-model="account.username" ng-minlength="2" id="username" required/>
-                    <div ng-show="newAccountForm.username.$invalid && newAccountForm.username.$touched" >The username must be at least two characters long</div>
+                <!-- HawkID for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
+                    <label class="form-control-label" for="HAWKID">Username (at least 2 characters long): </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
+                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The HawkID must be at least two characters long</div>
                 </div>
                 
-                <!-- password for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'text-success': !newAccountForm.password.$invalid && newAccountForm.password.$touched }">
-                    <label class="form-control-label" for="password">Password (at least 6 characters long;: </label>
-                    <input type="password" class="form-control" ng-class="{ 'is-invalid': newAccountForm.password.$invalid && newAccountForm.password.$touched, 'is-valid': !newAccountForm.password.$invalid && newAccountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
-                    <div ng-show="newAccountForm.password.$invalid && newAccountForm.password.$touched" >The password must be at least six characters long</div>
+                <!-- PASSWORD for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
+                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long;: </label>
+                    <input type="PASSWORD" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
+                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
                 </div>
 				
                 
