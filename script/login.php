@@ -1,18 +1,26 @@
 <?php
+
+	// We need to include these two files in order to work with the database
     include_once('../../config.php');
     include_once('dbutils.php');
+
+   	// connect to the database
+    $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);  
     
     // get data from form
     $data = json_decode(file_get_contents('php://input'), true);
+
+	// get each piece of data
     $HAWKID = $data['HAWKID'];
 	$PASSWORD = $data['PASSWORD'];
     
-   // connect to the database
-    $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);    
+  
     
     // check for required fields
     $isComplete = true;
     $errorMessage = "";
+
+	// Validation
     
     // check if HAWKID meets criteria
     if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
@@ -27,7 +35,7 @@
         $errorMessage .= "Please enter a password with at least six characters. ";
     }      
 	
- 	echo "hello";
+	// Check if the HawkID and Password match HawkID and HashedPass in ACCOUNT_T
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
@@ -42,7 +50,7 @@
     }
     
     if ($isComplete) {            
-        // there is an account that corresponds to the email that the user entered
+        // there is an account that corresponds to the HawkID that the user entered
 		// get the hashed password for that account
 		$row = nextTuple($result);
 		$HASHEDPASS = $row['HASHEDPASS'];
@@ -57,7 +65,7 @@
             $isComplete = false;
         }
     }
-    echo "world"
+
     if ($isComplete) {   
         // password was entered correctly
         
