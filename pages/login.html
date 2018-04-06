@@ -18,7 +18,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
 		<!-- link to login style css-->
-		<link rel="stylesheet" href="../styles/loginstyles.css">
+		<link rel="stylesheet" href="../styles/loginstyle.css">
 	
 		<!-- link to angular -->
 		<script src="../js/angular.min.js"></script>
@@ -37,26 +37,11 @@
 	<body>
 		<div class="container" ng-controller="dataControl">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-8 col-md-offset-2">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h1>Login for Hawkeye Homework Hackers</h1>
 						</div>
-						<div class="panel-body">
-						
-						</div>
-					</div>
-				</div>
-			
-			</div>
-			
-			
-			
-			
-			<div class="panel panel-default login-panel" >
-				<div class="panel-heading"><h1>Login for Hawkeye Homework Hackers</h1></div>
-				<div class="row">
-					<div class"span 4">
 						<div class="panel-body">
 							<div class="col-6 col-md-4">
 								<img class="img img-null" src="../images/tigerhawk.png" alt="University of Iowa Logo">
@@ -65,7 +50,7 @@
 							<div class="col-12 col-sm-6 col-md-8">
 								<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
 									<div class="form-group">
-										<label for="hawkid">Username</label>
+										<label for="hawkid">HawkID</label>
 										<input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text" style="max-width: 350px">
 									</div>
 									<div class="form-group">
@@ -78,7 +63,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>		
 			</div>
 		</div>
 	</body>
