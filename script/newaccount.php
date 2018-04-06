@@ -1,7 +1,7 @@
 <?php
 
 // We need to include these two files in order to work with the database
-include_once('config.php');
+include_once('../../config.php');
 include_once('dbutils.php');
 
 
@@ -17,7 +17,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // 
 $HAWKID = $data['HAWKID'];
-$password = $data['password'];
+$PASSWORD = $data['PASSWORD'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -38,7 +38,7 @@ if (!isset($HAWKID) || (strlen($HAWKID) < 2)) {
     $HAWKID = makeStringSafe($db, $HAWKID);
 }
 
-if (!isset($password) || (strlen($password) < 6)) {
+if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
     $isComplete = false;
     $errorMessage .= "Please enter a password with at least six characters. ";
 }  
@@ -47,7 +47,7 @@ if (!isset($password) || (strlen($password) < 6)) {
 // check if we already have a HAWKID that matches the one the user entered
 if ($isComplete) {
     // set up a query to check if this HAWKID is in the database already
-    $query = "SELECT id FROM ACCOUNT_T WHERE HAWKID='$HAWKID'";
+    $query = "SELECT HAWKID FROM ACCOUNT_T WHERE HAWKID='$HAWKID'";
     
     // we need to run the query
     $result = queryDB($query, $db);
@@ -63,7 +63,7 @@ if ($isComplete) {
 // if we got this far and $isComplete is true it means we should add the player to the database
 if ($isComplete) {
     // create a hashed version of the password
-    $HASHEDPASS = crypt($password, getSalt());
+    $HASHEDPASS = crypt($PASSWORD, getSalt());
     
     // we will set up the insert statement to add this new record to the database
     $insertquery = "INSERT INTO ACCOUNT_T(HAWKID, HASHEDPASS) VALUES ('$HAWKID', '$HASHEDPASS')";
@@ -71,13 +71,9 @@ if ($isComplete) {
     // run the insert statement
     queryDB($insertquery, $db);
     
-    // get the id of the account we just entered
-    $accountid = mysqli_insert_id($db);
-    
     // send a response back to angular
     $response = array();
     $response['status'] = 'success';
-    $response['id'] = $accountid;
     header('Content-Type: application/json');
     echo(json_encode($response));    
 } else {
