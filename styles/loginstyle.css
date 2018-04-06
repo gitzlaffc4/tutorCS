@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-
-container{
-	max-width:50%;
-}
-
-body {
-    padding-top: 150px;
-    padding-bottom: 40px;
-	max-width: 50%;
-
-=======
 html, body{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefcea+0,f1da36+100;Gold+3D */
 	height: 100%;
@@ -65,5 +53,4 @@ button:hover span {
 button:hover span:after {
   opacity: 1;
   right: 0;
->>>>>>> 81f46cd9c3a23c0d0cf4989ebd04dccf08167da8
 }

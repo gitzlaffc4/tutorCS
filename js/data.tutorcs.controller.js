@@ -17,14 +17,8 @@
 		
 		// function to send new account information to web api to add it to the database
         $scope.newAccount = function(accountDetails) {
-<<<<<<< HEAD
-          var accountupload = angular.copy(accountDetails);
-          
-          $http.post("../script/newaccount.php", accountupload)
-=======
           	var accountupload = angular.copy(accountDetails);
           	$http.post("../script/newaccount.php", accountupload)
->>>>>>> 81f46cd9c3a23c0d0cf4989ebd04dccf08167da8
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {
