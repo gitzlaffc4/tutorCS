@@ -36,34 +36,50 @@
 	</head>
 	<body>
 		<div class="container" ng-controller="dataControl">
-			<div class="panel panel-default login-panel">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h1>Login for Hawkeye Homework Hackers</h1>
+						</div>
+						<div class="panel-body">
+						
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			
+			
+			
+			
+			<div class="panel panel-default login-panel" >
 				<div class="panel-heading"><h1>Login for Hawkeye Homework Hackers</h1></div>
 				<div class="row">
-					<div class="panel-body">
-						<div class="col-6 col-md-4">
-							<img class="img img-null" src="../images/tigerhawk.png" alt="University of Iowa Logo">
-						</div>
+					<div class"span 4">
+						<div class="panel-body">
+							<div class="col-6 col-md-4">
+								<img class="img img-null" src="../images/tigerhawk.png" alt="University of Iowa Logo">
+							</div>
 
-						<div class="col-12 col-sm-6 col-md-8">
-							<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
-								<div class="form-group">
-									<label for="hawkid">Username</label>
-									<input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text" style="max-width: 350px">
-								</div>
-								<div class="form-group">
-									<label for="password">Password</label>
-									<input name="uip_password" class="form-control" id="password" value="" required="" type="password" style="max-width: 350px">
-								</div>
+							<div class="col-12 col-sm-6 col-md-8">
+								<form name="loginForm" method="post" action="/uip/login.page" class="form-signin">
+									<div class="form-group">
+										<label for="hawkid">Username</label>
+										<input name="uip_hawkid" class="form-control" id="hawkid" value="" required="" autofocus="" type="text" style="max-width: 350px">
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input name="uip_password" class="form-control" id="password" value="" required="" type="password" style="max-width: 350px">
+									</div>
 
-								<input name="uip_action" value=" Log In " class="btn btn-primary login-button" type="submit">
-							</form>
+									<input name="uip_action" value=" Log In " class="btn btn-primary login-button" type="submit">
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="custom-text"><p><a href="https://myui.uiowa.edu/my-ui/guest-login.page">Click here for the guest login page</a></p><p><a href="https://myui.uiowa.edu/my-ui/courses/dashboard.page">Courses</a> - <a href="https://myui.uiowa.edu/my-ui/help/dashboard.page">Help</a> - <a href="https://myui.uiowa.edu/my-ui/home.page">News &amp; Information</a></p></div>
 		</div>
-
 	</body>
 </html>

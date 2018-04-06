@@ -1,8 +1,11 @@
+
+container{
+	max-width:50%;
+}
+
 body {
     padding-top: 150px;
     padding-bottom: 40px;
-}
+	max-width: 50%;
 
-container {
-	max-width: 500px;
 }
