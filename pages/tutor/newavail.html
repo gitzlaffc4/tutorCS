@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="avail">
+	
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<!-- These are the links to boostrap code -->
+		<!-- These links are from -put address here -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		
+		<!-- set base url -->
+		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/" -->
+		
+		
+		<!-- link to angular-->
+		<!-- Download from https://angularjs.org/ then upload to webdev server -->
+		<script src="angular.min.js"></script>
+
+		<!-- Angular code -->
+		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
+    	<script src="avail.module.js"></script>
+	    <script src="data.avail.controller.js"></script>
+
+<head>
+<meta charset="utf-8">
+<title>newavail</title>
+</head>
+	<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+	<div class = "row">
+		<h1>Something to work with</h1>  
+					</div>
+	</div>
+	</div>
+
+<body>
+	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
+    <div class="container" ng-controller="availControl">
+	<!-- header -->
+    <!--    <div ng-include ng-init="menuHighlight = 1;" src="'header.html'"></div> -->
+        
+        
+        <!-- form for entering new avail -->
+        <div class="row">
+            
+              
+            <form  name="newAvailForm" novalidate>
+                
+          		<!-- N O T E -->
+				<!-- Use session variable from login.php so user doesn't have to enter in there own hawkid-->
+                <!-- Hawk id -->
+                <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
+                <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
+                <div class="form-group" ng-class="{ 'text-danger': newAvailForm.HAWKID.$invalid && newAvailForm.HAWKID.$touched, 'text-success': !newAvailForm.HAWKID.$invalid && newAvailForm.HAWKID.$touched}">
+                    <label>HAWKID </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.HAWKID.$invalid && newAvailForm.HAWKID.$touched, 'is-valid': !newAvailForm.HAWKID.$invalid && newAvailForm.HAWKID.$touched}" name="HAWKID" ng-model="avail.HAWKID" ng-minlength="1" required/>
+                    <p ng-show="newAvailForm.HAWKID.$invalid && newAvailForm.HAWKID.$touched" > must be at least one character</p>
+                </div>
+                <!-- Day of the week -->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched, 'text-success': !newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched}">
+                    <label>DAY_OF_WEEK: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched, 'is-valid': !newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched}" name="DAY_OF_WEEK" ng-model="avail.DAY_OF_WEEK" ng-minlength="4" required/>
+                    <p ng-show="newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched" > must be at least 4 characters long</p>
+                </div>
+                <!-- AVAILABLE -->
+                <div class="form-group" ng-class="{ 'text-danger': newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched, 'text-success': !newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched}">
+                    <label>AVAILABLE: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched, 'is-valid': !newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched}" name="AVAILABLE" ng-model="avail.AVAILABLE" ng-minlength="1" />
+                    <p ng-show="newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched" >must be at least 1 character</p>
+                </div>
+				
+				 <!-- TIME_START -->
+                	<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'text-success': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}">
+                    <label>TIME_START: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'is-valid': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}" name="AVAILABLE" ng-model="avail.TIME_START" ng-minlength="1" />
+                    <p ng-show="newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched" >must be at least 1 character</p>
+                </div>
+				
+				</div>
+				
+				 <!-- TIME_STOP -->
+                	<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'text-success': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}">
+                    <label>TIME_STOP: </label> 	
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'is-valid': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}" name="AVAILABLE" ng-model="avail.TIME_STOP" ng-minlength="1" />
+                    <p ng-show="newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched" >must be at least 1 character</p>
+                </div>
+				
+                
+                
+                <!-- newAvail is a function in the controller. avail refers to the word we used under ng-model in the input fields -->
+                <button class="btn btn-default" ng-click="newAvail(avail)" ng-disabled="newAvailForm.$invalid">Add availability</button>
+            </form>
+            
+        
+        </div> <!-- close row -->
+        
+        <!-- Footer -->
+        <!-- <div ng-include src="'footer.html'"></div> -->
+        
+    </div>
+	
+	
+</body>
+
+</html>

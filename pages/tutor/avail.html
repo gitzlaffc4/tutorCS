@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html lang="en" ng-app="avail">
+	
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<!-- These are the links to boostrap code -->
+		<!-- These links are from -put address here -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		
+		<!-- set base url -->
+		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/" -->
+		
+		
+		<!-- link to angular-->
+		<!-- Download from https://angularjs.org/ then upload to webdev server -->
+		<script src="angular.min.js"></script>
+
+		<!-- Angular code -->
+		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
+    	<script src="avail.module.js"></script>
+	    <script src="data.avail.controller.js"></script>
+
+<head>
+<meta charset="utf-8">
+<title>availtestpage</title>
+</head>
+	<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+	<div class = "row">
+		<h1>Something to test with</h1>  
+					</div>
+	</div>
+	</div>
+
+<body>
+	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
+    <div class="container" ng-controller="availControl">
+	
+	<div class="row">
+            
+            <!-- Card for all times -->
+            <!-- We are getting our data from $scope.data in data.avail.controller.js. The JSON object we get has the data under "avail" -->
+           
+            
+		<div class="col-md-8 col-md-offset-2">
+
+			<div class="card m-1" style="width: 18rem" ng-repeat="avail in data.avail ">
+                <div class="card-header">
+                    {{avail.HAWKID}}
+                </div>
+                
+                <div class="card-body">
+                    <p>Day: {{avail.DAY_OF_WEEK}}</p>
+                    <p>Start Time: {{avail.TIME_START}}</p>
+					
+                      
+                </div>
+         
+            </div>
+                 
+        </div>
+</body>
+</html>
