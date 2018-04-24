@@ -16,12 +16,6 @@ $resultall = queryDB($queryall, $db);
 $allinfo = array();
 $j = 0;
 while ($currAccount = nextTuple($resultall)){
-	if (($currAccount['STUDENT'] == '1') and ($currAccount['TUTOR'] == '1')){
-		$currAccount['ROLE'] = "Student and Tutor";
-	}
-	if (($currAccount['PROFESSOR'] == '1') and ($currAccount['ADMIN'] == '1')){
-		$currAccount['ROLE'] = "Professor and Admin";
-	}
 	if ($currAccount['PROFESSOR'] == '1'){
 		$currAccount['ROLE'] = "Professor";
 	}
@@ -33,6 +27,12 @@ while ($currAccount = nextTuple($resultall)){
 	}
 	if ($currAccount['TUTOR'] == '1'){
 		$currAccount['ROLE'] = "Tutor";
+	}
+	if (($currAccount['STUDENT'] == '1') and ($currAccount['TUTOR'] == '1')){
+		$currAccount['ROLE'] = "Student and Tutor";
+	}
+	if (($currAccount['PROFESSOR'] == '1') and ($currAccount['ADMIN'] == '1')){
+		$currAccount['ROLE'] = "Professor and Admin";
 	}
 	$allinfo[$j] = $currAccount;
 	$j++;

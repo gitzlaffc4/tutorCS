@@ -1,5 +1,18 @@
 <!doctype html>
-	<!-- These are the links to bootstrap code -->
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Header</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -27,54 +40,58 @@
 
 		<!--link to css file -->
 		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
-	
-	
-	
-	
-	
-<!-- This is the menu bar --> 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"> <span class=#></span> Hawkeye Homework Hackers</a> <!--Add Brand Logo here-->
-			</div>
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li clas=s"active"><a href="#">My Account <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">My Courses</a></li>
-					<li><a href="#">Find Help</a></li>
-					<li><a href="#">Other Sources</a></li> 
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right"> 
-
-
-				<!-- log in / log out -->
-					<ul class="navbar-nav">
-						<a href="pages/login.html" ng-show="!isloggedin"> Please Login...  
-							<span class="glyphicon glyphicon-user"></span>
-
+	</head>
+	<body>
+		<!-- This is the menu bar --> 
+		<div class="container" ng-controller="dataControl">
+			<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">
+							<img src="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/images/HHHLogo.png" width="60" height="60" alt="">
 						</a>
-						<a href="#" ng-show="isloggedin">Hello Herky Hawk </a>
-						|
-					  <!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
-					  <!--will need to add in when we get further-->
-						<!--<li class="nav-item" ng-class="{'active' : (menuHighlight == 3)}" ng-show="!isloggedin">-->
-						<!--<a class="nav-link" href="login.html">Log in</a>
-						</li>--> 
-					  <!--<li class="nav-item" ng-show="isloggedin">-->
-						<a class="nav-link" href="../index.html" ng-show="isloggedin" ng-click="logout()"> Log out...  </a>
-					  <!--</li>-->
-					</ul>
-				</ul>
-			</div>
-	</div>
-</nav>        
+						<a class="navbar-brand" href="index.html" id="branding"> <h4>Hawkeye Homework Hackers</h4></a> <!--Add Brand Logo here-->
+					</div>
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<!-- need to use JS to determine which home they are going to -->
+							<li clas=s"active"><a href="pages/admin/home.html">My Account <span class="sr-only">(current)</span></a></li>
+							<li><a href="#">My Courses</a></li>
+							<li><a href="#">Find Help</a></li>
+							<li><a href="#">Other Sources</a></li> 
+						</ul>
+						<ul class="nav navbar-nav navbar-right" >
+							<!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
+							<!--will need to add in when we get further-->
+							<div ng-show="!isloggedin">
+								<a class="nav-link" href="pages/login.html">
+									Please Login...
+								</a>
+							</div>
+							<div ng-repeat="account in data.userinfo">
+								<div ng-show="isloggedin">
+									<a class="nav-link" href="#">
+
+											Hello {{account.FIRSTNAME}} {{account.LASTNAME}} 
+
+									</a>
+									<a href="index.html" ng-click="logout()">
+										| Log out...  
+									</a>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</nav> 
+		</div>
+	</body>
+</html>
