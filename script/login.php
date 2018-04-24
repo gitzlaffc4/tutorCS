@@ -94,7 +94,7 @@
 		$professor = $row_p['PROFESSOR'];
 		$admin= $row_p['ADMIN'];
 	}
-		
+		 
 	if ($isComplete){
         // start a session
         // if the session variable 'HAWKID' is set, then we assume that the user is logged in
