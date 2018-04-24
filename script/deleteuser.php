@@ -22,31 +22,11 @@ $HAWKID = $data['HAWKID'];
 // is complete will be false if we find any problems when checking on the data
 $isComplete = true;
 
-// error message we'll send back to angular if we run into any problems
-$errorMessage = "";
-
-var_dump($isComplete);
-
-// check if we there is a record in the database matching the HawkID
-if ($isComplete) {
-    // set up a query to check if the id passed to this file corresponds to a record in the database
-    $query = "SELECT FIRSTNAME FROM USER_T WHERE HAWKID='$HAWKID';";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) == 0) {
-        // if we get no recors back, it means no records match the id that we got
-        $isComplete = false;
-        $errorMessage .= "The HawkID $HAWKID did not match any records in the soccerplayers table. ";
-    }
-}
-
 // if we got this far and $isComplete is true it means we should delete the USER from the database
 if ($isComplete) {
     // we will set up the delate statement to remove the user from the database
-    $deletequery = "DELETE FROM USER_T WHERE HAWKID='$HAWKID';";
+    $deletequery = "UPDATE ACCOUNT_T SET ACCOUNT_T.ACCESS='0' WHERE HAWKID='$HAWKID';";
+	
     
     // run the delete statement
     queryDB($deletequery, $db);

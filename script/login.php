@@ -14,8 +14,6 @@
     $HAWKID = $data['HAWKID'];
 	$PASSWORD = $data['PASSWORD'];
     
-  
-    
     // check for required fields
     $isComplete = true;
     $errorMessage = "";
@@ -48,6 +46,7 @@
             $isComplete = false;
         }
     }
+
     
     if ($isComplete) {            
         // there is an account that corresponds to the HawkID that the user entered
@@ -66,21 +65,58 @@
         }
     }
 
+
+	if ($isComplete){
+
+		// set up a query to get roles of user
+		$query_r = "SELECT STUDENT, TUTOR, PROFESSOR, ADMIN FROM USER_T WHERE HAWKID = '$HAWKID';";
+		// run the query to get info on players
+		$result_role = queryDB($query_r, $db);
+	
+		        
+        if (nTuples($result_role) == 0){
+            $errorMessage .= "Could not find user role in the system";
+            $isComplete = false; 
+        }
+	}
+		
     if ($isComplete) {   
         // password was entered correctly
+		
+		$row_p = array();
         
+		// assign results to an array we can then send back to whomever called
+		$row_p = nextTuple($result_role);
+		
+		
+		$student = $row_p['STUDENT'];
+		$tutor = $row_p['TUTOR'];
+		$professor = $row_p['PROFESSOR'];
+		$admin= $row_p['ADMIN'];
+	}
+		
+	if ($isComplete){
         // start a session
         // if the session variable 'HAWKID' is set, then we assume that the user is logged in
         session_start();
         $_SESSION['HAWKID'] = $HAWKID;
-        
+		$_SESSION['student'] = $student;
+		$_SESSION['tutor'] = $tutor;
+		$_SESSION['professor'] = $professor;
+		$_SESSION['admin'] = $admin;
+		
         // send response back
         $response = array();
         $response['status'] = 'success';
 		$response['message'] = 'logged in';
+		$response['student'] = $student;
+		$response['tutor'] = $tutor;
+		$response['professor'] = $professor;
+		$response['admin'] = $admin;
+		
         header('Content-Type: application/json');
         echo(json_encode($response));
-    } else {
+	}else {
         // there's been an error. We need to report it to the angular controller.
         
         // one of the things we want to send back is the data that his php file received
@@ -95,4 +131,5 @@
         header('Content-Type: application/json');
         echo(json_encode($response));          
     }
+
 ?>

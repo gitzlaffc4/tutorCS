@@ -59,9 +59,11 @@
 							<th scope="col">HawkID</th>
 							<th scope="col">First Name</th>
 							<th scope="col">Last Name</th>
+							<th scope="col">Access</th>
 							<th scope="col">Email</th>
 							<th scope="col">Role</th>
-							<th scope="col">View/Edit/Delete</th>
+							
+							<th scope="col">View/Edit/Disable</th>
 						</tr>
 					</thead>
 					
@@ -72,6 +74,12 @@
 							<th scope="row"> {{user.HAWKID}} </th>
 							<td>{{user.FIRSTNAME}}</td>
 							<td>{{user.LASTNAME}}</td>
+							<td>
+								<div class="embed-responsive embed-responsive-16by9">
+									<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorCS.filter.js -->
+									<span ng-bind-html="user.ACCESSRIGHTS | trustHtml"></span>
+								</div>
+							</td>
 							<td>{{user.EMAIL}}</td>
 							<td>{{user.ROLE}}</td>
 							<td>
