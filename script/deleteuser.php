@@ -25,7 +25,7 @@ $isComplete = true;
 // if we got this far and $isComplete is true it means we should delete the USER from the database
 if ($isComplete) {
     // we will set up the delate statement to remove the user from the database
-    $deletequery = "UPDATE ACCOUNT_T SET ACCOUNT_T.ACCESS='0' WHERE HAWKID='$HAWKID';";
+    $deletequery = "UPDATE ACCOUNT_T SET ACCESS='0' WHERE HAWKID='$HAWKID';";
 	
     
     // run the delete statement
