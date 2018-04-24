@@ -54,7 +54,7 @@
         $scope.deleteUser = function(FIRSTNAME, HAWKID) {
             if (confirm("Are you sure you want to delete " + FIRSTNAME + "?")) {
           
-                $http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/deleteuser.php", {"HAWKID" : HAWKID})
+                $http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/deleteuser.php", {"HAWKID":HAWKID})
                   .then(function (response) {
                      if (response.status == 200) {
                           if (response.data.status == 'error') {

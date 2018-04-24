@@ -1,4 +1,4 @@
-<?php
+ <?php
 // Site configuration.
 
 // Server information.
@@ -9,8 +9,8 @@ $Host = $_SERVER['SERVER_NAME'];
 $imagesDir = "images/";
 
 // DB connection (from  mysql_db_info file).
-$DBUser = "cmurphy3";
-$DBName = "db_cmurphy3";
+$DBUser = "cgitzlaff";
+$DBName = "db_cgitzlaff";
 $DBHost = "dbdev.cs.uiowa.edu";
-$DBPassword = "=9sw4kYfkJdi";
+$DBPassword = "s+ZfUNY+EtZ9";
 ?>

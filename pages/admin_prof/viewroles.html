@@ -95,7 +95,7 @@
 								</button>
 									
 								<!-- delete user -->
-								<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isAdmin">
+								<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
 									<span class="glyphicon glyphicon-trash">
 								</button>
 							</td>
@@ -103,8 +103,9 @@
 				</table>
 			</div>
 
-			<!-- Footer -->
-			<div ng-include src="'pages/footer.html'"></div>
+			
 		</div>
+			<!-- Footer -->
+		<div ng-include src="'pages/footer.html'"></div>
 	</body>
 </html>
