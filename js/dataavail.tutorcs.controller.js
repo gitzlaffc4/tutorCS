@@ -5,7 +5,7 @@
     'use strict';
     
     // the 'avail' part comes from the name of the app we created in avail.module.js
-    var myApp = angular.module("avail");
+    var myApp = angular.module("tutorcs");
     // 'availControl' is used in the html file when defining the ng-controller attribute
     myApp.controller("availControl", function($scope, $http, $window) {
         $http.get('../script/getavailsessions.php')
