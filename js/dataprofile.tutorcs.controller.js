@@ -76,6 +76,29 @@
                 );
             }
         };
+		
+		
+		// function to re-enable a user. it receives the users's name and HAWKID and calls a php web api to reset permissions from the database
+        $scope.enableUser = function(FIRSTNAME, HAWKID) {
+            if (confirm("Are you sure you want to enable " + FIRSTNAME + "?")) {
+          
+                $http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/enableuser.php", {"HAWKID":HAWKID})
+                  .then(function (response) {
+                     if (response.status == 200) {
+                          if (response.data.status == 'error') {
+                              alert('error: ' + response.data.message);
+                          } else {
+                              // successful
+                              // send user back to home page
+                              $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/viewroles.html";
+                          }
+                     } else {
+                          alert('unexpected error');
+                     }
+                  }
+                );
+            }
+        };
 
 	});
 })();

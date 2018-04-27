@@ -37,7 +37,7 @@
     if ($isComplete) {   
     
         // get the hashed password from the user with the email that got entered
-        $query = "SELECT HAWKID,HASHEDPASS FROM ACCOUNT_T WHERE HAWKID='$HAWKID';";
+        $query = "SELECT HAWKID,HASHEDPASS,ACCESS FROM ACCOUNT_T WHERE HAWKID='$HAWKID';";
         $result = queryDB($query, $db);
         
         if (nTuples($result) == 0) {
@@ -53,6 +53,7 @@
 		// get the hashed password for that account
 		$row = nextTuple($result);
 		$HASHEDPASS = $row['HASHEDPASS'];
+
 		
 		// compare entered password to the password on the database
         // $HASHEDPASS is the version of hashed password stored in the database for $HAWKID
@@ -63,6 +64,15 @@
             $errorMessage .= " The password you enterered is incorrect. ";
             $isComplete = false;
         }
+		
+		// Check to see if user is disabled from the system
+		$ACCESS =$row['ACCESS'];
+		if ($ACCESS !='1'){
+			// if user is disabled their access value be something other then '1'
+            $errorMessage .= " You have been disabled from the system. Please contact your System Admin";
+            $isComplete = false;
+		}
+		
     }
 
 
