@@ -67,20 +67,16 @@
             
 		<div class="col-md-8 col-md-offset-2">
 
-			<div class="card m-1" style="width: 18rem" ng-repeat="i in data.value.avail ">
+			<div class="card m-1" style="width: 18rem" ng-repeat="i in data.avail ">
                 <div class="card-header">
                     {{i.HAWKID}}
                 </div>
                 
                 <div class="card-body">
-                    <p>Day: {{avail.DAY_OF_WEEK}}</p>
-                    <p>Start Time: {{avail.TIME_START}}</p>
-					
-                      
+                    <p>Day: {{i.DAY_OF_WEEK}}</p>
+                    <p>Start Time: {{i.TIME_START}}</p> 
                 </div>
-         
-            </div>
-                 
+            </div>   
         </div>
 </body>
 </html>

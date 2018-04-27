@@ -53,52 +53,92 @@
 			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
 			
 			<div class="container" ng-controller="profileDataControl">
-				<table class="table table-hover">
+				<div class=container>
+					<h2> View and Edit</h2><br>
+					<p> View Information, Edit user enrollement and status, or disable users from Hawkeyes Homework Hackers</p>
+				<form>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+						<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
+						</div>      
+					</div>
+				</form>
+				<table class="table table-hover table-striped table-bordered">
 					<thead>
 						<tr>
-							<th scope="col">HawkID</th>
-							<th scope="col">First Name</th>
-							<th scope="col">Last Name</th>
-							<th scope="col">Access</th>
+							<th scope="col">
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
+									HawkID
+									<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
+									First Name
+									<span ng-show="sortType == 'FIRSTNAME'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
+										Last Name
+									 	<span ng-show="sortType == 'LASTNAME'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'ACCESS'">
+										Access
+									 	<span ng-show="sortType == 'ACCESS'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+								</a>
+							</th>
 							<th scope="col">Email</th>
-							<th scope="col">Role</th>
+							<th scope="col">								 
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'ROLE'">
+										Role
+									 	<span ng-show="sortType == 'ROLE'" class="fa fa-caret-down"></span>
+								</a></th>
 							
 							<th scope="col">View/Edit/Disable</th>
 						</tr>
 					</thead>
 					
 					
-					<tbody ng-repeat="user in data.value.allinfo | filter:query">
-						<!-- R E A D    M O D E -->
-						<div ng-if="!getEditMode(user)">
-							<th scope="row"> {{user.HAWKID}} </th>
-							<td>{{user.FIRSTNAME}}</td>
-							<td>{{user.LASTNAME}}</td>
-							<td>
-								<div class="embed-responsive embed-responsive-16by9">
-									<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorCS.filter.js -->
-									<span ng-bind-html="user.ACCESSRIGHTS | trustHtml"></span>
-								</div>
-							</td>
-							<td>{{user.EMAIL}}</td>
-							<td>{{user.ROLE}}</td>
-							<td>
-								<!-- view more info on user -->
-								<button class="btn btn-success" data-toggle="collapse" data-target="#accountDetails">
-									<span class="glyphicon glyphicon-eye-open">
-								</button>
-								
-								<!-- edit user -->
-								<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >
-									<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
-									<span class="glyphicon glyphicon-pencil">
-								</button>
-									
-								<!-- delete user -->
-								<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
-									<span class="glyphicon glyphicon-trash">
-								</button>
-							</td>
+					<tbody>
+						<tr ng-repeat="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser">
+							<!-- R E A D    M O D E -->
+							<div ng-if="!getEditMode(user)">
+								<th scope="row"> {{user.HAWKID}} </th>
+								<td>{{user.FIRSTNAME}}</td>
+								<td>{{user.LASTNAME}}</td>
+								<td>
+									<div class="embed-responsive embed-responsive-16by9">
+										<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorCS.filter.js -->
+										<span ng-bind-html="user.ACCESSRIGHTS | trustHtml"></span>
+									</div>
+								</td>
+								<td>{{user.EMAIL}}</td>
+								<td>{{user.ROLE}}</td>
+								<td>
+									<!-- view more info on user -->
+									<button class="btn btn-success" data-toggle="collapse" data-target="#accountDetails">
+										<span class="glyphicon glyphicon-eye-open">
+									</button>
+
+									<!-- edit user -->
+									<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >
+										<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
+										<span class="glyphicon glyphicon-pencil">
+									</button>
+
+									<!-- delete user -->
+									<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
+										<span class="glyphicon glyphicon-trash">
+									</button>
+								</td>
+							</div>
+						</tr>
 					</tbody>	
 				</table>
 			</div>

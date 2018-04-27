@@ -8,7 +8,7 @@
     var myApp = angular.module("tutorcs");
     // 'availControl' is used in the html file when defining the ng-controller attribute
     myApp.controller("availControl", function($scope, $http, $window) {
-        $http.get('../script/getavailsessions.php')
+        $http.get('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getavailablesessions.php')
             .then(function(response) {
                 $scope.data = response.data.value;
             }

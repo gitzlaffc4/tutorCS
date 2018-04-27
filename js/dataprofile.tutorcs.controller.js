@@ -19,9 +19,10 @@
                 // response.data.value has value come from the getaccounts.php file $response['value']['allinfo'] = $allinfo;
                 $scope.data = response.data;
             });
-		$scope.query = {};
-		$scope.queryBy = "$";	
-	
+		$scope.sortType     = 'HAWKID'; // set the default sort type
+		$scope.sortReverse  = false;  // set the default sort order
+		$scope.searchUser   = '';     // set the default search/filter term
+
 	
 	
 	
