@@ -13,9 +13,6 @@
         // in the html code we will refer to data.tutorCS. The data part comes from $scope.data, the moives part comes from the JSON object below
   		$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getaccounts.php") 
             .then(function(response) {
-				if (response.data.STUDENT =='1'){
-					response.data.STUDENT = 'TRUE';
-					}
                 // response.data.value has value come from the getaccounts.php file $response['value']['allinfo'] = $allinfo;
                 $scope.data = response.data;
             });

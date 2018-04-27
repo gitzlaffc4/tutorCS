@@ -147,17 +147,30 @@
 								</button>
 							</td>
 						</tr>
+						
+						<!-- view mode -->
 						<tr ng-repeat-end="" ng-show="expanded">
 							<td colspan="7">
 								<ul>
-									<div class="col-6 col-md-4">
-										<div class="embed-responsive embed-responsive-16by9">
-											<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
-											<span ng-bind-html="user.PROFILEPIC | trustHtml"></span>
+									<div class="container">
+										<div class="row">
+											<div class="col-6 col-md-4">
+												<div class="embed-responsive embed-responsive-16by9">
+													<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+													<span ng-bind-html="user.PROFILEPIC | trustHtml"></span>
+												</div>
+											</div>
+											<!-- student information -->
+											<div class="col-12 col-sm-6 col-md-8">
+												<span ng-show="user.ROLE == 'Student'" >
+													<h4><b><u>Enrolled in</u></b></h4>
+													<div ng-repeat="course in data.value.studentInfo | filter : {HAWKID: user.HAWKID}">
+															{{course.COURSE_NAME}}
+													</div>
+													
+												</span>
+											</div>
 										</div>
-									</div>
-									<div class="col-12 col-sm-6 col-md-8">
-										
 									</div>
 								</ul>
 							</td>
