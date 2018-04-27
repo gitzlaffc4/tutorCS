@@ -54,3 +54,11 @@ button:hover span:after {
   opacity: 1;
   right: 0;
 }
+
+.panel-heading{
+	background: black;
+}
+
+h3{
+	color: white;
+}

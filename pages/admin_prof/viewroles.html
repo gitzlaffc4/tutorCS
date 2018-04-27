@@ -56,6 +56,7 @@
 				<div class=container>
 					<h2> View and Edit</h2><br>
 					<p> View Information, Edit user enrollement and status, or disable users from Hawkeyes Homework Hackers</p>
+				</div>
 				<form>
 					<div class="form-group">
 						<div class="input-group">
@@ -66,7 +67,7 @@
 						</div>      
 					</div>
 				</form>
-				<table class="table table-hover table-striped table-bordered">
+				<table class="table table-hover table-striped table-bordered table-responsive">
 					<thead>
 						<tr>
 							<th scope="col">
@@ -78,19 +79,19 @@
 							<th scope="col">
 								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
 									First Name
-									<span ng-show="sortType == 'FIRSTNAME'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+									<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
 								</a>
 							</th>
 							<th scope="col">
 								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
 										Last Name
-									 	<span ng-show="sortType == 'LASTNAME'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+									 	<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
 								</a>
 							</th>
 							<th scope="col">
 								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'ACCESS'">
 										Access
-									 	<span ng-show="sortType == 'ACCESS'; sortReverse = !sortReverse" class="fa fa-caret-down"></span>
+									 	<span ng-show="sortType == 'ACCESS'" class="fa fa-caret-down"></span>
 								</a>
 							</th>
 							<th scope="col">Email</th>
@@ -106,46 +107,67 @@
 					
 					
 					<tbody>
-						<tr ng-repeat="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser">
+						<tr ng-repeat-start="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser">
 							<!-- R E A D    M O D E -->
-							<div ng-if="!getEditMode(user)">
-								<th scope="row"> {{user.HAWKID}} </th>
-								<td>{{user.FIRSTNAME}}</td>
-								<td>{{user.LASTNAME}}</td>
-								<td>
-									<div class="embed-responsive embed-responsive-16by9">
-										<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorCS.filter.js -->
-										<span ng-bind-html="user.ACCESSRIGHTS | trustHtml"></span>
+
+							<th scope="row"> {{user.HAWKID}} </th>
+							<td>{{user.FIRSTNAME}}</td>
+							<td>{{user.LASTNAME}}</td>
+							<td>
+								<div class="embed-responsive embed-responsive-16by9">
+									<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorCS.filter.js -->
+									<span ng-bind-html="user.ACCESSRIGHTS | trustHtml"></span>
+								</div>
+							</td>
+							<td>{{user.EMAIL}}</td>
+							<td>{{user.ROLE}}</td>
+							<td>
+								<!-- view more info on user -->
+								<button class="btn btn-success" ng-show="!expanded" ng-click="expanded = !expanded" >
+									<span class="glyphicon glyphicon-eye-open"></span>
+									
+								</button>
+								
+								<!-- close expanded view of info for user -->
+								<button class="btn btn-warning" ng-show="expanded" ng-click="expanded = !expanded" >
+									<span ng-show="expanded" class="glyphicon glyphicon-eye-close"></span>
+								</button>
+								
+								
+
+								<!-- edit user -->
+								<button class="btn btn-primary">
+									<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
+									<span class="glyphicon glyphicon-pencil">
+								</button>
+
+								<!-- delete user -->
+								<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</td>
+						</tr>
+						<tr ng-repeat-end="" ng-show="expanded">
+							<td colspan="7">
+								<ul>
+									<div class="col-6 col-md-4">
+										<div class="embed-responsive embed-responsive-16by9">
+											<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+											<span ng-bind-html="user.PROFILEPIC | trustHtml"></span>
+										</div>
 									</div>
-								</td>
-								<td>{{user.EMAIL}}</td>
-								<td>{{user.ROLE}}</td>
-								<td>
-									<!-- view more info on user -->
-									<button class="btn btn-success" data-toggle="collapse" data-target="#accountDetails">
-										<span class="glyphicon glyphicon-eye-open">
-									</button>
-
-									<!-- edit user -->
-									<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >
-										<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
-										<span class="glyphicon glyphicon-pencil">
-									</button>
-
-									<!-- delete user -->
-									<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
-										<span class="glyphicon glyphicon-trash">
-									</button>
-								</td>
-							</div>
+									<div class="col-12 col-sm-6 col-md-8">
+										
+									</div>
+								</ul>
+							</td>
 						</tr>
 					</tbody>	
 				</table>
 			</div>
-
-			
 		</div>
 			<!-- Footer -->
 		<div ng-include src="'pages/footer.html'"></div>
+				
 	</body>
 </html>
