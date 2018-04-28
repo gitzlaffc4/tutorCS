@@ -19,15 +19,7 @@
 		$scope.sortType = 'HAWKID'; // set the default sort type
 		$scope.sortReverse = false;  // set the default sort order
 		$scope.searchUser = '';     // set the default search/filter term
-
-		$scope.showDetail = function (u) {
-			if ($scope.active != u.HAWKID) {
-				$scope.active = u.HAWKID;
-			}
-			else{
-				$scope.active = null;
-			}
-		};
+		$scope.oneAtATime = true; // used to only display one row at a time
 	
 	
 		/*

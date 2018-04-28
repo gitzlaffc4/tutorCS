@@ -60,34 +60,36 @@
                 
                 <!-- HawkID for account -->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
-                    <label class="form-control-label" for="HAWKID">Username (at least 2 characters long): </label>
+                    <label class="form-control-label" for="HAWKID">HawkID (at least 2 characters long): </label>
                     <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
                     <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The HawkID must be at least two characters long</div>
                 </div>
                 
                 <!-- PASSWORD for account -->
                 <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
-                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long;: </label>
+                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long): </label>
                     <input type="PASSWORD" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
                     <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
                 </div>
 				
+
+                <!-- Email for account -->
+                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+                    <label class="form-control-label" for="EMAIL">University of Iowa Email</label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="13" id="EMAIL" required/>
+                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >You did not enter a valid university of Iowa Email</div>
+                </div>
+				
+				
+				<!-- role for account -->
 				<div class="form-group" ng-class="{'text-danger': newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched, 'text-success': !newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched }" >
 					<label class="form-control-label" for="ROLE">Define the User's Role:</label> <br>
-					<input type="radio" name="Student"> Student </input>
-					<input type="radio" name="Tutor"> Tutor </input>
-					<input type="radio" name="Professor"> Professor </input>
-					<input type="radio" name="Admin" ng-disabled="isadmin"> Admin
-					</input>
-				</div>
-				
-				<div class="form-group" ng-class="{'text-danger': newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched, 'text-success': !newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched }" >
-					
-					<label>Pick Which Courses the User is Authorized for:</label> <br>
-					<input type="radio" name="CS1020"> CS1020 | Principles of Computing <br>
-					<input type="radio" name="CS1110"> CS1110 | Intro to Computer Science <br>
-					<input type="radio" name="CS1210"> CS1210 | CS I: Fundamentals
-					
+						<option type="checkbox" name="Student"> Student </option>
+						<option type="checkbox" name="Tutor"> Tutor </option>
+						<option type="checkbox" name="StudentTutor"> Student/Tutor </option>
+						<option type="checkbox" name="Professor"> Professor </option>
+						<option type="checkbox" name="Admin"> Admin </option>
+						<option type="checkbox" name="ProfessorAdmin"> Professor/Admin </option>
 				</div>
 
 				<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->

@@ -122,24 +122,24 @@
 							<td>{{user.EMAIL}}</td>
 							<td>{{user.ROLE}}</td>
 							<td>
+								
+								
 								<!-- view more info on user -->
 								<button class="btn btn-success" ng-show="!expanded" ng-click="expanded = !expanded" >
 									<span class="glyphicon glyphicon-eye-open"></span>
 									
 								</button>
-								
 								<!-- close expanded view of info for user -->
 								<button class="btn btn-secondary" ng-show="expanded" ng-click="expanded = !expanded" >
 									<span ng-show="expanded" class="glyphicon glyphicon-eye-close"></span>
 								</button>
 								
-								
-
 								<!-- edit user -->
 								<button class="btn btn-primary">
 									<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
 									<span class="glyphicon glyphicon-pencil">
 								</button>
+								<!-- close edit -->
 
 								<!-- delete user -->
 								<button class="btn btn-danger" ng-show="user.ACCESS == '1'" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
@@ -157,7 +157,7 @@
 						<!-- view mode -->
 						<tr ng-repeat-end="" ng-show="expanded">
 							<td colspan="7">
-								<ul>
+								<ul close-others="oneAtATime">
 									<div class="container">
 										<div class="row">
 											<div class="col-lg-4">
