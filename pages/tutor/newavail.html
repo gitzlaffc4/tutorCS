@@ -86,8 +86,8 @@
 
 						<div class="form-group" ng-class="{ 'text-danger': newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched, 'text-success': !newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched}">
 							<label>DAY_OF_WEEK: </label>
-							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched, 'is-valid': !newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched}" name="DAY_OF_WEEK" ng-model="avail.DAY_OF_WEEK" ng-minlength="4" required/>
-							<p ng-show="newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched" > must be at least 4 characters long</p>
+							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched, 'is-valid': !newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched}" name="DAY_OF_WEEK" ng-model="avail.DAY_OF_WEEK" ng-minlength="1" required/>
+							<p ng-show="newAvailForm.DAY_OF_WEEK.$invalid && newAvailForm.DAY_OF_WEEK.$touched" > must be at least 1 characters long</p>
 						</div>
 						<!-- AVAILABLE -->
 						<div class="form-group" ng-class="{ 'text-danger': newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched, 'text-success': !newAvailForm.AVAILABLE.$invalid && newAvailForm.AVAILABLE.$touched}">
@@ -97,18 +97,18 @@
 						</div>
 
 						 <!-- TIME_START -->
-							<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'text-success': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}">
+						<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'text-success': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}">
 							<label>TIME_START: </label>
-							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'is-valid': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}" name="AVAILABLE" ng-model="avail.TIME_START" ng-minlength="1" />
+							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched, 'is-valid': !newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched}" name="TIME_START" ng-model="avail.TIME_START" ng-minlength="1" />
 							<p ng-show="newAvailForm.TIME_START.$invalid && newAvailForm.TIME_START.$touched" >must be at least 1 character</p>
 						</div>
 
-						</div>
+						
 
 						 <!-- TIME_STOP -->
-							<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'text-success': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}">
-							<label>TIME_STOP: </label> 	
-							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'is-valid': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}" name="AVAILABLE" ng-model="avail.TIME_STOP" ng-minlength="1" />
+						<div class="form-group" ng-class="{ 'text-danger': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'text-success': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}">
+							<label>TIME_STOP: </label>
+							<input type="text" class="form-control" ng-class="{ 'is-invalid': newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched, 'is-valid': !newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched}" name="TIME_STOP" ng-model="avail.TIME_STOP" ng-minlength="1" />
 							<p ng-show="newAvailForm.TIME_STOP.$invalid && newAvailForm.TIME_STOP.$touched" >must be at least 1 character</p>
 						</div>
 

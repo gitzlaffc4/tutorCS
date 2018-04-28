@@ -8,7 +8,7 @@
     var myApp = angular.module("tutorcs");
     // 'availControl' is used in the html file when defining the ng-controller attribute
     myApp.controller("availControl", function($scope, $http, $window) {
-        $http.get('../script/getavailsessions.php')
+        $http.get('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getavailablesessions.php')
             .then(function(response) {
                 $scope.data = response.data.value;
             }
@@ -34,13 +34,13 @@
        	$scope.newAvail = function(availDetails) {
 			var availupload = angular.copy(availDetails);
 			
-			$http.post("../script/newavail.php", availupload)
+			$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/newavail.php', availupload)
 				.then(function (response) {
 					if (response.status == 200){
 						if (response.data.status == 'error') {
 							alert('error: ' + response.data.message);
 						}else{
-							$window.location.href = "availtestpage.html";
+							$window.location.href = "../pages/tutor/avail.html";
 						}
 					} else {
 						alert('unexpected error');
