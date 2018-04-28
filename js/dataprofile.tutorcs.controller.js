@@ -13,16 +13,21 @@
         // in the html code we will refer to data.tutorCS. The data part comes from $scope.data, the moives part comes from the JSON object below
   		$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getaccounts.php") 
             .then(function(response) {
-				if (response.data.STUDENT =='1'){
-					response.data.STUDENT = 'TRUE';
-					}
                 // response.data.value has value come from the getaccounts.php file $response['value']['allinfo'] = $allinfo;
                 $scope.data = response.data;
             });
-		$scope.query = {};
-		$scope.queryBy = "$";	
-	
-	
+		$scope.sortType = 'HAWKID'; // set the default sort type
+		$scope.sortReverse = false;  // set the default sort order
+		$scope.searchUser = '';     // set the default search/filter term
+
+		$scope.showDetail = function (u) {
+			if ($scope.active != u.HAWKID) {
+				$scope.active = u.HAWKID;
+			}
+			else{
+				$scope.active = null;
+			}
+		};
 	
 	
 		/*
@@ -71,5 +76,29 @@
                 );
             }
         };
+		
+		
+		// function to re-enable a user. it receives the users's name and HAWKID and calls a php web api to reset permissions from the database
+        $scope.enableUser = function(FIRSTNAME, HAWKID) {
+            if (confirm("Are you sure you want to enable " + FIRSTNAME + "?")) {
+          
+                $http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/enableuser.php", {"HAWKID":HAWKID})
+                  .then(function (response) {
+                     if (response.status == 200) {
+                          if (response.data.status == 'error') {
+                              alert('error: ' + response.data.message);
+                          } else {
+                              // successful
+                              // send user back to home page
+                              $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/viewroles.html";
+                          }
+                     } else {
+                          alert('unexpected error');
+                     }
+                  }
+                );
+            }
+        };
+
 	});
 })();
