@@ -18,8 +18,6 @@
             });
 		$scope.sortType = 'HAWKID'; // set the default sort type
 		$scope.sortReverse = false;  // set the default sort order
-		$scope.viewByCourseID = null; // define which course to display users
-		$scope.searchRole = 'Student';  //  Which role do you wish to view?
 		$scope.searchUser = '';     // set the default search/filter term
 		$scope.oneAtATime = true; // used to only display one row at a time
 	
@@ -92,29 +90,6 @@
                   }
                 );
             }
-        };
-		
-		// function to check if user is logged in
-        $scope.checkifloggedin = function() {
-          $http.post("script/isloggedin.php")
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // set $scope.isloggedin based on whether the user is logged in or not
-                        $scope.isloggedin = response.data.loggedin;
-						$scope.HAWKID = response.data.HAWKID;
-						$scope.isadmin = response.data.admin;
-						$scope.isprofessor = response.data.professor;
-						$scope.istutor = response.data.tutor;
-						$scope.isstudent = response.data.student;
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
         };
 
 	});

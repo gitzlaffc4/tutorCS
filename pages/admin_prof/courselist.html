@@ -1,0 +1,227 @@
+<!doctype html>
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Course List</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- dataprofile.tutorcs.controller.js is where we are getting data from. It defines a controller under the 'tutorcs' app called 'profileDataControl', and data is under $scope.data -->
+		<script src="js/dataprofile.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome --> 
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css">
+
+	</head>
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<div class="container">
+			<!-- header links from header.html file  -->
+			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+			
+			<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">
+				<div class=container>
+					<h1> View Course List</h1><br>
+					<p> Here you can view students that are enrolled in your courses and edit their Allocated Tutoring Sessions. Additionally you can view tutors that are authroized for your course, remove them from your course and view how many tutoring sessions and with whom they have completed sessions with.</p>
+					<br>
+					<p> Get started by selecting a course you are authroized to teach below</p>
+				</div>
+				<br>
+				<br>
+				<form>
+					<div class="form-group">
+						<div class = "input-group">				
+							<label for="courseSelect"> <h4>Change Course</h4></label>
+							<select id="courseSelect" ng-model="viewByCourseID">
+								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+							</select>
+						</div>
+						<div class = "input-group">
+							<label for="roleSelect"><h4>Change Enrollment view</h4></label>
+							<select id="roleSelect" ng-model="searchRole">
+								<option value="Student">Students</option>
+								<option value="Tutor">Tutors</option>
+								<option value="Professor">Professors</option>
+							</select>
+						</div>
+						<br>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+							<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
+						</div>      
+					</div>
+				</form>
+				
+				
+				
+				<!-- table for when student option is selected -->
+				<div ng-show="searchRole == 'Student'">
+					<table class="table table-hover table-striped table-bordered table-responsive">
+						<thead>
+							<tr>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
+										HawkID
+										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
+										First Name
+										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
+											Last Name
+											<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">Email</th>
+								<th scope="col">Allocated Tutoring Sessions</th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							<tr ng-repeat="student in data.value.studentInfo | filter : {COURSE_ID : viewByCourseID}">
+								<!-- R E A D    M O D E -->
+									<th scope="row"> {{student.HAWKID}} </th>
+									<td>{{student.FIRSTNAME}}</td>
+									<td>{{student.LASTNAME}}</td>
+									<td>{{student.EMAIL}}</td>
+									<td>{{student.ALLOC_SESSIONS}}</td>
+							</tr>
+						</tbody>	
+					</table>
+				</div>
+				
+				
+				<!-- table for when tutor option is selected -->
+				<div ng-show="searchRole == 'Tutor'">
+					<table class="table table-hover table-striped table-bordered table-responsive">
+						<thead>
+							<tr>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
+										HawkID
+										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
+										First Name
+										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
+											Last Name
+											<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">Email</th>
+								<th scope="col">Available Tutor Sessions</th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							<tr ng-repeat="tutor in data.value.tutorInfo | filter : {COURSE_ID : viewByCourseID}">
+								<!-- R E A D    M O D E -->
+								<th scope="row"> {{tutor.HAWKID}} </th>
+								<td>{{tutor.FIRSTNAME}}</td>
+								<td>{{tutor.LASTNAME}}</td>
+								<td>{{tutor.EMAIL}}</td>
+								<td>{{tutor.availSessions}}</td>
+							</tr>
+						</tbody>	
+					</table>
+				</div>
+				
+				
+				<!-- table for when Professor option is selected -->
+				<div ng-show="searchRole == 'Professor'">
+					<table class="table table-hover table-striped table-bordered table-responsive">
+						<thead>
+							<tr>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
+										HawkID
+										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
+										First Name
+										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">
+									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
+										Last Name
+										<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
+									</a>
+								</th>
+								<th scope="col">Email</th>
+								<th scope="col">Allocated Tutoring Sessions</th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							<tr ng-repeat="prof in data.value.professorInfo | filter : {COURSE_ID : viewByCourseID}">
+								<!-- R E A D    M O D E -->
+									<th scope="row"> {{prof.HAWKID}} </th>
+									<td>{{prof.FIRSTNAME}}</td>
+									<td>{{prof.LASTNAME}}</td>
+									<td>{{prof.EMAIL}}</td>
+							</tr>
+						</tbody>	
+					</table>
+				</div>
+				
+				
+			</div>
+		</div>
+			<!-- Footer -->
+		<div ng-include src="'pages/footer.html'"></div>
+				
+	</body>
+</html>
