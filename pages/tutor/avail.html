@@ -1,41 +1,62 @@
-
+<<<<<<< HEAD
 <!doctype html>
-<html lang="en" ng-app="avail">
-	
-		<!-- These are the links to bootstrap code -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-		<!-- These are the links to boostrap code -->
-		<!-- These links are from -put address here -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-		
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Accounts</title>
+
 		<!-- set base url -->
-		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/" -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
 		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
 		
-		<!-- link to angular-->
-		<!-- Download from https://angularjs.org/ then upload to webdev server -->
-		<script src="angular.min.js"></script>
+		<!-- dataprofile.tutorcs.controller.js is where we are getting data from. It defines a controller under the 'tutorcs' app called 'profileDataControl', and data is under $scope.data -->
+		<script src="js/dataavail.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
 
-		<!-- Angular code -->
-		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
-    	<script src="avail.module.js"></script>
-	    <script src="data.avail.controller.js"></script>
+		<!--link to font awesome --> 
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<head>
-<meta charset="utf-8">
-<title>availtestpage</title>
-</head>
-	<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-	<div class = "row">
-		<h1>Something to test with</h1>  
-					</div>
-	</div>
-	</div>
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css">
 
-<body>
+	</head>
+	<body>
+		<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class = "row">
+					<h1>Something to test with</h1>  
+				</div>
+			</div>
+		</div>
+
+
 	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
     <div class="container" ng-controller="availControl">
 	
@@ -63,4 +84,3 @@
                  
         </div>
 </body>
-</html>

@@ -53,24 +53,63 @@
 			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
 			
 			<div class="container" ng-controller="profileDataControl">
-				<table class="table table-hover">
+				<div class=container>
+					<h2> View and Edit</h2><br>
+					<p> View Information, Edit user enrollement and status, or disable users from Hawkeyes Homework Hackers</p>
+				</div>
+				<form>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+						<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
+						</div>      
+					</div>
+				</form>
+				<table class="table table-hover table-striped table-bordered table-responsive">
 					<thead>
 						<tr>
-							<th scope="col">HawkID</th>
-							<th scope="col">First Name</th>
-							<th scope="col">Last Name</th>
-							<th scope="col">Access</th>
+							<th scope="col">
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
+									HawkID
+									<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
+									First Name
+									<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
+										Last Name
+									 	<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
+								</a>
+							</th>
+							<th scope="col">
+								 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'ACCESS'">
+										Access
+									 	<span ng-show="sortType == 'ACCESS'" class="fa fa-caret-down"></span>
+								</a>
+							</th>
 							<th scope="col">Email</th>
-							<th scope="col">Role</th>
+							<th scope="col">								 
+								<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'ROLE'">
+										Role
+									 	<span ng-show="sortType == 'ROLE'" class="fa fa-caret-down"></span>
+								</a></th>
 							
 							<th scope="col">View/Edit/Disable</th>
 						</tr>
 					</thead>
 					
 					
-					<tbody ng-repeat="user in data.value.allinfo | filter:query">
-						<!-- R E A D    M O D E -->
-						<div ng-if="!getEditMode(user)">
+					<tbody>
+						<tr ng-repeat-start="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser">
+							<!-- R E A D    M O D E -->
+
 							<th scope="row"> {{user.HAWKID}} </th>
 							<td>{{user.FIRSTNAME}}</td>
 							<td>{{user.LASTNAME}}</td>
@@ -83,29 +122,133 @@
 							<td>{{user.EMAIL}}</td>
 							<td>{{user.ROLE}}</td>
 							<td>
+								
+								
 								<!-- view more info on user -->
-								<button class="btn btn-success" data-toggle="collapse" data-target="#accountDetails">
-									<span class="glyphicon glyphicon-eye-open">
+								<button class="btn btn-success" ng-show="!expanded" ng-click="expanded = !expanded" >
+									<span class="glyphicon glyphicon-eye-open"></span>
+									
+								</button>
+								<!-- close expanded view of info for user -->
+								<button class="btn btn-secondary" ng-show="expanded" ng-click="expanded = !expanded" >
+									<span ng-show="expanded" class="glyphicon glyphicon-eye-close"></span>
 								</button>
 								
 								<!-- edit user -->
-								<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" >
+								<button class="btn btn-primary">
 									<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
 									<span class="glyphicon glyphicon-pencil">
 								</button>
-									
+								<!-- close edit -->
+
 								<!-- delete user -->
-								<button class="btn btn-danger" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
-									<span class="glyphicon glyphicon-trash">
+								<button class="btn btn-danger" ng-show="user.ACCESS == '1'" ng-click="deleteUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
+									<span class="glyphicon glyphicon-trash"></span>
 								</button>
+									
+								<!-- re-enable account -->
+								<button class="btn btn-warning" ng-show="user.ACCESS == '0'" ng-click="enableUser(user.FIRSTNAME, user.HAWKID)" ng-disabled="isadmin">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+									
 							</td>
+						</tr>
+						
+						<!-- view mode -->
+						<tr ng-repeat-end="" ng-show="expanded">
+							<td colspan="7">
+								<ul close-others="oneAtATime">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-4">
+												<div class="embed-responsive embed-responsive-16by9">
+													<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+													<span ng-bind-html="user.PROFILEPIC | trustHtml"></span>
+												</div>
+											</div>
+											<!-- student information -->
+											<span ng-show="user.ROLE == 'Student'" >
+												<!-- Student profile info -->
+												<div class="col-lg-4">
+													<h4><b><u>Class Year</u></b></h4>
+													<div ng-repeat="student in data.value.studentInfo | filter : {HAWKID : user.HAWKID}">
+														{{student.CLASS_YEAR}}
+													</div>
+													<h4><b><u>Phone Number</u></b></h4>
+													{{user.PHONE_NUMBER}}
+												</div>
+												<!-- Course Enrollment with remaining tutoring sessions-->
+												<div class="col-lg-4">
+													<h4><b><u>Enrolled in</u></b></h4>
+													<div ng-repeat="course in data.value.studentInfo | filter : {HAWKID : user.HAWKID}">
+														<p>
+															{{course.COURSE_NAME}} <br>
+															<div style="text-indent: 15px;">
+																<b style="color: green;">{{course.ALLOC_SESSIONS}}</b> remaining tutoring sessions
+															</div>
+														</p>
+													</div>
+												</div>
+											</span>
+											<!-- tutor information -->
+											<span ng-show="user.ROLE == 'Tutor'" >
+												<!-- Student profile info -->
+												<div class="col-lg-4">
+													<div ng-repeat="student in data.value.studentInfo | filter : {HAWKID : user.HAWKID}">
+													</div>
+													<h4><b><u>Phone Number</u></b></h4>
+													{{user.PHONE_NUMBER}}
+													
+												</div>
+												
+												<!-- Course Enrollment with remaining tutoring sessions-->
+												<div class="col-lg-4">
+													<h4><b><u>Tutors</u></b></h4>
+													<div ng-repeat="course in data.value.tutorInfo | filter : {HAWKID : user.HAWKID}">
+														<p>
+															{{course.COURSE_NAME}} <br>
+															<div style="text-indent: 15px;">
+																<b style="color: green;">{{course.ALLOC_SESSIONS}}
+															</div>
+														</p>
+													</div>
+												</div>
+											</span>
+											<!-- professor information -->
+											<span ng-show="user.ROLE == 'Professor'" >
+												<!-- Student profile info -->
+												<div class="col-lg-4">
+													<div ng-repeat="student in data.value.studentInfo | filter : {HAWKID : user.HAWKID}">
+													</div>
+													<h4><b><u>Phone Number</u></b></h4>
+													{{user.PHONE_NUMBER}}
+													
+												</div>
+												
+												<!-- Course Enrollment with remaining tutoring sessions-->
+												<div class="col-lg-4">
+													<h4><b><u>Tutors</u></b></h4>
+													<div ng-repeat="course in data.value.tutorInfo | filter : {HAWKID : user.HAWKID}">
+														<p>
+															{{course.COURSE_NAME}} <br>
+															<div style="text-indent: 15px;">
+																<b style="color: green;">{{course.ALLOC_SESSIONS}}
+															</div>
+														</p>
+													</div>
+												</div>
+											</span>
+										</div>
+									</div>
+								</ul>
+							</td>
+						</tr>
 					</tbody>	
 				</table>
 			</div>
-
-			
 		</div>
 			<!-- Footer -->
 		<div ng-include src="'pages/footer.html'"></div>
+				
 	</body>
 </html>

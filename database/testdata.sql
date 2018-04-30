@@ -31,36 +31,36 @@ INSERT INTO ACCOUNT_T (HAWKID, HASHEDPASS, ACCESS) VALUES ('tmesserly_st', '$2a$
 INSERT INTO ACCOUNT_T (HAWKID, HASHEDPASS, ACCESS) VALUES ('tmesserly_t', '$2a$12$WYvPFWkrXEi/Ww5ZXq2deeh2stvY.DU9mxQpyG9vZ57Wr42/9WVJ2','1');
 
 -- DEFINE USER ROLES AND INFORMATION... TEAMS INFORMATION
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_s','Cameron_S', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '1', '0', '0', '0', 'Cam_S', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_t','Cameron_T', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '1', '0', '0', 'Cam_T', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_p','Cameron_P', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '1', '0', 'Cam_P', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_a','Cameron_A', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '0', '1', 'Cam_A', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_st','Cameron_ST', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '1', '1', '0', '0', 'Cam_ST', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cgitzlaff_pa','Cameron_PA', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '1', '1', 'Cam_PA', '4146515629', 'cgitzlaff_a.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_s','Conlan_S', 'Murphy','conlan-murphy@uiowa.edu','1', '0', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_t','Conlan_T', 'Murphy','conlan-murphy@uiowa.edu', '0', '1', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_p','Conlan_P', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '1', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_a','Conlan_A', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '0', '1', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_st','Conlan_ST', 'Murphy','conlan-murphy@uiowa.edu', '1', '1', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('cmurphy3_pa','Conlan_PA', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '1', '1', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_s','Juan Pablo_S', 'Hourcade','juanpablo-hourcade@uiowa.edu','1', '0', '0', '0', 'JP_S', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_t','Juan Pablo_T', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '1', '0', '0', 'JP_T', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_p','Juan Pablo_P', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '1', '0', 'JP_P', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_a','Juan Pablo_A', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '0', '1', 'JP_A', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_st','Juan Pablo_ST', 'Hourcade','juanpablo-hourcade@uiowa.edu', '1', '1', '0', '0', 'JP_ST', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('hourcade_pa','Juan Pablo_PA', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '1', '1', 'JP_PA', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_s','Alberto_S', 'Segre','alberto-segre@uiowa.edu','1', '0', '0', '0', 'Segre_S', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_t','Alberto_T', 'Segre','alberto-segre@uiowa.edu', '0', '1', '0', '0', 'Segre_T', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_p','Alberto_P', 'Segre','alberto-segre@uiowa.edu', '0', '0', '1', '0', 'Segre_P', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_a','Alberto_A', 'Segre','alberto-segre@uiowa.edu', '0', '0', '0', '1', 'Segre_A', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_st','Alberto_ST', 'Segre','alberto-segre@uiowa.edu', '1', '1', '0', '0', 'Segre_ST', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('segre_pa','Alberto_PA', 'Segre','alberto-segre@uiowa.edu', '0', '0', '1', '1', 'Segre_PA', NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_s','Tram_S', 'Messerly','tram-messerly@uiowa.edu','1', '0', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_t','Tram_T', 'Messerly','tram-messerly@uiowa.edu', '0', '1', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_p','Tram_P', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_a','Tram_A', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '0', '1', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_st','Tram_ST', 'Messerly','tram-messerly@uiowa.edu', '1', '1', '0', '0', NULL, NULL, NULL);
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER,PICTURE) VALUES ('tmesserly_pa','Tram_PA', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '1', NULL, NULL, NULL);
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_s','Cameron_S', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '1', '0', '0', '0', 'Cam_S', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_t','Cameron_T', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '1', '0', '0', 'Cam_T', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_p','Cameron_P', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '1', '0', 'Cam_P', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_a','Cameron_A', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '0', '1', 'Cam_A', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_st','Cameron_ST', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '1', '1', '0', '0', 'Cam_ST', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PHONE_NUMBER, PICTURE) VALUES ('cgitzlaff_pa','Cameron_PA', 'Gitzlaff','cameron-gitzlaff@uiowa.edu', '0', '0', '1', '1', 'Cam_PA', '4146515629', 'cgitzlaff_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_s','Conlan_S', 'Murphy','conlan-murphy@uiowa.edu','1', '0', '0', '0', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_t','Conlan_T', 'Murphy','conlan-murphy@uiowa.edu', '0', '1', '0', '0', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_p','Conlan_P', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '1', '0', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_a','Conlan_A', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '0', '1', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_st','Conlan_ST', 'Murphy','conlan-murphy@uiowa.edu', '1', '1', '0', '0', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('cmurphy3_pa','Conlan_PA', 'Murphy','conlan-murphy@uiowa.edu', '0', '0', '1', '1', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_s','Juan Pablo_S', 'Hourcade','juanpablo-hourcade@uiowa.edu','1', '0', '0', '0', 'JP_S', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_t','Juan Pablo_T', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '1', '0', '0', 'JP_T', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_p','Juan Pablo_P', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '1', '0', 'JP_P', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_a','Juan Pablo_A', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '0', '1', 'JP_A', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_st','Juan Pablo_ST', 'Hourcade','juanpablo-hourcade@uiowa.edu', '1', '1', '0', '0', 'JP_ST', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('hourcade_pa','Juan Pablo_PA', 'Hourcade','juanpablo-hourcade@uiowa.edu', '0', '0', '1', '1', 'JP_PA','default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_s','Alberto_S', 'Segre','alberto-segre@uiowa.edu','1', '0', '0', '0', 'Segre_S', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_t','Alberto_T', 'Segre','alberto-segre@uiowa.edu', '0', '1', '0', '0', 'Segre_T', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_p','Alberto_P', 'Segre','alberto-segre@uiowa.edu', '0', '0', '1', '0', 'Segre_P', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_a','Alberto_A', 'Segre','alberto-segre@uiowa.edu', '0', '0', '0', '1', 'Segre_A', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_st','Alberto_ST', 'Segre','alberto-segre@uiowa.edu', '1', '1', '0', '0', 'Segre_ST', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_pa','Alberto_PA', 'Segre','alberto-segre@uiowa.edu', '0', '0', '1', '1', 'Segre_PA', 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_s','Tram_S', 'Messerly','tram-messerly@uiowa.edu','1', '0', '0', '0', NULL, 'efault.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_t','Tram_T', 'Messerly','tram-messerly@uiowa.edu', '0', '1', '0', '0', NULL, 'efault.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_p','Tram_P', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '0', NULL, 'efault.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_a','Tram_A', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '0', '1', NULL, 'efault.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_st','Tram_ST', 'Messerly','tram-messerly@uiowa.edu', '1', '1', '0', '0', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_pa','Tram_PA', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '1', NULL, 'default.jpg');
 
 -- DEFINE COURSES FOR SPRING 2018
 INSERT INTO COURSE_T (COURSE_ID, COURSE_NAME, SEMESTER) VALUES (00000001, '1020: Principles of Computing', 'Spring 2018');
@@ -68,16 +68,16 @@ INSERT INTO COURSE_T (COURSE_ID, COURSE_NAME, SEMESTER) VALUES (00000002, '1110:
 INSERT INTO COURSE_T (COURSE_ID, COURSE_NAME, SEMESTER) VALUES (00000003, '1210: Computer Science I: Fundamentals', 'Spring 2018');
 
 -- DEFINE STUDENTS WITH ALLOCATD SESSIONS
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('cgitzlaff_s', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('tmesserly_s', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('cmurphy3_s', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('segre_s', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('hourcade_s', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('cgitzlaff_st', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('tmesserly_st', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('cmurphy3_st', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('segre_st', 6);
-INSERT INTO STUDENT_T (HAWKID, ALLOC_SESSIONS) VALUES ('hourcade_st', 6);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('cgitzlaff_s', 1);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('tmesserly_s', 1);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('cmurphy3_s', 1);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('segre_s', 2);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('hourcade_s', 2);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('cgitzlaff_st', 3);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('tmesserly_st', 3);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('cmurphy3_st', 4);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('segre_st', 2);
+INSERT INTO STUDENT_T (HAWKID, GRADE_LEVEL) VALUES ('hourcade_st', 4);
 
 -- DEFINE WHAT COURSES STUDENTS ARE ENROLLED IN
 INSERT INTO ENROLLED_T (HAWKID, COURSE_ID) VALUES ( 'cgitzlaff_s', 00000001);
