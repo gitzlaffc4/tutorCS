@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
 <html lang="en" ng-app="tutorcs">
@@ -47,7 +46,7 @@
 
 	</head>
 	<body>
-		<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		<div ng-include ng-controller ="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class = "row">
@@ -57,30 +56,32 @@
 		</div>
 
 
-	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
-    <div class="container" ng-controller="availControl">
-	
-	<div class="row">
-            
-            <!-- Card for all times -->
-            <!-- We are getting our data from $scope.data in data.avail.controller.js. The JSON object we get has the data under "avail" -->
-           
-            
-		<div class="col-md-8 col-md-offset-2">
+		<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
+		<div class="container" ng-controller="availControl">
 
-			<div class="card m-1" style="width: 18rem" ng-repeat="avail in data.avail ">
-                <div class="card-header">
-                    {{avail.HAWKID}}
-                </div>
-                
-                <div class="card-body">
-                    <p>Day: {{avail.DAY_OF_WEEK}}</p>
-                    <p>Start Time: {{avail.TIME_START}}</p>
-					
-                      
-                </div>
-         
-            </div>
-                 
-        </div>
-</body>
+			<div class="row">
+
+				<!-- Card for all times -->
+				<!-- We are getting our data from $scope.data in data.avail.controller.js. The JSON object we get has the data under "avail" -->
+
+
+				<div class="col-md-8 col-md-offset-2">
+
+					<div class="card m-1" style="width: 18rem" ng-repeat="avail in data.avail ">
+						<div class="card-header">
+							{{avail.HAWKID}}
+						</div>
+
+						<div class="card-body">
+							<p>Day: {{avail.DAY_OF_WEEK}}</p>
+							<p>Start Time: {{avail.TIME_START}}</p>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

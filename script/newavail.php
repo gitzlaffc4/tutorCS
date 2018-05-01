@@ -42,7 +42,7 @@ $errorMessage = "";
 // Add availability to the database
 
 if($isComplete) {
-	$insertquery = "INSERT INTO AVAILABILITY_T (AVAILSLOTID, HAWKID, DAY_OF_WEEK, AVAILABLE, TIME_START, TIME_STOP) VALUES ('$AVAILSLOTID', '$HAWKID', '$DAY_OF_WEEK', '$AVAILABLE', '$TIME_START', '$TIME_STOP')";
+	$insertquery = "INSERT INTO AVAILABILITY_T (AVAILSLOTID, HAWKID, DAY_OF_WEEK, AVAILABLE, TIME_START, TIME_STOP) VALUES ('$AVAILSLOTID', '$HAWKID', '$DAY_OF_WEEK', '$AVAILABLE', '$TIME_START', '$TIME_STOP');";
 	
 	//Run the insert statement
 	queryDB($insertquery, $db);
