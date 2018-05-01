@@ -135,12 +135,10 @@
 					</div>
 					<div ng-show="isloggedin">
 						<div ng-repeat="account in data.userinfo">
-							<div ng-show="isloggedin">
 								<a class="nav-link" href="#"> Hello {{account.FIRSTNAME}} {{account.LASTNAME}} </a>
-									<a href="index.html" ng-click="logout()">
-										| Log out...  
-									</a>
-							</div>
+								<a href="index.html" ng-click="logout()">
+									| Log out...  
+								</a>
 						</div>
 					</div>
 				</ul>

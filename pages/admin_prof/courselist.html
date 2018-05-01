@@ -50,7 +50,7 @@
 		<!--Hamburger collapsing System for smaller screens -->
 		<div class="container">
 			<!-- header links from header.html file  -->
-			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+			<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
 			
 			<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">
 				<div class=container>
@@ -66,7 +66,7 @@
 						<div class = "input-group">				
 							<label for="courseSelect"> <h4>Change Course</h4></label>
 							<select id="courseSelect" ng-model="viewByCourseID">
-								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}" ng-selected="$first">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 							</select>
 						</div>
 						<div class = "input-group">
@@ -95,6 +95,7 @@
 					<table class="table table-hover table-striped table-bordered table-responsive">
 						<thead>
 							<tr>
+								<th></th>
 								<th scope="col">
 									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
 										HawkID
@@ -122,11 +123,29 @@
 						<tbody>
 							<tr ng-repeat="student in data.value.studentInfo | filter : {COURSE_ID : viewByCourseID}">
 								<!-- R E A D    M O D E -->
-									<th scope="row"> {{student.HAWKID}} </th>
-									<td>{{student.FIRSTNAME}}</td>
-									<td>{{student.LASTNAME}}</td>
-									<td>{{student.EMAIL}}</td>
-									<td>{{student.ALLOC_SESSIONS}}</td>
+								<th>
+									<div class="embed-responsive embed-responsive-16by9">
+										<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+										<span ng-bind-html="student.PROFILEPIC | trustHtml"></span>
+									</div>
+								</th>
+								<th scope="row"> {{student.HAWKID}} </th>
+								<td>{{student.FIRSTNAME}}</td>
+								<td>{{student.LASTNAME}}</td>
+								<td>{{student.EMAIL}}</td>
+								<td  style="text-align: center;">
+									<div class="row">
+										<!-- subtract a allocated session from users sessions -->
+										<button class="btn btn-danger" ng-click="removeAllocSession(student.HAWKID, viewByCourseID)">
+											<span class="glyphicon glyphicon-minus"></span>
+										</button>
+										{{student.ALLOC_SESSIONS}}
+										<!-- add a allocated session from users sessions -->
+										<button class="btn btn-success">
+											<span class="glyphicon glyphicon-plus"></span>
+										</button>
+									</div>
+								</td>
 							</tr>
 						</tbody>	
 					</table>

@@ -116,6 +116,33 @@
                }
             });                        
         };
+		
+		
+		// function to remove and allocated tutoring session from a user's enrollment in a course
+        $scope.removeAllocSession = function(HAWKID, COURSE_ID) {
+			$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/removeallocsession.php", {"HAWKID":HAWKID},{"COURSE_ID":COURSE_ID})
+			  .then(function (response) {
+				 if (response.status == 200) {
+					  if (response.data.status == 'error') {
+						  alert('error: ' + response.data.message);
+					  } else {
+						  // successful
+						  // send user back to home page
+						  $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/courselist.html";
+					  }
+				 } else {
+					  alert('unexpected error');
+				 }
+			  }
+			);
+            
+        };
+		
+		
+		
+		
+		
+		
 
 	});
 })();
