@@ -112,7 +112,7 @@
 
 <!--top header -->
 
-	<nav class="navbar navbar-inverse navbar-fixed-top ng-init="checkifloggedin()" id="universal-navbar">
+	<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()" id="universal-navbar">
         <div class="container" style="padding-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shared-navbar-collapse">
@@ -132,7 +132,8 @@
 						<li>
 							<a class="nav-link" href="pages/login.html"><i class="fa fa-user fa-inverse"></i> Please login...</a>
 						</li>
-					
+					</div>
+					<div ng-show="isloggedin">
 						<div ng-repeat="account in data.userinfo">
 							<div ng-show="isloggedin">
 								<a class="nav-link" href="#"> Hello {{account.FIRSTNAME}} {{account.LASTNAME}} </a>
@@ -142,62 +143,10 @@
 							</div>
 						</div>
 					</div>
-				
 				</ul>
 			</div>
 		</div>
 	</nav>
-	
-    
-    <!--bottom nav bar-->
-	<nav class="navbar navbar-default" role="navigation" id="myui-navbar">
-		<div class="container" style="padding-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a title="HHH Homepage" style="padding-top: 0px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myui-navbar-collapse">
-				<ul class="nav navbar-nav">
-					
-						 <li class="BRAND">
-							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
-						</li>
-						 
-						<li class=" active">
-							<a id="menuid-home" href="https://myui.uiowa.edu/my-ui/home.page" class="" title="Home">
-								My Account
-									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
-										<i class="fa fa-caret-up"></i>
-									</div>
-							</a>
-						</li>
-					
-						<li class="courses">
-							<a id="menuid-courses" href="#" class="courses" title="Courses">My Courses</a>
-						</li>
-						
-						<li class="help">
-							<a id="menuid-student-records" href="#" class="help" title="Help">Find Help</a>
-						</li>
-					
-						<li class="Sources">
-							<a id="menuid-finance" href="#" class="sources" title="Resources">Other Sources</a>
-						</li>
-					
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-
-
-
-
 	
  <!--Trying to incorporate all in the 3rd nav bar-->
  
@@ -212,62 +161,70 @@
 			<!--everyone -->
 	<nav class="navbar navbar-default" role="navigation" id="myui-navbar">
 		<div class="container" style="padding-bottom: 0">
-			<div ng-show="!isloggedin">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a title="HHH Homepage" style="padding-top: 10px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
-				</div>
-				<div class="collapse navbar-collapse" id="myui-navbar-collapse">
-					<ul class="nav navbar-nav">
-						<!--everyone get these menu -->
-						 <li class="BRAND">
-							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
-						</li>
-						<li class=" active">
-							<a id="menuid-home" href="https://myui.uiowa.edu/my-ui/home.page" class="" title="Home">
-								My Account
-									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
-										<i class="fa fa-caret-up"></i>
-									</div>
-							</a>
-						</li>
-						<li class="courses">
-							<a id="menuid-courses" href="#" class="courses" title="Courses">My Courses</a>
-						</li>
-						
-						<li class="help">
-							<a id="menuid-student-help" href="#" class="help" title="Help">Find Help</a>
-						</li>
-		
-						<li class="Sources">
-							<a id="menuid-student-sources" href="#" class="sources" title="Resources">Other Sources</a>
-						</li>
-						<!--haaalllppppp-->
-						<!--tutor gets "Tutoring Schedule" tab -->
-						<div ng-show="isloggedin">
-							<div role= tutor>
-								<li class="Tutoring Schedule">
-									<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
-								</li>
-							</div>
-							<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
-							<div role= Admin>
-								<li class="Tutor">
-									<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
-								</li>
-								<li class="Account Creation">
-									<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
-								</li>
-							</div>
-						</div>
-					</ul>
-				</div>
-			</div> 
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a title="HHH Homepage" style="padding-top: 10px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myui-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<!--everyone get these menu -->
+
+
+					<li class="BRAND">
+						<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
+					</li>
+					<li class=" active" ng-show="!isloggedin">
+						<a id="menuid-home" href="pages/login.html" class="" title="Home">
+							My Account
+								<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+									<i class="fa fa-caret-up"></i>
+								</div>
+						</a>
+					</li>
+					<li class="courses" ng-show="!isloggedin">
+						<a id="menuid-courses" href="pages/login.html" class="courses" title="Courses">My Courses</a>
+					</li>
+
+					<li class="help" ng-show="!isloggedin">
+						<a id="menuid-student-help" href="pages/login.html" class="help" title="Help">Find Help</a>
+					</li>
+
+					<li class="Sources" ng-show="!isloggedin">
+						<a id="menuid-student-sources" href="pages/login.html" class="sources" title="Resources">Other Sources</a>
+					</li>
+					
+					<!-- student links will use ng-show="isstudent" -->
+					
+					
+					
+					
+					<!-- tutor links will use ng-show="istutor"
+					<!--tutor gets "Tutoring Schedule" tab -->
+					<!-- Dynamic header for tutors -->
+					<li class="Tutoring Schedule" ng-show="istutor">
+						<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
+					</li>
+					
+					
+					<!-- professor links will use ng-show="isprofessor" -->
+					
+					
+					
+					<!-- admin links will use ng-show="isadmin" -->
+					<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
+					<li class="Tutor" ng-show="isadmin">
+						<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
+					</li>
+					<li class="Account Creation" ng-show="isadmin">
+						<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 	

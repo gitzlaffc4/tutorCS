@@ -24,6 +24,7 @@
 		
 		// this variable will hold the page number that should be highlighted in the menu bar
         // 0 is for index.html
+		// 1 is for 
         $scope.menuHighlight = 0;
 		
 		// function to send new account information to web api to add it to the database
