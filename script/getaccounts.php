@@ -108,6 +108,14 @@ while ($currTutor = nextTuple($tutorResult)){
 $professorInfo = array();
 $m = 0;
 while ($currProfessor = nextTuple($professorResult)){
+	$currHawkID = $currProfessor['HAWKID'];
+	$teachesQuery = "SELECT * FROM TEACHES_T WHERE HAWKID = '$currHawkID';";
+	$teachesResult = queryDB($teachesQuery, $db);
+	$courseIndex = $a;
+	while ($currCourse = nextTuple($teachesResult)){
+		$currProfessor['TEACHES'][$a] = $currCourse;
+		$a++;
+	}
 	$professorInfo[$m] = $currProfessor;
 	$m++;
 }
