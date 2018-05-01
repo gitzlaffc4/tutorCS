@@ -25,10 +25,10 @@ $isComplete = true;
 // if we got this far and $isComplete is true it means we should delete the USER from the database
 if ($isComplete) {
 	// set up a query to get remove 1 alloc_session from the user's enrollment
-	$queryRemoveAllocSession = "UPDATE ENROLLED_T SET ALLOC_SESSIONS = ALLOC_SESSIONS - 1 WHERE HAWKID = '$HAWKID' AND COURSE_ID = '$COURSE_ID';";
+	$queryAddAllocSession = "UPDATE ENROLLED_T SET ALLOC_SESSIONS = ALLOC_SESSIONS + 1 WHERE HAWKID = '$HAWKID' AND COURSE_ID = '$COURSE_ID';";
 
 	// run the query
-	queryDB($queryRemoveAllocSession, $db);
+	queryDB($queryAddAllocSession, $db);
         
     // send a response back to angular
     $response = array();

@@ -22,7 +22,10 @@
 		$scope.searchRole = 'Student';  //  Which role do you wish to view?
 		$scope.searchUser = '';     // set the default search/filter term
 		$scope.oneAtATime = true; // used to only display one row at a time
-	
+		
+		
+		
+		
 	
 		/*
 		 * Set edit mode of a particular user
@@ -118,9 +121,29 @@
         };
 		
 		
-		// function to remove and allocated tutoring session from a user's enrollment in a course
+		// function to remove an allocated tutoring session from a user's enrollment in a course
         $scope.removeAllocSession = function(HAWKID, COURSE_ID) {
-			$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/removeallocsession.php", {"HAWKID":HAWKID},{"COURSE_ID":COURSE_ID})
+			$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/removeallocsession.php", {"HAWKID":HAWKID, "COURSE_ID":COURSE_ID})
+			  .then(function (response) {
+				 if (response.status == 200) {
+					  if (response.data.status == 'error') {
+						  alert('error: ' + response.data.message);
+					  } else {
+						  // successful
+						  // send user back to home page
+						  $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/courselist.html";
+					  }
+				 } else {
+					  alert('unexpected error');
+				 }
+			  }
+			);
+            
+        };
+		
+		// function to add an allocated tutoring session from a user's enrollment in a course
+        $scope.addAllocSession = function(HAWKID, COURSE_ID) {
+			$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/addallocsession.php", {"HAWKID":HAWKID, "COURSE_ID":COURSE_ID})
 			  .then(function (response) {
 				 if (response.status == 200) {
 					  if (response.data.status == 'error') {

@@ -50,7 +50,7 @@
 		<!--Hamburger collapsing System for smaller screens -->
 		<div class="container" ng-init="checkifloggedin()">
 			<!-- header links from header.html file  -->
-			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+			<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
 			
 			<div class="container" ng-controller="profileDataControl">
 				<div class=container>

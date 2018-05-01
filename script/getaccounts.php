@@ -82,7 +82,7 @@ while ($currStudent = nextTuple($studentResult)){
 		$currStudent['CLASS_YEAR'] = "Senior";
 	}
 	$profilePic = $currStudent['PICTURE'];
-	$currStudent['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='50' height='50'>";
+	$currStudent['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='40' height='40'>";
 	$studentInfo[$k] = $currStudent;
 	$k++;
 }

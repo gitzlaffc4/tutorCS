@@ -65,8 +65,8 @@
 					<div class="form-group">
 						<div class = "input-group">				
 							<label for="courseSelect"> <h4>Change Course</h4></label>
-							<select id="courseSelect" ng-model="viewByCourseID">
-								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}" ng-selected="$first">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+							<select id="courseSelect" ng-model="viewByCourseID" ng-options="c.COURSE_ID for c in value.enrollmentInfo">
+								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 							</select>
 						</div>
 						<div class = "input-group">
@@ -79,12 +79,29 @@
 						</div>
 						<br>
 						<br>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-search"></i>
+						<div class="row">
+							<div class="col-12 col-sm-6 col-md-8">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-search"></i>
+									</div>
+									<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
+								</div>   
 							</div>
-							<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
-						</div>      
+							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Student'"> 
+								<button type="button" class="btn btn-success">
+									<span class="glyphicon glyphicon-plus"></span>
+									Add Student
+								</button>
+							</div>
+							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Tutor'"> 
+								<button type="button" class="btn btn-success">
+									<span class="glyphicon glyphicon-plus"></span>
+									Add Tutor
+								</button>
+							</div>
+							
+						</div>
 					</div>
 				</form>
 				
@@ -122,7 +139,6 @@
 
 						<tbody>
 							<tr ng-repeat="student in data.value.studentInfo | filter : {COURSE_ID : viewByCourseID}">
-								<!-- R E A D    M O D E -->
 								<th>
 									<div class="embed-responsive embed-responsive-16by9">
 										<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
@@ -141,8 +157,8 @@
 										</button>
 										{{student.ALLOC_SESSIONS}}
 										<!-- add a allocated session from users sessions -->
-										<button class="btn btn-success">
-											<span class="glyphicon glyphicon-plus"></span>
+										<button class="btn btn-success" ng-click="addAllocSession(student.HAWKID, viewByCourseID)">
+											<span class="glyphicon glyphicon-plus" ></span>
 										</button>
 									</div>
 								</td>
