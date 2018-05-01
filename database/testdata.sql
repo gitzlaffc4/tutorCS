@@ -58,12 +58,12 @@ INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSO
 INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_st', 'Alberto_ST', 'Segre','alberto-segre@uiowa.edu', '1', '1', '0', '0', 'Segre_ST', 'segre.jpg');
 INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('segre_pa', 'Alberto_PA','Segre','alberto-segre@uiowa.edu', '0', '0', '1', '1', 'Segre_PA', 'segre.jpg');
 
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_s','Tram_S', 'Messerly','tram-messerly@uiowa.edu','1', '0', '0', '0', NULL, 'efault.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_t','Tram_T', 'Messerly','tram-messerly@uiowa.edu', '0', '1', '0', '0', NULL, 'efault.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_p','Tram_P', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '0', NULL, 'efault.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_a','Tram_A', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '0', '1', NULL, 'efault.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_st','Tram_ST', 'Messerly','tram-messerly@uiowa.edu', '1', '1', '0', '0', NULL, 'default.jpg');
-INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_pa','Tram_PA', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '1', NULL, 'default.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_s','Tram_S', 'Messerly','tram-messerly@uiowa.edu','1', '0', '0', '0', NULL, 'tmesserly_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_t','Tram_T', 'Messerly','tram-messerly@uiowa.edu', '0', '1', '0', '0', NULL, 'tmesserly_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_p','Tram_P', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '0', NULL, 'tmesserly_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_a','Tram_A', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '0', '1', NULL, 'tmesserly_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_st','Tram_ST', 'Messerly','tram-messerly@uiowa.edu', '1', '1', '0', '0', NULL, 'tmesserly_a.jpg');
+INSERT INTO USER_T (HAWKID,	FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR,	PROFESSOR, ADMIN, NICK_NAME, PICTURE) VALUES ('tmesserly_pa','Tram_PA', 'Messerly','tram-messerly@uiowa.edu', '0', '0', '1', '1', NULL, 'tmesserly_a.jpg');
 
 -- DEFINE COURSES FOR SPRING 2018
 INSERT INTO COURSE_T (COURSE_ID, COURSE_NAME, SEMESTER) VALUES (00000001, '1020: Principles of Computing', 'Spring 2018');
@@ -120,6 +120,7 @@ INSERT INTO TUTORS_T (HAWKID, COURSE_ID) VALUES ( 'hourcade_st', 00000002);
 
 -- DEFINE WHICH COURSES A PROFESSOR CAN TEACH
 INSERT INTO TEACHES_T (HAWKID, COURSE_ID) VALUES ( 'cgitzlaff_p', 00000003);
+INSERT INTO TEACHES_T (HAWKID, COURSE_ID) VALUES ( 'cgitzlaff_p', 00000002);
 INSERT INTO TEACHES_T (HAWKID, COURSE_ID) VALUES ( 'cmurphy3_p', 00000003);
 INSERT INTO TEACHES_T (HAWKID, COURSE_ID) VALUES ( 'tmesserly_p', 00000002);
 INSERT INTO TEACHES_T (HAWKID, COURSE_ID) VALUES ( 'segre_p', 00000002);

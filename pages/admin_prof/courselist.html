@@ -65,8 +65,8 @@
 					<div class="form-group">
 						<div class = "input-group">				
 							<label for="courseSelect"> <h4>Change Course</h4></label>
-							<select id="courseSelect" ng-model="viewByCourseID" ng-options="c.COURSE_ID for c in value.enrollmentInfo">
-								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+							<select id="courseSelect" ng-model="viewByCourseID">
+								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}" ng-selected="financial.status=='Active'">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 							</select>
 						</div>
 						<div class = "input-group">
