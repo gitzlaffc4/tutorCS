@@ -42,12 +42,13 @@
 		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
 	</head>
 	<body>
-		<!-- This is the menu bar --> 
-		<div class="container" ng-controller="dataControl">
+		
+		<!-- This is the menu bar -->
+		<!--<div class="container" ng-controller="dataControl">
 			<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
+					<!--<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -58,12 +59,12 @@
 							<img src="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/images/HHHLogo.png" width="60" height="60" alt="">
 						</a>
 						<a class="navbar-brand" href="index.html" id="branding"> <h4>Hawkeye Homework Hackers</h4></a> <!--Add Brand Logo here-->
-					</div>
+					<!--</div>
 
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<!-- need to use JS to determine which home they are going to -->
-							<li clas=s"active"><a href="pages/admin_prof/home.html">My Account <span class="sr-only">(current)</span></a></li>
+							<!--<li clas=s"active"><a href="pages/admin_prof/home.html">My Account <span class="sr-only">(current)</span></a></li>
 							<li><a href="#">My Courses</a></li>
 							<li><a href="#">Find Help</a></li>
 							<li><a href="#">Other Sources</a></li> 
@@ -71,7 +72,7 @@
 						<ul class="nav navbar-nav navbar-right" >
 							<!-- menu item for logging in, active if menuHighlight is equal to 3. Will need to change when we get to that stage-->
 							<!--will need to add in when we get further-->
-							<div ng-show="!isloggedin">
+							<!--<div ng-show="!isloggedin">
 								<a class="nav-link" href="pages/login.html">
 									Please Login...
 								</a>
@@ -93,5 +94,184 @@
 				</div>
 			</nav> 
 		</div>
+		
+		
+		
+	
+		
+		
+	<!--new nav bars!!-->
+	
+	<!--header 2-->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+
+<!--top header -->
+
+	<nav class="navbar navbar-inverse navbar-fixed-top ng-init="checkifloggedin()" id="universal-navbar">
+        <div class="container" style="padding-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shared-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.uiowa.edu/" tabindex="1" title="The University of Iowa Homepage">
+					<img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/UILogo.png" width="210" height="30">
+					<!--<i style="font-size: 1.4em; color: white;" class="fa ui-glyph-icon-domewordsingle text-branded"></i>-->
+                </a>
+			</div>
+			<div class="collapse navbar-collapse" id="shared-navbar-collapse">
+				<ul class="nav navbar-nav navbar-right" style="padding-top: 15px">
+					<div ng-show="!isloggedin">
+						<li>
+							<a class="nav-link" href="pages/login.html"><i class="fa fa-user fa-inverse"></i> Please login...</a>
+						</li>
+					
+						<div ng-repeat="account in data.userinfo">
+							<div ng-show="isloggedin">
+								<a class="nav-link" href="#"> Hello {{account.FIRSTNAME}} {{account.LASTNAME}} </a>
+									<a href="index.html" ng-click="logout()">
+										| Log out...  
+									</a>
+							</div>
+						</div>
+					</div>
+				
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+    
+    <!--bottom nav bar-->
+	<nav class="navbar navbar-default" role="navigation" id="myui-navbar">
+		<div class="container" style="padding-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a title="HHH Homepage" style="padding-top: 0px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myui-navbar-collapse">
+				<ul class="nav navbar-nav">
+					
+						 <li class="BRAND">
+							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
+						</li>
+						 
+						<li class=" active">
+							<a id="menuid-home" href="https://myui.uiowa.edu/my-ui/home.page" class="" title="Home">
+								My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+					
+						<li class="courses">
+							<a id="menuid-courses" href="#" class="courses" title="Courses">My Courses</a>
+						</li>
+						
+						<li class="help">
+							<a id="menuid-student-records" href="#" class="help" title="Help">Find Help</a>
+						</li>
+					
+						<li class="Sources">
+							<a id="menuid-finance" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+
+	
+ <!--Trying to incorporate all in the 3rd nav bar-->
+ 
+	<!--everyone gets "My Account, my courses, help, sources" tab-->
+	<!--tutor gets "Tutoring Schedule" tab -->
+	<!--Admin and falculty gets "My Tutors" and "Accounts"
+	
+	<div class="container" ng-controller="dataControl">
+			<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()">
+				<div class="container-fluid">
+			
+			<!--everyone -->
+	<nav class="navbar navbar-default" role="navigation" id="myui-navbar">
+		<div class="container" style="padding-bottom: 0">
+			<div ng-show="!isloggedin">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a title="HHH Homepage" style="padding-top: 10px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myui-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<!--everyone get these menu -->
+						 <li class="BRAND">
+							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
+						</li>
+						<li class=" active">
+							<a id="menuid-home" href="https://myui.uiowa.edu/my-ui/home.page" class="" title="Home">
+								My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+						<li class="courses">
+							<a id="menuid-courses" href="#" class="courses" title="Courses">My Courses</a>
+						</li>
+						
+						<li class="help">
+							<a id="menuid-student-help" href="#" class="help" title="Help">Find Help</a>
+						</li>
+		
+						<li class="Sources">
+							<a id="menuid-student-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+						<!--haaalllppppp-->
+						<!--tutor gets "Tutoring Schedule" tab -->
+						<div ng-show="isloggedin">
+							<div role= tutor>
+								<li class="Tutoring Schedule">
+									<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
+								</li>
+							</div>
+							<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
+							<div role= Admin>
+								<li class="Tutor">
+									<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
+								</li>
+								<li class="Account Creation">
+									<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
+								</li>
+							</div>
+						</div>
+					</ul>
+				</div>
+			</div> 
+		</div>
+	</nav>
+	
+	
+	
 	</body>
 </html>
