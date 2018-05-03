@@ -45,9 +45,11 @@
 	<body>
 		<!--Nav bar -->
 		<!--Hamburger collapsing System for smaller screens -->
+		
+		<!-- header links from header.html file  -->
+		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
+		<!--Hamburger collapsing System for smaller screens -->
 		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()">
-			<!-- header links from header.html file  -->
-			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
       		<div ng-show="!istutor">
 				<h1> You are not authorized for this view</h1>
 			</div>

@@ -20,7 +20,7 @@ $i = 0;
 while ($currUser = nextTuple($resultuser)){
  	$userinfo[$i] = $currUser;
 	$profilePic = $userinfo[$i]['PICTURE'];
-	$userinfo[$i]['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='200' height='200'>";
+	$userinfo[$i]['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='190' height='190'>";
  	$i++;
 }
 

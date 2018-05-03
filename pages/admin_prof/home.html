@@ -45,9 +45,13 @@
 	<body>
 		<!--Nav bar -->
 		<!--Hamburger collapsing System for smaller screens -->
+		
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		
+		
 		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()">
-			<!-- header links from header.html file  -->
-			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+			
       		<div ng-show="!isloggedin">
 				<h1> You are not authorized for this view</h1>
 			</div>
@@ -55,7 +59,7 @@
 			<div ng-show="isloggedin">
 				<div class="row" >
 					<div class="card">
-						<div class="card-body" style="background-color: darkgrey; margin-top: 50 px;">
+						<div class="card-body" style=" margin-top: 50 px;">
 							<div class="row">
 								<div class="container" ng-repeat="account in data.userinfo | filter:query">
 									<div class="col-md-4">
