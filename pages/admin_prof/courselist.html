@@ -63,10 +63,17 @@
 				<br>
 				<form>
 					<div class="form-group">
-						<div class = "input-group">				
+						<div class = "input-group" ng-show="isprofessor">				
 							<label for="courseSelect"> <h4>Change Course</h4></label>
 							<select id="courseSelect" ng-model="viewByCourseID" >
 								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+							</select>
+						</div> 
+						
+						<div class = "input-group" ng-show="isadmin">				
+							<label for="courseSelect"> <h4>Change Course</h4></label>
+							<select id="courseSelect" ng-model="viewByCourseID" >
+								<option ng-repeat="course in data.value.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
 							</select>
 						</div> 
 						
@@ -238,26 +245,25 @@
 									</a>
 								</th>
 								<th scope="col">Email</th>
-								<th scope="col">Allocated Tutoring Sessions</th>
+								<th scope="col">Course ID</th>
 							</tr>
 						</thead>
 
 
 						<tbody>
-							<tr ng-repeat="prof in data.value.professorInfo" >
-								<!-- R E A D    M O D E -->
-								<div ng-if="prof[TEACHES][1].COURSE_ID = viewByCourseID">
-									<th scope="row"> {{prof.HAWKID}} </th>
-									<td>{{prof.FIRSTNAME}}</td>
-									<td>{{prof.LASTNAME}}</td>
-									<td>{{prof.EMAIL}}</td>
-								</div>
-							</tr>
+							<div ng-repeat="course in data.value.professorInfo">
+							<!-- R E A D    M O D E -->
+								<tr ng-if="course.TEACHES[0].COURSE_ID = viewByCourseID">
+									<th scope="row"> {{course.HAWKID}} </th>
+									<td>{{course.FIRSTNAME}}</td>
+									<td>{{course.LASTNAME}}</td>
+									<td>{{course.EMAIL}}</td>
+									<td>{{course.TEACHES[0].COURSE_ID}}</td>
+								</tr>
+							</div>
 						</tbody>	
 					</table>
 				</div>
-				
-				
 			</div>
 		</div>
 			<!-- Footer -->

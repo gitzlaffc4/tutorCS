@@ -30,6 +30,10 @@ $professorResult = queryDB($professorQuery,$db);
 $enrollmentQuery = "SELECT COURSE_T.* FROM TEACHES_T, COURSE_T WHERE TEACHES_T.COURSE_ID = COURSE_T.COURSE_ID AND TEACHES_T.HAWKID = '$currentUser';";
 $enrollmentResult = queryDB($enrollmentQuery, $db);
 
+
+$courseQuery = "SELECT * FROM COURSE_T;";
+$courseResult = queryDB($courseQuery, $db);
+
 $allinfo = array();
 $j = 0;
 while ($currAccount = nextTuple($resultall)){
@@ -126,6 +130,14 @@ while ($currCourse = nextTuple($enrollmentResult)){
 	$n++;
 }
 
+$courseInfo = array();
+$b = 0;
+while($aCourse = nextTuple($courseResult)){
+	$courseInfo[$b] = $aCourse;
+	$b++;
+}
+
+
 // put together a JSON object to send back the data on the players
 $response = array();
 $response['status'] = 'success';
@@ -134,6 +146,7 @@ $response['value']['studentInfo'] = $studentInfo;
 $response['value']['tutorInfo'] = $tutorInfo;
 $response['value']['professorInfo'] = $professorInfo;
 $response['value']['enrollementInfo'] = $enrollementInfo;
+$response['value']['courseInfo'] = $courseInfo;
 header('Content-Type: application/json');
 echo(json_encode($response));
 ?> 
