@@ -10,7 +10,7 @@
 		<title>Hawkeye Homework Hackers - Header</title>
 
 		<!-- set base url -->
-		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		<base href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/">
 		
 		<!-- These are the links to bootstrap code -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -146,87 +146,164 @@
 		</div>
 	</nav>
 	
- <!--Trying to incorporate all in the 3rd nav bar-->
- 
+ <!--bottom header -->
 	<!--everyone gets "My Account, my courses, help, sources" tab-->
 	<!--tutor gets "Tutoring Schedule" tab -->
-	<!--Admin and falculty gets "My Tutors" and "Accounts"
+	<!--Admin and proffessor gets "My Tutors" and "Accounts" -->
 	
 	<div class="container" ng-controller="dataControl">
 			<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()">
 				<div class="container-fluid">
 			
-			<!--everyone -->
-	<nav class="navbar navbar-default" role="navigation" id="myui-navbar">
-		<div class="container" style="padding-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a title="HHH Homepage" style="padding-top: 10px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myui-navbar-collapse">
-				<ul class="nav navbar-nav">
-					<!--everyone get these menu -->
-
-
-					<li class="BRAND">
-						<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
-					</li>
-					<li class=" active" ng-show="!isloggedin">
-						<a id="menuid-home" href="pages/login.html" class="" title="Home">
-							My Account
-								<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
-									<i class="fa fa-caret-up"></i>
-								</div>
-						</a>
-					</li>
-					<li class="courses" ng-show="!isloggedin">
-						<a id="menuid-courses" href="pages/login.html" class="courses" title="Courses">My Courses</a>
-					</li>
-
-					<li class="help" ng-show="!isloggedin">
-						<a id="menuid-student-help" href="pages/login.html" class="help" title="Help">Find Help</a>
-					</li>
-
-					<li class="Sources" ng-show="!isloggedin">
-						<a id="menuid-student-sources" href="pages/login.html" class="sources" title="Resources">Other Sources</a>
-					</li>
-					
-					<!-- student links will use ng-show="isstudent" -->
-					
-					
-					
-					
-					<!-- tutor links will use ng-show="istutor"
-					<!--tutor gets "Tutoring Schedule" tab -->
-					<!-- Dynamic header for tutors -->
-					<li class="Tutoring Schedule" ng-show="istutor">
-						<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
-					</li>
-					
-					
-					<!-- professor links will use ng-show="isprofessor" -->
-					
-					
-					
-					<!-- admin links will use ng-show="isadmin" -->
-					<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
-					<li class="Tutor" ng-show="isadmin">
-						<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
-					</li>
-					<li class="Account Creation" ng-show="isadmin">
-						<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	
+		<nav class="navbar navbar-default" role="navigation" id="hhh-navbar">
+			<div class="container" style="padding-bottom: 0">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a title="HHH Homepage" style="padding-top: 10px; padding-bottom: 0; margin-bottom: -14px" class="navbar-brand" href="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/index.html"><img src="https://webdev.cs.uiowa.edu/~tmesserly/tutorCS/images/HHHLogo.png" width="60" height="60" alt="HawkeyeHomeworkHackers"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myui-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<!--everyone get these menu at the index page to log in-->
+						<li class="BRAND">
+							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
+						</li>
+						<li class=" active" ng-show="!isloggedin">
+							<a id="menuid-home" href="pages/login.html" class="" title="Home">
+								My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+									</div>
+							</a>
+						</li>
+						<li class="courses" ng-show="!isloggedin">
+							<a id="menuid-courses" href="pages/login.html" class="courses" title="Courses">My Courses</a>
+						</li>
 	
+						<li class="help" ng-show="!isloggedin">
+							<a id="menuid-student-help" href="pages/login.html" class="help" title="Help">Find Help</a>
+						</li>
 	
+						<li class="Sources" ng-show="!isloggedin">
+							<a id="menuid-student-sources" href="pages/login.html" class="sources" title="Resources">Other Sources</a>
+						</li>
+						
+						<!--logging in as a student --> 
+						<!-- student links will use ng-show="isstudent" -->
+						<li class=" active" ng-show="isstudent">
+							<a id="menuid-home" href="#" class="" title="Home">My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+						<li class="courses" ng-show="isstudent">
+							<a id="menuid-student-courses" href="#" class="courss#" title="Courses">My Courses</a>
+						</li>
+	
+						<li class="help" ng-show="isstudent">
+							<a id="menuid-student-help" href="#" class="help" title="Help">Find Help</a>
+						</li>
+	
+						<li class="Sources" ng-show="isstudent">
+							<a id="menuid-student-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+						
+						
+						<!--Log in as a tutor --> 
+						<!-- tutor links will use ng-show="istutor"
+						<!--tutor gets "Tutoring Schedule" tab -->
+						<!-- Dynamic header for tutors -->
+						<li class=" active" ng-show="istutor">
+							<a id="menuid-home" href="#" class="" title="Home">My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+						<li class="Tutoring Schedule" ng-show="istutor">
+							<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
+						</li>
+						<li class="courses" ng-show="istutor">
+							<a id="menuid-tutor-courses" href="#" class="courss#" title="Courses">My Courses</a>
+						</li>
+	
+						<li class="help" ng-show="istutor">
+							<a id="menuid-tutor-help" href="#" class="help" title="Help">Find Help</a>
+						</li>
+	
+						<li class="Sources" ng-show="istutor">
+							<a id="menuid-tutor-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+						
+						
+						<!--logged in as a professor -->
+						<!-- professor links will use ng-show="isprofessor" -->
+						<li class=" active" ng-show="isprofessor">
+							<a id="menuid-home" href="#" class="" title="Home">My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+						<li class="courses" ng-show="isprofessor">
+							<a id="menuid-prof-courses" href="#" class="courss#" title="Courses">My Courses</a>
+						</li>
+						<li class="tutors" ng-show="isprofessor">
+							<a id="menuid-prof-tutor" href="#" class="tutors" title="tutors">Tutors</a>
+						</li>
+						<li class="Sources" ng-show="isprofessor">
+							<a id="menuid-prof-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+						<li class="help" ng-show="isprofessor">
+							<a id="menuid-prof-help" href="#" class="help" title="Help">Find Help</a>
+						</li>
+						
+						
+						<!-- admin links will use ng-show="isadmin" -->
+						<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
+						<li class=" active" ng-show="isadmin">
+							<a id="menuid-home" href="#" class="" title="Home">My Account
+									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
+										<i class="fa fa-caret-up"></i>
+									</div>
+							</a>
+						</li>
+						<li class="Account Creation" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
+						</li>
+						<li class="Tutor" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
+						</li>
+						
+						<li class="courses" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty-Courses" href="#" class="courss#" title="Courses">My Courses</a>
+						</li>
+						
+						<li class="tutors" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty" href="#" class="tutors" title="tutors">Tutors</a>
+						</li>
+						<li class="Sources" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						</li>
+						<li class="help" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty-help" href="#" class="help" title="Help">Find Help</a>
+						</li>
+						
+					</ul>
+				</div>
+				</div>
+			</nav>
+		</nav>
+		
+	</div>
+			
+</div>
+	
+
 	</body>
 </html>
