@@ -47,7 +47,7 @@
 		$scope.deleteSession = function(HAWKID, AVAILSLOTID) {
 			if (confirm("Are you sure you want to cancel the session?")) {
 				
-				$http.post("Tutorcancelsession.php", {"AVAILSLOTID" : AVAILSLOTID})
+				$http.post("tutorcancelsession.php", {"AVAILSLOTID" : AVAILSLOTID})
 					.then(function (response) {
 						if(response.status == 200){
 							if (response.data.status == 'error'){
