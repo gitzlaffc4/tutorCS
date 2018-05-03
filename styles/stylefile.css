@@ -13,7 +13,17 @@ thead {
 	background-color: lightgray;
 }
 
-.myui-navbar{
-	background-color: #FFCD00
+.navbar {
+    margin-bottom: 0;
+	margin-top: 0;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+.hhh-navbar{
+	margin-bottom: 0;
+	margin-top: 0;
+	padding-bottom: 0;
+	padding-top: 0;	
 }
 	

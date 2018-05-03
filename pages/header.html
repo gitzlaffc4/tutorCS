@@ -146,18 +146,17 @@
 		</div>
 	</nav>
 	
- <!--bottom header -->
+ 
 	<!--everyone gets "My Account, my courses, help, sources" tab-->
 	<!--tutor gets "Tutoring Schedule" tab -->
 	<!--Admin and proffessor gets "My Tutors" and "Accounts" -->
 	
-	<div class="container" ng-controller="dataControl">
-			<nav class="navbar navbar-inverse navbar-fixed-top" ng-init="checkifloggedin()">
-				<div class="container-fluid">
+	<!--<div class="container" ng-controller="dataControl">
+		<nav class="navbar navbar-light" style="background-color:#FFCD00" ng-init="checkifloggedin()">
+			<div class="container-fluid">-->
 			
-	
-		<nav class="navbar navbar-default" role="navigation" id="hhh-navbar">
-			<div class="container" style="padding-bottom: 0">
+	<nav class="navbar navbar-default" style="background-color:#FFCD00" role="navigation" id="hhh-navbar" ng-init="checkifloggedin()">
+		<div class="container" style="padding-bottom: 0">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" style="" data-toggle="collapse" data-target="#myui-navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -173,11 +172,9 @@
 						<li class="BRAND">
 							<a id="menuid-courses" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
 						</li>
-						<li class=" active" ng-show="!isloggedin">
+						<li class="disable" ng-show="!isloggedin">
 							<a id="menuid-home" href="pages/login.html" class="" title="Home">
 								My Account
-									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
-									</div>
 							</a>
 						</li>
 						<li class="courses" ng-show="!isloggedin">
@@ -266,43 +263,23 @@
 						
 						<!-- admin links will use ng-show="isadmin" -->
 						<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
-						<li class=" active" ng-show="isadmin">
-							<a id="menuid-home" href="#" class="" title="Home">My Account
-									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
-										<i class="fa fa-caret-up"></i>
-									</div>
-							</a>
-						</li>
+			
 						<li class="Account Creation" ng-show="isadmin">
 							<a id="menuid-adminAndFalculty" href="#" class="Accounts" title="Account Creation">Account Creation</a>
 						</li>
-						<li class="Tutor" ng-show="isadmin">
-							<a id="menuid-adminAndFalculty-Tutor" href="#" class="TutorList" title="My Tutors">My Tutors</a>
-						</li>
 						
-						<li class="courses" ng-show="isadmin">
-							<a id="menuid-adminAndFalculty-Courses" href="#" class="courss#" title="Courses">My Courses</a>
-						</li>
-						
-						<li class="tutors" ng-show="isadmin">
+						<!--<li class="tutors" ng-show="isadmin">
 							<a id="menuid-adminAndFalculty" href="#" class="tutors" title="tutors">Tutors</a>
-						</li>
-						<li class="Sources" ng-show="isadmin">
-							<a id="menuid-adminAndFalculty-sources" href="#" class="sources" title="Resources">Other Sources</a>
-						</li>
-						<li class="help" ng-show="isadmin">
-							<a id="menuid-adminAndFalculty-help" href="#" class="help" title="Help">Find Help</a>
-						</li>
+						</li>-->
+				
 						
 					</ul>
 				</div>
-				</div>
-			</nav>
-		</nav>
-		
-	</div>
-			
-</div>
+			</div>
+		</div
+	</nav>
+
+
 	
 
 	</body>
