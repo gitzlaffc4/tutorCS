@@ -101,7 +101,10 @@ while ($currTutor = nextTuple($tutorResult)){
 		$totalAvail = nextTuple($availResult)['COUNT(SESSION_ID)'];
 		
 	}
-
+	
+	$profilePic = $currTutor['PICTURE'];
+	$currTutor['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='40' height='40'>";
+	
 	$currTutor['availSessions'] = $totalAvail;
 	$tutorInfo[$l] = $currTutor;
 	$l++;

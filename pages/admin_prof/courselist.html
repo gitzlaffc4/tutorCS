@@ -183,6 +183,7 @@
 					<table class="table table-hover table-striped table-bordered table-responsive">
 						<thead>
 							<tr>
+								<th></th>
 								<th scope="col">
 									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
 										HawkID
@@ -209,7 +210,13 @@
 
 						<tbody>
 							<tr ng-repeat="tutor in data.value.tutorInfo | filter : {COURSE_ID : viewByCourseID}">
-								<!-- R E A D    M O D E -->
+								<!-- View information for tutors-->
+								<th>
+									<div class="embed-responsive embed-responsive-16by9">
+										<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+										<span ng-bind-html="tutors.PROFILEPIC | trustHtml"></span>
+									</div>
+								</th>
 								<th scope="row"> {{tutor.HAWKID}} </th>
 								<td>{{tutor.FIRSTNAME}}</td>
 								<td>{{tutor.LASTNAME}}</td>
@@ -221,49 +228,8 @@
 				</div>
 				
 				
-				<!-- table for when Professor option is selected -->
-				<div ng-show="searchRole == 'Professor'">
-					<table class="table table-hover table-striped table-bordered table-responsive">
-						<thead>
-							<tr>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
-										HawkID
-										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
-										First Name
-										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
-										Last Name
-										<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">Email</th>
-								<th scope="col">Course ID</th>
-							</tr>
-						</thead>
-
-
-						<tbody>
-							<div ng-repeat="course in data.value.professorInfo">
-							<!-- R E A D    M O D E -->
-								<tr ng-if="course.TEACHES[0].COURSE_ID = viewByCourseID">
-									<th scope="row"> {{course.HAWKID}} </th>
-									<td>{{course.FIRSTNAME}}</td>
-									<td>{{course.LASTNAME}}</td>
-									<td>{{course.EMAIL}}</td>
-									<td>{{course.TEACHES[0].COURSE_ID}}</td>
-								</tr>
-							</div>
-						</tbody>	
-					</table>
-				</div>
+				<!-- This would be where you insert information about professors that are the selected course!-->
+			
 			</div>
 		</div>
 			<!-- Footer -->
