@@ -93,8 +93,8 @@ $l = 0;
 while ($currTutor = nextTuple($tutorResult)){
 	$tutorHawkID = $currTutor['HAWKID'];
 	
-	// Query to see how many sessions are available and how many have been completed
-	$totalAvailSessionsQuery = "SELECT COUNT(SESSION_ID) FROM SESSION_T WHERE TUTOR_HAWKID = '$tutorHawkID';";
+	// Query to see how many sessions are available 
+	$totalAvailSessionsQuery = "SELECT COUNT(SESSION_ID) FROM SESSION_T WHERE TUTOR_HAWKID = '$tutorHawkID' AND SCHEDULED = '0';";
 	$availResult = queryDB($totalAvailSessionsQuery, $db);
 	$totalAvail = 0;
 	if (nTuples($availResult) > 0){
@@ -102,13 +102,38 @@ while ($currTutor = nextTuple($tutorResult)){
 		
 	}
 	
+	
+	// Query to see how many sessions are scheduled
+	$totalSchedSessionsQuery = "SELECT COUNT(SESSION_ID) FROM SESSION_T WHERE TUTOR_HAWKID = '$tutorHawkID' AND SCHEDULED = '1';";
+	$schedResult = queryDB($totalSchedSessionsQuery, $db);
+	$totalSched = 0;
+	if (nTuples($schedResult) > 0){
+		$totalSched = nextTuple($schedResult)['COUNT(SESSION_ID)'];
+		
+	}
+	
+	// Query to see how many sessions have been completed by tutor
+	$aCourse = $currTutor['COURSE_ID'];
+	$completeQuery = "SELECT COUNT(SCHEDULED_T.SESSION_ID) FROM SESSION_T, SCHEDULED_T WHERE SESSION_T.TUTOR_HAWKID = '$tutorHawkID' AND SESSION_T.COURSE_ID = $aCourse AND SCHEDULED_T.COMPLETED = '1';";
+	
+	$compResult = queryDB($completeQuery, $db);
+	$totalComp = 0;
+	if (nTuples($compResult) > 0){
+		$totalComp = "3";
+			// nextTuple($compResult)['COUNT(SCHEDULUED_T.SESSION_ID)'];
+	}
+	
 	$profilePic = $currTutor['PICTURE'];
 	$currTutor['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='40' height='40'>";
-	
 	$currTutor['availSessions'] = $totalAvail;
+	$currTutor['totalSched'] = $totalSched;
+	$currTutor['totalComp'] = $totalComp;
+	
 	$tutorInfo[$l] = $currTutor;
 	$l++;
 }
+
+
 
 $professorInfo = array();
 $m = 0;

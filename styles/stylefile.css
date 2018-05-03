@@ -1,25 +1,8 @@
-{
-	margin: 0px;
-	padding: 15px;
-	}
-	
+
 body{
 	padding-top: 100px;
-	background: url("https://unsplash.com/photos/2FPjlAyMQTA");   /*working together photo*/
-	
 }
 
 thead {
 	background-color: lightgray;
 }
-
-#universal-navbar {
-	padding-bottom: -10px;
-
-}
-
-#hhh-navbar{
-	padding-bottom: 0;
-
-} 
-	
