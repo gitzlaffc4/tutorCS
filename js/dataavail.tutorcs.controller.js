@@ -47,7 +47,7 @@
 		$scope.deleteSession = function(HAWKID, AVAILSLOTID) {
 			if (confirm("Are you sure you want to cancel the session?")) {
 				
-				$http.post("tutorcancelsession.php", {"AVAILSLOTID" : AVAILSLOTID})
+				$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/tutorcancelsession.php', {"AVAILSLOTID" : AVAILSLOTID})
 					.then(function (response) {
 						if(response.status == 200){
 							if (response.data.status == 'error'){
@@ -55,7 +55,7 @@
 							} else {
 								//successful
 								// send user back to avail.html
-								$window.location.href = "avail.html";
+								$window.location.href = "pages/tutor/avail.html";
 							}
 						} else {
 							alert('unexpected error 2');
