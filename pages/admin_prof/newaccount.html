@@ -82,14 +82,17 @@
 				
 				
 				<!-- role for account -->
-				<div class="form-group" ng-class="{'text-danger': newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched, 'text-success': !newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched }" >
-					<label class="form-control-label" for="ROLE">Define the User's Role:</label> <br>
-						<option type="checkbox" name="Student"> Student </option>
-						<option type="checkbox" name="Tutor"> Tutor </option>
-						<option type="checkbox" name="StudentTutor"> Student/Tutor </option>
-						<option type="checkbox" name="Professor"> Professor </option>
-						<option type="checkbox" name="Admin"> Admin </option>
-						<option type="checkbox" name="ProfessorAdmin"> Professor/Admin </option>
+				<div class="form-group">
+					<label class="form-control-label" for="ROLE"> Select a user role</label>
+					<select class="form-control" name="ROLE" ng-modal="account.ROLE" id="ROLE" required>
+						<option value="">-- Select Role --</option>
+						<option value="Student">Student</option>
+						<option value="Tutor">Tutor</option>
+						<option value="StudentTutor">Student/Tutor</option>
+						<option value="Professor">Professor</option>
+						<option value="Admin">Admin</option>
+						<option value="ProfessorAdmin">Professor/Admin</option>
+					</select>
 				</div>
 
 				<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->

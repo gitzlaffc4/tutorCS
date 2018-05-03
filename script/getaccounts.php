@@ -17,16 +17,13 @@ $queryall = "SELECT USER_T.*, ACCOUNT_T.ACCESS FROM USER_T, ACCOUNT_T WHERE USER
 // run the query to get info on all users
 $resultall = queryDB($queryall, $db);
 
-$studentQuery = "SELECT USER_T.*, STUDENT_T.GRADE_LEVEL, ENROLLED_T.COURSE_ID, ENROLLED_T.ALLOC_SESSIONS, COURSE_T.COURSE_NAME
-
-
-FROM USER_T, STUDENT_T, ENROLLED_T, COURSE_T WHERE STUDENT_T.HAWKID = USER_T.HAWKID AND STUDENT_T.HAWKID = ENROLLED_T.HAWKID AND ENROLLED_T.COURSE_ID = COURSE_T.COURSE_ID;";
+$studentQuery = "SELECT USER_T.*, STUDENT_T.GRADE_LEVEL, ENROLLED_T.COURSE_ID, ENROLLED_T.ALLOC_SESSIONS, COURSE_T.COURSE_NAME FROM USER_T, STUDENT_T, ENROLLED_T, COURSE_T WHERE STUDENT_T.HAWKID = USER_T.HAWKID AND STUDENT_T.HAWKID = ENROLLED_T.HAWKID AND ENROLLED_T.COURSE_ID = COURSE_T.COURSE_ID;";
 $studentResult = queryDB($studentQuery,$db);
 
 $tutorQuery = "SELECT USER_T.*, TUTOR_T.BIO, TUTORS_T.COURSE_ID, COURSE_T.COURSE_NAME FROM USER_T, TUTOR_T, TUTORS_T, COURSE_T WHERE TUTOR_T.HAWKID = USER_T.HAWKID AND TUTOR_T.HAWKID = TUTORS_T.HAWKID AND TUTORS_T.COURSE_ID = COURSE_T.COURSE_ID;";
 $tutorResult = queryDB($tutorQuery,$db);
 
-$professorQuery = "SELECT USER_T.*, COURSE_T.COURSE_ID, COURSE_T.COURSE_NAME, COURSE_T.SEMESTER FROM USER_T, TEACHES_T, COURSE_T WHERE USER_T.PROFESSOR = '1' AND TEACHES_T.HAWKID = USER_T.HAWKID AND TEACHES_T.COURSE_ID = COURSE_T.COURSE_ID;";
+$professorQuery = "SELECT * FROM USER_T WHERE PROFESSOR = '1';";
 $professorResult = queryDB($professorQuery,$db);
 
 
@@ -98,6 +95,7 @@ while ($currTutor = nextTuple($tutorResult)){
 	$totalAvail = 0;
 	if (nTuples($availResult) > 0){
 		$totalAvail = nextTuple($availResult)['COUNT(SESSION_ID)'];
+		
 	}
 
 	$currTutor['availSessions'] = $totalAvail;
@@ -109,13 +107,14 @@ $professorInfo = array();
 $m = 0;
 while ($currProfessor = nextTuple($professorResult)){
 	$currHawkID = $currProfessor['HAWKID'];
-	$teachesQuery = "SELECT * FROM TEACHES_T WHERE HAWKID = '$currHawkID';";
+	$teachesQuery = "SELECT TEACHES_T.*, COURSE_T.COURSE_NAME, COURSE_T.SEMESTER FROM TEACHES_T, COURSE_T WHERE TEACHES_T.HAWKID = '$currHawkID' AND TEACHES_T.COURSE_ID = COURSE_T.COURSE_ID;";
 	$teachesResult = queryDB($teachesQuery, $db);
-	$courseIndex = $a;
+	$a = 0;
+	$firstSession = null;
 	while ($currCourse = nextTuple($teachesResult)){
 		$currProfessor['TEACHES'][$a] = $currCourse;
 		$a++;
-	}
+		}
 	$professorInfo[$m] = $currProfessor;
 	$m++;
 }

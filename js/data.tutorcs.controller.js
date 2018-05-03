@@ -111,6 +111,7 @@
                         // successful
                         // set $scope.isloggedin based on whether the user is logged in or not
                         $scope.isloggedin = response.data.loggedin;
+						$scope.currentHawkID = response.data.HAWKID;
 						$scope.isadmin = response.data.admin;
 						$scope.isprofessor = response.data.professor;
 						$scope.istutor = response.data.tutor;

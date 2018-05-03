@@ -1,0 +1,84 @@
+<!doctype html>
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Tutor</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+
+	</head>
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()">
+			<!-- header links from header.html file  -->
+			<div ng-include ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+      		<div ng-show="!istutor">
+				<h1> You are not authorized for this view</h1>
+			</div>
+			
+			<div ng-show="istutor">
+				<div class="row" >
+					<div class="card">
+						<div class="card-body" style="background-color: darkgrey; margin-top: 50 px;">
+							<div class="row">
+								<div class="container" ng-repeat="account in data.userinfo | filter:query">
+									<div class="col-md-4">
+										<div class="embed-responsive embed-responsive-16by9">
+											<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+											<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
+										</div>
+										<h2 class="text-center">{{account.FIRSTNAME}} {{account.LASTNAME}}</h2>
+										<a href="#">
+											<h5 class="text-center">edit profile</h5>
+										</a>
+									</div>
+									<div class="col-md-6" class="text-right">
+										DISPLAY SOME MEANINGFUL STATS HERE
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div style="padding-top: 50px" ng-include src="'pages/footer.html'"></div>
+	</body>
+</html>

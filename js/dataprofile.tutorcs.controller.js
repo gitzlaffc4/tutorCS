@@ -11,7 +11,7 @@
 	myApp.controller("profileDataControl", function($scope, $http, $window){
 		// define profiledata for the app
         // in the html code we will refer to data.tutorCS. The data part comes from $scope.data, the moives part comes from the JSON object below
-		users$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getaccounts.php") 
+		$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getaccounts.php") 
             .then(function(response) {
                 // response.data.value has value come from the getaccounts.php file $response['value']['allinfo'] = $allinfo;
                 $scope.data = response.data;
@@ -19,6 +19,7 @@
 		$scope.sortType = 'HAWKID'; // set the default sort type
 		$scope.sortReverse = false;  // set the default sort order
 		$scope.searchRole = 'Student';  //  Which role do you wish to view?
+		$scope.viewByCourseID = null; // define which course to display users
 		$scope.searchUser = '';     // set the default search/filter term
 		$scope.oneAtATime = true; // used to only display one row at a time
 		
@@ -107,7 +108,6 @@
                         // successful
                         // set $scope.isloggedin based on whether the user is logged in or not
                         $scope.isloggedin = response.data.loggedin;
-						$scope.HAWKID = response.data.HAWKID;
 						$scope.isadmin = response.data.admin;
 						$scope.isprofessor = response.data.professor;
 						$scope.istutor = response.data.tutor;

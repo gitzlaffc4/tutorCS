@@ -65,10 +65,13 @@
 					<div class="form-group">
 						<div class = "input-group">				
 							<label for="courseSelect"> <h4>Change Course</h4></label>
-							<select id="courseSelect" ng-model="viewByCourseID">
-								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}" ng-selected="financial.status=='Active'">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+							<select id="courseSelect" ng-model="viewByCourseID" >
+								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 							</select>
-						</div>
+						</div> 
+						
+					
+						
 						<div class = "input-group">
 							<label for="roleSelect"><h4>Change Enrollment view</h4></label>
 							<select id="roleSelect" ng-model="searchRole">
@@ -241,12 +244,14 @@
 
 
 						<tbody>
-							<tr ng-repeat="prof in data.value.professorInfo | filter : {COURSE_ID : viewByCourseID}">
+							<tr ng-repeat="prof in data.value.professorInfo" >
 								<!-- R E A D    M O D E -->
+								<div ng-if="prof[TEACHES][1].COURSE_ID = viewByCourseID">
 									<th scope="row"> {{prof.HAWKID}} </th>
 									<td>{{prof.FIRSTNAME}}</td>
 									<td>{{prof.LASTNAME}}</td>
 									<td>{{prof.EMAIL}}</td>
+								</div>
 							</tr>
 						</tbody>	
 					</table>
