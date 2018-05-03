@@ -75,7 +75,10 @@
 						<div class="card-body">
 							<p>Day: {{avail.DAY_OF_WEEK}}</p>
 							<p>Start Time: {{avail.TIME_START}}</p>
-
+							<p>Available: {{avail.AVAILABLE}}</p>
+						<button class="btn btn-primary" ng-click="deleteSession(avail.HAWKID, avail.AVAILSLOTID)">Cancel Session</button>
+						<button class="btn btn-primary" ng-click="addSession(avail.HAWKID, avail.AVAILABLE)">Add Session</button>
+						<button class="btn btn-primary" ng-click="dropSession(avail.HAWKID, avail.AVAILABLE)">Drop Session</button>
 
 						</div>
 
