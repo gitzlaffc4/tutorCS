@@ -1,4 +1,3 @@
-
 /*
  *Controller where we get the data
  */
@@ -6,10 +5,10 @@
     'use strict';
     
     // the 'avail' part comes from the name of the app we created in avail.module.js
-    var myApp = angular.module("tutorcs");
+    var myApp = angular.module("avail");
     // 'availControl' is used in the html file when defining the ng-controller attribute
     myApp.controller("availControl", function($scope, $http, $window) {
-        $http.get('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getavailablesessions.php')
+        $http.get('../script/getavailablesessions.php')
             .then(function(response) {
                 $scope.data = response.data.value;
             }
@@ -26,21 +25,17 @@
         $scope.query = {};
         $scope.queryBy = "$";
 		
-		// this variable will hold the page nmber that should be highlightend in the menu bar
-		// 0 is for availtestpage.html
-		// 1 is for newavail.html
-		$scope.menuHighlight = 0;
-		
 		// function to send new availability to the web api to add it to the database
        	$scope.newAvail = function(availDetails) {
 			var availupload = angular.copy(availDetails);
-			$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/newavail.php', availupload)
+			
+			$http.post("../script/newavail.php", availupload)
 				.then(function (response) {
 					if (response.status == 200){
 						if (response.data.status == 'error') {
 							alert('error: ' + response.data.message);
 						}else{
-							$window.location.href = 'https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/tutor/avail.html';
+							$window.location.href = "../pages/tutor/avail.html";
 						}
 					} else {
 						alert('unexpected error');
@@ -49,30 +44,28 @@
 			});
 		};
 		
-		
-		// function to check if user is logged in
-        $scope.checkifloggedin = function() {
-          $http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/isloggedin.php')
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                        // set $scope.isloggedin based on whether the user is logged in or not
-                        $scope.isloggedin = response.data.loggedin;
-						$scope.HAWKID = response.data.HAWKID;
-						$scope.isadmin = response.data.admin;
-						$scope.isprofessor = response.data.professor;
-						$scope.istutor = response.data.tutor;
-						$scope.isstudent = response.data.student;
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
-        };
-		
+		$scope.deleteSession = function(HAWKID, AVAILSLOTID) {
+			if (confirm("Are you sure you want to cancel the session?")) {
+				
+				$http.post("Tutorcancelsession.php", {"AVAILSLOTID" : AVAILSLOTID})
+					.then(function (response) {
+						if(response.status == 200){
+							if (response.data.status == 'error'){
+								alert('error: ' + response.data.message);
+							} else {
+								//successful
+								// send user back to avail.html
+								$window.location.href = "avail.html";
+							}
+						} else {
+							alert('unexpected error 2');
+						}
+					}
+				 );
+			}
+			
+		};
+
     });
 
 
