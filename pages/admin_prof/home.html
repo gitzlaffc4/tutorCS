@@ -1,7 +1,6 @@
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
-<html lang="en" ng-app="tutorcs">
-	<head>
+<html lang="en" ng-app="tutorcs"><head>
 		<!-- metadata -->
 		<meta charset="utf-8"></meta>
 		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
@@ -56,105 +55,40 @@
 			</div>
 			
 			<div ng-show="isloggedin">
-				<div class="row" >
-					<div class="card">
-						<div class="card-body" style=" margin-top: 50 px;">
-							<div class="row">
-								<div class="container" ng-repeat="account in data.userinfo | filter:query">
-									<div class="col-md-4">
-										<div class="embed-responsive embed-responsive-16by9">
-											<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
-											<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
-										</div>
-										<h2 class="text-center">{{account.FIRSTNAME}} {{account.LASTNAME}}</h2>
-										<a href="#">
-											<h5 class="text-center">edit profile</h5>
-										</a>
-									</div>
-									<div class="col-md-6" class="text-right">
-										DISPLAY SOME MEANINGFUL STATS HERE
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 				
-				<div class="row" id="AdminLinks" ng-show="isadmin">
-					<div class="row">
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">Create Accounts</h2>
-									<p class="card-text">Create a HawkID and Password for new users along with specifying their role</p>
-								</div>
-								<div class="card-footer">
-								<a href="pages/admin_prof/newaccount.html" class="btn btn-primary">Create Account</a>
-								</div>
+				<div class="row" style="padding-top:25px;">
+					<div ng-repeat="account in data.userinfo | filter:query">
+						<div class="col-md-4">
+							<div class="embed-responsive embed-responsive-16by9">
+								<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+								<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
 							</div>
+							<h2 class="text-center">{{account.FIRSTNAME}} {{account.LASTNAME}}</h2>
+							<a href="#">
+								<h5 class="text-center">edit profile</h5>
+							</a>
+							<br>
+							<br>
+							<br>
+							<h4>Quick Admin Links</h4>
+							<div class="list-group" ng-show="isadmin">
+								<a href="pages/admin_prof/newaccount.html" class="list-group-item">Create Account</a>
+								<a href="pages/admin_prof/home.html" class="list-group-item">Create Course</a>
+								<a href="pages/admin_prof/viewroles.html" class="list-group-item">View/Edit/Disable Users</a>
+								<a href="pages/admin_prof/courselist.html" class="list-group-item">Course Roasters</a>
+								<a href="pages/admin_prof/home.html" class="list-group-item">Enroll Students</a>
+								<a href="pages/admin_prof/home.html" class="list-group-item">Hire Tutor</a>
+							</div>
+							<div class="list-group" ng-show="!isadmin">
+								<a href="pages/admin_prof/courselist.html" class="list-group-item">Course Roasters</a>
+								<a href="pages/admin_prof/home.html" class="list-group-item">Enroll Students</a>
+								<a href="pages/admin_prof/home.html" class="list-group-item">Hire Tutor</a>
+							</div>
+							
 						</div>
-						<!-- /.col-md-4 -->
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">Create Course</h2>
-									<p class="card-text">Create a new course for current or future semesters</p>
-								</div>
-								<div class="card-footer">
-									<a href="#" class="btn btn-primary">Create</a>
-								</div>
-							</div>
-						</div>
-						<!-- /.col-md-4 -->
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">View Users</h2>
-									<p class="card-text">View current users and edit their information</p>
-								</div>
-								<div class="card-footer">
-								<a href="pages/admin_prof/viewroles.html" class="btn btn-primary">View</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row" id="admin_profLinks">
-					<div class="row">
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">View Course Roaster</h2>
-									<p class="card-text">View current Students and Tutors in your Course</p>
-								</div>
-								<div class="card-footer">
-								<a href="pages/admin_prof/courselist.html" class="btn btn-primary">View</a>
-								</div>
-							</div>
-						</div>
-						<!-- /.col-md-4 -->
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">Enroll Students</h2>
-									<p class="card-text">Enroll a new student into a course</p>
-								</div>
-								<div class="card-footer">
-									<a href="#" class="btn btn-primary">Enroll</a>
-								</div>
-							</div>
-						</div>
-						<!-- /.col-md-4 -->
-						<div class="col-md-4 mb-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h2 class="card-title">Hire Tutor</h2>
-									<p class="card-text">Add a new tutor to your course</p>
-								</div>
-								<div class="card-footer">
-									<a href="pages/admin_prof/viewroles.html" class="btn btn-primary">Hire</a>
-								</div>
-							</div>
+						<div class="col-md-8" >
+							<br>
+							<br>
 						</div>
 					</div>
 				</div>
