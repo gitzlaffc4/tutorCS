@@ -46,65 +46,61 @@
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
 		
-	
-		<div class="container" ng-controller="dataControl">
-      		<div ng-show"!isloggedin">
+		<section class="jumbotron text-center" id="introduction">
+			<div class="container">
+				<h1 class="jumbotron-heading" style="color: black;">Find The Help You Need</h1>
+				<p class="lead" style="color:white; text-shadow: 1px 1px black;">Computer Science tutoring that can help your grade</p>
+				<p>
+					<a href="pages/login.html" class="btn btn-primary btn-lg">Login</a>
+				</p>
+			</div>
+		</section>       
+		<section id="gettingstarted">
+			<div class="car text-center">
+				<div class="card-body">
+					<h1> Getting started is easy </h1>
+					<p> Follow these quick steps to schedule your first tutoring session</p>
+				</div>
+			</div>
+		</section>
+		
+		<br>
+		
+	   <!-- Icons Grid -->
+		<section class="features-icons text-center">
+			<div class="container">
 				<div class="row">
-					<div id="intro">
-						<section class="jumbotron text-center">
-							<div class="container">
-								<h1 class="jumbotron-heading">Find help for your CS course</h1>
-								<p class="lead text-muted">Use your allocated tutoring sessions to find help for your course</p>
-								<p>
-									<a href="pages/login.html" class="btn btn-primary my-2">Login</a>
-								</p>
+					<div class="col-lg-4">
+						<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+							<div class="steps-icons-icon">
+								<img src="images/login.png" style="width: 100px; height: 100px;">
 							</div>
-						</section>        
-					</div>	
+							<h3>Login</h3>
+							<p class="lead">Once the semester has started, login with your HawkID and Password!</p>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+							<div class="features-icons-icon d-flex">
+								<img src="images/search.png" style="width: 100px; height: 100px;">
+							</div>
+							<h3>Search</h3>
+							<p class="lead">Search for available tutoring sessions for all of your courses!</p>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="features-icons-item">
+							<div class="features-icons-icon">
+								<img src="images/cal.png" style="width: 100px; height: 100px;">
+							</div>
+							<h3>Schedule</h3>
+							<p class="lead">Confirm, and schedule a tutoring session that fits your schedule!</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			
-			
-			<div class="row">
-				<div id="information">
-					<h2> Struggling to ace that exam in Computer Science I?
-					Not sure how to finish that assignment in Intro to Computer Science?
-					Or are you just being proactive in seeking help for you CS classes? </h2>
-					<!--<p> Login to sign up and get all the help you need with a free tutor. </p> -->
-					
-					<!--
-					<p> Three steps between you and acing that assignment or test:</p>
-						<p> 1) Login to sign up </p>
-						<p> 2) Pick class and time availity</p>
-						<p> 3) Meet up with your tutor</p>   -->
-						
-				</div>
-			</div>
-			
-			<!--Three steps to signing up-->
-			<div class = "row">
-				<div class = "col-lg-4 col-sm-6">
-					<div class = "thumbnail">	
-						<img src = "images/hawkeyeLogin.png">
-						<h3> 1) Login in to sign up</h3>
-					</div>	
-				</div>
+		</section>
 
-				<div class = "col-lg-4 col-sm-6">
-					<div class = "thumbnail">
-						<img src = "images/calendar.png"> 
-						<h3> 2) Find your class and time availibility</h3>
-					</div>	
-				</div>
-
-				<div class = "col-lg-4 col-sm-6">
-					<div class = "thumbnail">
-						<img src = "images/meet.jpg"> 
-						<h3> 3) Meet with your tutor to go over materials.</h3>
-					</div>	
-				</div>
-			</div>
-		</div>
 		<!-- Footer -->
 		<div ng-include src="'pages/footer.html'"></div>
     </body>

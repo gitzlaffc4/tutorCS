@@ -28,3 +28,14 @@ body {
 thead {
 	background-color: lightgray;
 }
+
+
+.jumbotron{
+	margin-top: -5px; 
+	height: 400px; 
+	background-image: url("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/images/workingtogetherfade.jpg");
+	background-size: cover;
+}
+
+
+

@@ -41,71 +41,70 @@
 
 	</head>
 	
-<body>
-	<div class="container" ng-controller="dataControl">
-	<!-- header -->
-	<div ng-include ng-init="menuHighlight = 2;" src="'pages/header.html'">
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		<div class="container" ng-controller="dataControl">
+			<div class="row" ng-show="!isadmin">
+				<h1>Access Denied Please contact a system admin to add an account</h1>
+			</div>
+			
+			<!-- form for entering new account -->
+			<div class="row" ng-show="isadmin">
+				<!-- ng-show="isloggedin"-->
+				<form name="newAccountForm" novalidate>
+					<!-- HawkID for account -->
+					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
+						<label class="form-control-label" for="HAWKID">HawkID (at least 2 characters long): </label>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
+						<div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The HawkID must be at least two characters long</div>
+					</div>
+
+					<!-- PASSWORD for account -->
+					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
+						<label class="form-control-label" for="PASSWORD">Password (at least 6 characters long): </label>
+						<input type="PASSWORD" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
+						<div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
+					</div>
+
+
+					<!-- Email for account -->
+					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
+						<label class="form-control-label" for="EMAIL">University of Iowa Email</label>
+						
+						<input type="email" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="13" id="EMAIL" required/>
+						<div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >You did not enter a valid university of Iowa Email</div>
+					</div>
+
+
+					<!-- role for account -->
+					<div class="form-group">
+						<label class="form-control-label" for="ROLE"> Select a user role</label>
+						<select class="form-control" ng-class="{'is-invalid': newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched, 'is-valid': !newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched }" name="ROLE" ng-modal="account.ROLE" id="ROLE" required>
+							<option value=""> -- Select Role -- </option>
+							<option value="Student">Student</option>
+							<option value="Tutor">Tutor</option>
+							<option value="StudentTutor">Student/Tutor</option>
+							<option value="Professor">Professor</option>
+							<option value="Admin">Admin</option>
+							<option value="ProfessorAdmin">Professor/Admin</option>
+						</select>
+					</div>
+
+					<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
+					<button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
+				</form>
+
+
+			</div> <!-- close row -->
+
+
+
 		</div>
-        
-        
-		<!--<div class="row" ng-show="!isloggedin">
-
-			<h1>Access Denied</h1>
-		</div> -->
-        <!-- form for entering new account -->
-        <div class="row" >
-            <!-- ng-show="isloggedin"-->
-              
-            <form  name="newAccountForm" novalidate>
-                
-                <!-- HawkID for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
-                    <label class="form-control-label" for="HAWKID">HawkID (at least 2 characters long): </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'is-valid': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }" name="HAWKID" ng-model="account.HAWKID" ng-minlength="2" id="HAWKID" required/>
-                    <div ng-show="newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched" >The HawkID must be at least two characters long</div>
-                </div>
-                
-                <!-- PASSWORD for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
-                    <label class="form-control-label" for="PASSWORD">Password (at least 6 characters long): </label>
-                    <input type="PASSWORD" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
-                    <div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
-                </div>
-				
-
-                <!-- Email for account -->
-                <div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
-                    <label class="form-control-label" for="EMAIL">University of Iowa Email</label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="13" id="EMAIL" required/>
-                    <div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >You did not enter a valid university of Iowa Email</div>
-                </div>
-				
-				
-				<!-- role for account -->
-				<div class="form-group">
-					<label class="form-control-label" for="ROLE"> Select a user role</label>
-					<select class="form-control" name="ROLE" ng-modal="account.ROLE" id="ROLE" required>
-						<option value="">-- Select Role --</option>
-						<option value="Student">Student</option>
-						<option value="Tutor">Tutor</option>
-						<option value="StudentTutor">Student/Tutor</option>
-						<option value="Professor">Professor</option>
-						<option value="Admin">Admin</option>
-						<option value="ProfessorAdmin">Professor/Admin</option>
-					</select>
-				</div>
-
-				<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
-				<button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
-			</form>
-
-        
-        </div> <!-- close row -->
-        
-        
-		
-	</div>
-	<!-- include footer.html-->
-	<div ng-include src="'pages/footer.html'"></div>
-</body>
+		<!-- include footer.html-->
+		<div ng-include src="'pages/footer.html'"></div>
+	</body>
 </html>
