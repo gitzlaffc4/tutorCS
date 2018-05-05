@@ -38,7 +38,7 @@
                     } else {
                         // successful
                         // send user back to home page
-                        $window.location.href = "newaccount.html";
+                        $window.location.href = "pages/admin_prof/newaccount.html";
                     }
                } else {
                     alert('unexpected error');

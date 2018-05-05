@@ -1,7 +1,7 @@
 <?php
 
 // We need to include these two files in order to work with the database
-include_once('../../config.php');
+include_once('config.php');
 include_once('dbutils.php');
 
 
@@ -19,7 +19,15 @@ $data = json_decode(file_get_contents('php://input'), true);
 $HAWKID = $data['HAWKID'];
 $PASSWORD = $data['PASSWORD'];
 $EMAIL = $data['EMAIL'];
+$FIRSTNAME = $data['FIRST_NAME'];
+$LASTNAME = $data['LAST_NAME'];
+$STUDENT = $data['STUDENT'];
+$TUTOR = $data['TUTOR'];
+$STUDENTTUTOR = $data['STUDENTTUTOR'];
+$PROFESSOR = $data['PROFESSOR'];
+$ADMIN = $data['ADMIN'];
 $ROLE = $data['ROLE'];
+
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -47,11 +55,7 @@ if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
 if (!isset($EMAIL) || (strlen($EMAIL) < 13)) {
     $isComplete = false;
     $errorMessage .= "Please enter a valid email. ";
-}  
-if (!isset($ROLE) || (strlen($ROLE) == null)) {
-    $isComplete = false;
-    $errorMessage .= "Please select a role. ";
-}  
+}    
 
 // check if we already have a HAWKID that matches the one the user entered
 if ($isComplete) {
@@ -77,39 +81,44 @@ if ($isComplete) {
     $HASHEDPASS = crypt($PASSWORD, getSalt());
 	
 	// define blank roles
-	$STUDENT = 0;
-	$TUTOR = 0;
-	$PROFESSOR = 0;
-	$ADMIN = 0;
+	$STUDENT = '0';
+	$TUTOR = '0';
+	$PROFESSOR = '0';
+	$ADMIN = '0';
 
 	// set role values to 1 based on selection
-	if ($ROLE = 'Student'){
-		$STUDENT = 1;
+	if ($ROLE = "STUDENT"){
+		$STUDENT = '1';
 	}
-	if ($ROLE = 'Tutor'){
-		$TUTOR = 1;
+	if ($ROLE = "TUTOR"){
+		$TUTOR = '1';
 	}
-	if ($ROLE = 'Professor'){
-		$PROFESSOR = 1;
+	if ($ROLE = "PROFESSOR"){
+		$PROFESSOR = '1';
 	}
-	if ($ROLE = 'Admin'){
-		$ADMIN = 1;
+	if ($ROLE = "ADMIN"){
+		$ADMIN = '1';
 	}
-	if ($ROLE = 'StudentTutor'){
-		$STUDENT = 1;
-		$TUTOR = 1;
+	if ($ROLE = "STUDENTTUTOR"){
+		$STUDENT = '1';
+		$TUTOR = '1';
 	}
-	if ($ROLE = 'ProfessorAdmin'){
-		$PROFESSOR = 1;
-		$ADMIN = 1;
+	if ($ROLE = "PROFESSORADMIN"){
+		$PROFESSOR = '1';
+		$ADMIN = '1';
 	}
 	
     
     // we will set up the insert statement to add this new record to the database
-    $insertquery = "INSERT INTO ACCOUNT_T(HAWKID, HASHEDPASS, STUDENT, TUTOR, PROFESSOR, ADMIN) VALUES ('$HAWKID', '$HASHEDPASS','$STUDENT','$TUTOR','$PROFESSOR','$ADMIN')";
-    
+    $insertAccount = "INSERT INTO ACCOUNT_T(HAWKID, HASHEDPASS, ACCESS) VALUES ('$HAWKID', '$HASHEDPASS', '1');";
+	
     // run the insert statement
-    queryDB($insertquery, $db);
+    queryDB($insertAccount, $db);
+	
+	
+	$insertUser = "INSERT INTO USER_T(HAWKID, FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR, PROFESSOR, ADMIN) VALUES('$HAWKID', '$FIRSTNAME', '$LASTNAME', '$EMAIL', '$STUDENT', '$TUTOR', '$PROFESSOR', '$ADMIN');";
+    
+	queryDB($insertUser, $db);
     
     // send a response back to angular
     $response = array();

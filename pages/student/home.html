@@ -75,22 +75,25 @@
 								<h4>Quick Student Links</h4>
 
 								<div class="list-group" ng-show="!isadmin">
-									<a href="#" class="list-group-item">Link 1</a>
-									<a href="#" class="list-group-item">Link 2</a>
+									<a href="#" class="list-group-item">My Courses</a>
+									<a href="#" class="list-group-item">Find a Tutor</a>
 									<a href="#" class="list-group-item">Link 3</a>
 								</div>
 
 							</div>
 						</div>
 					</div>
-					<div  ng-controller="studSchedControl">
+					<div  ng-controller="studSchedControl" ng-init="checkifloggedin()">
 						<h3> Upcoming Tutoring Sessions</h3>
 						<br>
 						<div class="col-md-8">
 							<div ng-repeat="session in data.schedinfo">
-							
 								<p style="text-indent: 20px;"><b>{{session.SESSION_DATE | date: short}}</b> for {{session.COURSE_NAME}} ({{session.SEMESTER}})</p>
 								<p style="text-indent: 40px;"> with {{session.FIRSTNAME}} {{session.LASTNAME}} at {{session.SESSION_START_TIME}} - {{session.SESSION_END_TIME}} | <a href="https://maps.uiowa.edu/mlh" target="_blank">301 MLH</a>
+									<button class="btn btn-danger" ng-click="#">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</p>
 								<br>
 								<br>
 							</div>

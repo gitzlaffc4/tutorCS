@@ -8,10 +8,10 @@
 	var myApp = angular.module("tutorcs");
 	
 	// 'dataControl' is used in the HTML file when defining ng-controller attribute
-	myApp.controller("studSchedControl", function($scope, $http, $window){
+	myApp.controller("tutorSchedControl", function($scope, $http, $window){
 		// define profiledata for the app
         // in the html code we will refer to data.tutorCS. The data part comes from $scope.data, the moives part comes from the JSON object below
-		$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/studentscheduled.php") 
+		$http.get("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/tutorscheduled.php") 
             .then(function(response) {
                 // response.data.value has value come from the getaccounts.php file $response['value']['allinfo'] = $allinfo;
                 $scope.data = response.data.value;

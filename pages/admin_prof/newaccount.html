@@ -19,7 +19,6 @@
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-
 		<!-- link to angular -->
 		<script src="js/angular.min.js"></script>
 
@@ -67,7 +66,7 @@
 					</div>
 
 					<!-- PASSWORD for account -->
-					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
+					<div class="form-group" ng-class="{'text-danger': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'text-success': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }">
 						<label class="form-control-label" for="PASSWORD">Password (at least 6 characters long): </label>
 						<input type="PASSWORD" class="form-control" ng-class="{ 'is-invalid': newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched, 'is-valid': !newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched }" name="PASSWORD" ng-model="account.PASSWORD" ng-minlength="6" id="PASSWORD" required/>
 						<div ng-show="newAccountForm.PASSWORD.$invalid && newAccountForm.PASSWORD.$touched" >The password must be at least six characters long</div>
@@ -78,25 +77,45 @@
 					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'text-success': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }">
 						<label class="form-control-label" for="EMAIL">University of Iowa Email</label>
 						
-						<input type="email" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="13" id="EMAIL" required/>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched, 'is-valid': !newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched }" name="EMAIL" ng-model="account.EMAIL" ng-minlength="13" id="EMAIL" required/>
 						<div ng-show="newAccountForm.EMAIL.$invalid && newAccountForm.EMAIL.$touched" >You did not enter a valid university of Iowa Email</div>
 					</div>
-
-
-					<!-- role for account -->
-					<div class="form-group">
-						<label class="form-control-label" for="ROLE"> Select a user role</label>
-						<select class="form-control" ng-class="{'is-invalid': newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched, 'is-valid': !newAccountForm.ROLE.$invalid && newAccountForm.ROLE.$touched }" name="ROLE" ng-modal="account.ROLE" id="ROLE" required>
-							<option value=""> -- Select Role -- </option>
-							<option value="Student">Student</option>
-							<option value="Tutor">Tutor</option>
-							<option value="StudentTutor">Student/Tutor</option>
-							<option value="Professor">Professor</option>
-							<option value="Admin">Admin</option>
-							<option value="ProfessorAdmin">Professor/Admin</option>
-						</select>
+					
+					
+					<!-- First name for account -->
+					<div class="form-group" ng-class="{'text-danger': newAccountForm.FIRST_NAME.$invalid && newAccountForm.FIRST_NAME.$touched, 'text-success': !newAccountForm.FIRST_NAME.$invalid && newAccountForm.FIRST_NAME.$touched }">
+						<label class="form-control-label" for="FIRST_NAME">First Name</label>
+						
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.FIRST_NAME.$invalid && newAccountForm.FIRST_NAME.$touched, 'is-valid': !newAccountForm.FIRST_NAME.$invalid && newAccountForm.FIRST_NAME.$touched }" name="FIRST_NAME" ng-model="account.FIRST_NAME" ng-minlength="1" id="FIRST_NAME" required/>
+						<div ng-show="newAccountForm.FIRST_NAME.$invalid && newAccountForm.FIRST_NAME.$touched" >You did not enter a valid first name</div>
 					</div>
 
+					<!-- Last name for account -->
+					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.LAST_NAME.$invalid && newAccountForm.LAST_NAME.$touched, 'text-success': !newAccountForm.LAST_NAME.$invalid && newAccountForm.LAST_NAME.$touched }">
+						<label class="form-control-label" for="LAST_NAME">Last Name</label>
+						
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newAccountForm.LAST_NAME.$invalid && newAccountForm.LAST_NAME.$touched, 'is-valid': !newAccountForm.LAST_NAME.$invalid && newAccountForm.LAST_NAME.$touched }" name="LAST_NAME" ng-model="account.LAST_NAME" ng-minlength="1" id="LAST_NAME" required/>
+						<div ng-show="newAccountForm.LAST_NAME.$invalid && newAccountForm.LAST_NAME.$touched" >You did not enter a valid last name</div>
+					</div>
+					
+					<!-- role for account -->
+					<div class="form-group">
+						<label class="form-control-label" for="ROLE"> Select ay user role</label>
+						<br>						
+						<input type="radio" ng-model="account.STUDENT" value="'1'">Student
+					
+						<input type="radio" ng-model="account.TUTOR" value="'1'">Tutor 
+						
+						<input type="radio" ng-model="account.STUDENTTUTOR" value="'1'">Student/Tutor 
+						
+						<input type="radio" ng-model="account.PROFESSOR" value="'1'">Professor 
+						
+						<input type="radio" ng-model="account.ADMIN" value="'1'">Admin 
+						
+						<input type="radio" ng-model="account.PROFESSORADMIN" value="'1'">Professor/Admin 
+						
+											
+				   </div>
 					<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
 					<button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
 				</form>
