@@ -21,8 +21,23 @@ while ($currUser = nextTuple($resultuser)){
  	$userinfo[$i] = $currUser;
 	$profilePic = $userinfo[$i]['PICTURE'];
 	$userinfo[$i]['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='190' height='190'>";
+	
+	$currHawkID = $userinfo[$i]['HAWKID'];
+	// if ($userinfo[$i]['STUDENT'] == '1'){
+	//	$upcomingQuery = "SELECT * FROM SCHEDULED_T WHERE STUD_HAWKID = '$currHawkID' AND COMPLETED = '0';";
+	//	$resultUpcoming = queryDB($upcomingQuery, $db);
+	//	$upcoming = array();
+	//	$j = 0;
+	//	if (nTuples($resultUpcoming) > 0){
+			
+	//	}
+	
  	$i++;
+	
 }
+
+// set up query to get information on students who have upcoming appointments
+
 
 
 // put together a JSON object to send back the data on the players
