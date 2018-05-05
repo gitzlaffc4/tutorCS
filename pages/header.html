@@ -17,7 +17,7 @@
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>r
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
@@ -84,7 +84,7 @@
 		<!--<div class="container" ng-controller="dataControl">
 		<nav class="navbar navbar-light" style="background-color:#FFCD00" ng-init="checkifloggedin()">
 			<div class="container-fluid">-->
-		<nav class="navbar navbar-default navbar-static-top" style="background-color:#FFCD00; padding-top: 50px; margin-bottom: -5px; position: static !important;" role="navigation" id="hhh-navbar" ng-init="checkifloggedin()">
+		<nav class="navbar navbar-default navbar-static-top" style="background-color:#FFCD00; padding-top: 30px; margin-bottom: -5px; position: static !important;" role="navigation" id="hhh-navbar" ng-init="checkifloggedin()">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myui-navbar-collapse">
@@ -99,7 +99,7 @@
 					<ul class="nav navbar-nav">
 						<!--everyone get these menu at the index page to log in-->
 						<li class="BRAND">
-							<a id="menuid-brand" class="brand" title="Hawkeye Homework Hackers">HAWKEYE HOMEWORK HACKERS </a>
+							<a id="menuid-brand" class="brand" title="Hawkeye Homework Hackers"><b style="color: black; font-size: 1.1em">HAWKEYE HOMEWORK HACKERS</b></a>
 						</li>
 						<li class="disable" ng-show="!isloggedin">
 							<a id="menuid-home" href="pages/login.html" class="" title="Home">
@@ -114,8 +114,8 @@
 							<a id="menuid-help" href="pages/login.html" class="help" title="Help">Find Help</a>
 						</li>
 
-						<li class="Sources" ng-show="!isloggedin">
-							<a id="menuid-sources" href="pages/login.html" class="sources" title="Resources">Other Sources</a>
+						<li class="resources" ng-show="!isloggedin">
+							<a id="menuid-resources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
 						</li>
 
 						<!--logging in as a student --> 
@@ -135,8 +135,8 @@
 							<a id="menuid-student-help" href="#" class="help" title="Help">Find Help</a>
 						</li>
 
-						<li class="Sources" ng-show="isstudent">
-							<a id="menuid-student-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						<li class="resources" ng-show="isstudent">
+							<a id="menuid-student-sources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
 						</li>
 
 
@@ -162,8 +162,8 @@
 							<a id="menuid-tutor-help" href="#" class="help" title="Help">Find Help</a>
 						</li>
 
-						<li class="Sources" ng-show="istutor">
-							<a id="menuid-tutor-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						<li class="resources" ng-show="istutor">
+							<a id="menuid-tutor-sources" href="https://cs.uiowa.edu/resources" target="_blank" class="sources" title="Resources">Other Resources</a>
 						</li>
 
 
@@ -182,8 +182,8 @@
 						<li class="tutors" ng-show="isprofessor">
 							<a id="menuid-prof-tutor" href="#" class="tutors" title="tutors">Tutors</a>
 						</li>
-						<li class="Sources" ng-show="isprofessor">
-							<a id="menuid-prof-sources" href="#" class="sources" title="Resources">Other Sources</a>
+						<li class="Reources" ng-show="isprofessor">
+							<a id="menuid-prof-sources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
 						</li>
 						<li class="help" ng-show="isprofessor">
 							<a id="menuid-prof-help" href="#" class="help" title="Help">Find Help</a>
