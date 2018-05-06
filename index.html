@@ -46,14 +46,25 @@
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
 		
-		<section class="jumbotron text-center" id="introduction">
-			<div class="container">
+		<section class="jumbotron text-center" id="introduction" ng-controller="dataControl" ng-init="checkifloggedin()">
+			<div class="container" ng-show=!isloggedin>
 				<h1 class="jumbotron-heading" style="color: black;">Find The Help You Need</h1>
 				<p class="lead" style="color:white; text-shadow: 1px 1px black;">Computer Science tutoring that can help your grade</p>
 				<p>
 					<a href="pages/login.html" class="btn btn-primary btn-lg">Login</a>
 				</p>
 			</div>
+			<div class="container" ng-show=isloggedin>
+				<h1 class="jumbotron-heading" style="color: black;">Welcome</h1>
+				<p class="lead" style="color:white; text-shadow: 1px 1px black;">Hawkeye Homework Hacker allows you to find Computer Science tutoring that can help your grade</p>
+				<p>
+					<a ng-show="isstudent" href="pages/student/home.html" class="btn btn-primary btn-lg">My Account</a>
+					<a ng-show="istutor" href="pages/tutor/home.html" class="btn btn-primary btn-lg">My Account</a>
+					<a ng-show="isprofessor" href="pages/admin_prof/home.html" class="btn btn-primary btn-lg">My Account</a>
+					<a ng-show="isadmin" href="pages/admin_prof/home.html"  class="btn btn-primary btn-lg">My Account</a>
+				</p>
+			</div>
+			
 		</section>       
 		<section id="gettingstarted">
 			<div class="car text-center">
