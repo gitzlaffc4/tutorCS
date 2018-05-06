@@ -54,19 +54,30 @@
 			<div class="container" ng-init="checkifloggedin()">
 
 
-				<div class="container" ng-controller="profileDataControl" id="wrapper">
+				<div class="container" ng-controller="profileDataControl" id="wrapper" style="margin-top: 40px;">
 					<div class=container>
 						<h2> View and Edit</h2><br>
-						<p> View Information, Edit user enrollement and status, or disable users from Hawkeyes Homework Hackers</p>
+						<p> View Information, Edit user enrollement and status, or disable users from Hawkeyes Homework Hackers</p><br><br>
 					</div>
 					<form>
 						<div class="form-group">
+							<div class = "input-group">
+								<label for="roleSelect"><h5>Change Role</h5></label>
+								<select id="roleSelect" ng-model="searchRole">
+									<option value="" selected="selected">-- All Roles --</option>
+									<option value="Student">Students</option>
+									<option value="Tutor">Tutors</option>
+									<option value="Professor">Professor</option>
+									<option value="Admin">Admin</option>
+								</select>
+							</div>
 							<div class="input-group">
 								<div class="input-group-addon">
 									<i class="fa fa-search"></i>
 								</div>
-							<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
-							</div>      
+								<input type="text" class="form-control" placeholder="Search for a user" style="width: 400px" ng-model="searchUser">
+							</div>
+							
 						</div>
 					</form>
 					<table class="table table-hover table-striped table-bordered table-responsive">
@@ -109,7 +120,7 @@
 
 
 						<tbody>
-							<tr ng-repeat-start="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser">
+							<tr ng-repeat-start="user in data.value.allinfo | orderBy:sortType:sortReverse | filter:searchUser | filter:searchRole">
 								<!-- R E A D    M O D E -->
 
 								<th scope="row"> {{user.HAWKID}} </th>

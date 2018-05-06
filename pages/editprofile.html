@@ -64,9 +64,19 @@
 								<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
 							</div>
 							<h2 class="text-center">{{account.FIRSTNAME}} {{account.LASTNAME}}</h2>
-							<a href="pages/editprofile.html">
-								<h5 class="text-center"  >edit profile</h5>
+							<a ng-show="isadmin" href="pages/admin_prof/home.html">
+								<h5 class="text-center">edit profile</h5>
 							</a>
+							<a ng-show="isprofessor" href="pages/admin_prof/home.html">
+								<h5 class="text-center">edit profile</h5>
+							</a>
+							<a ng-show="istutor" href="pages/tutor/home.html">
+								<h5 class="text-center">edit profile</h5>
+							</a>
+							<a ng-show="isstudent" href="pages/student/home.html">
+								<h5 class="text-center">edit profile</h5>
+							</a>
+							
 							<br>
 							<br>
 							<br>
