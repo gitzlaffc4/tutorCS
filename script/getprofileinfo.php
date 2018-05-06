@@ -13,6 +13,10 @@ $HAWKID = $_SESSION['HAWKID'];
 
 // set up a query to get information on user
 $queryuser = "SELECT * FROM USER_T WHERE HAWKID = '$HAWKID';";
+
+// set up a query to get all professors HawkID's
+$queryProfessors = "SELECT HAWKID, FIRSTNAME, LASTNAME FROM USER_T WHERE PROFESSOR = '1';";
+
 // run the query to get info on user
 $resultuser = queryDB($queryuser, $db);
 $userinfo = array();
@@ -21,29 +25,24 @@ while ($currUser = nextTuple($resultuser)){
  	$userinfo[$i] = $currUser;
 	$profilePic = $userinfo[$i]['PICTURE'];
 	$userinfo[$i]['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='190' height='190'>";
-	
-	$currHawkID = $userinfo[$i]['HAWKID'];
-	// if ($userinfo[$i]['STUDENT'] == '1'){
-	//	$upcomingQuery = "SELECT * FROM SCHEDULED_T WHERE STUD_HAWKID = '$currHawkID' AND COMPLETED = '0';";
-	//	$resultUpcoming = queryDB($upcomingQuery, $db);
-	//	$upcoming = array();
-	//	$j = 0;
-	//	if (nTuples($resultUpcoming) > 0){
-			
-	//	}
-	
- 	$i++;
-	
+ 	$i++;	
 }
 
-// set up query to get information on students who have upcoming appointments
-
+// RUN THE QUERY TO GET ALL PROFESSORS HAWKID'S
+$profresult = queryDB($queryProfessors, $db);
+$professors = array();
+$j = 0;
+while ($currProf = nextTuple($profresult)){
+	$professors[$j] = $currProf;
+	$j++;
+}
 
 
 // put together a JSON object to send back the data on the players
 $response = array();
 $response['status'] = 'success';
 $response['value']['userinfo'] = $userinfo;
+$response['value']['professors'] = $professors;
 header('Content-Type: application/json');
 echo(json_encode($response));
 

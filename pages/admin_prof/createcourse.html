@@ -1,0 +1,122 @@
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Create Course</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+
+	</head>
+	
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		
+		
+		
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()" style="padding-top:50px;">
+			<div class="row" ng-show="!isadmin">
+				<h1>Access Denied -- Please contact a system admin</h1>
+			</div>
+			
+			
+			<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
+			<div class="row" ng-show="isadmin">
+				<div class=container>
+					<!-- descriptive text on what page does -->
+					<h1> Create a course</h1><br>
+					<p> Here you can create a course for any semester and specify which professors are allowed access</p>
+					<br>
+					<p> Get started by filling out the form below</p>
+				</div>
+				<br>
+				<br>
+				
+				<!-- form for creating a new course-->
+				<form name="newCourseForm" novalidate>
+					<!-- Course Name for account -->
+					<div class="form-group" ng-class="{ 'text-danger': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'text-success': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }">
+						<label class="form-control-label" for="COURSE_NAME">Course Name (Course Code: Course Name): </label>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'is-valid': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }" name="COURSE_NAME" ng-model="account.COURSE_NAME" ng-minlength="2" id="COURSE_NAME" required/>
+						<div ng-show="newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched" >Please enter a valud Course Name</div>
+					</div>
+
+					<!-- SEMESTER for course -->
+					<div class="form-group" ng-class="{'text-danger': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'text-success': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }">
+						<label class="form-control-label" for="SEMESTER">Semester (i.e. Spring 2019):</label>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'is-valid': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }" name="SEMESTER" ng-model="course.SEMESTER" ng-minlength="6" id="SEMESTER" required/>
+						<div ng-show="newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched" >The password must be at least six characters long</div>
+					</div>
+
+					<!-- role for course -->
+					<div class="form-group">
+						<label for="PROFESSOR"> Select Professors</label>
+						<select id="PROFESSOR" ng-repeat="prof in data.value.professors" ng-model="course.PROFESSOR_1" >
+							<option value="{{prof.HAWKID}}">{{prof.HAWKIS}}</option>
+						</select>
+					</div>
+					
+					
+					
+					<!-- role for account -->
+					<div class="form-group">
+						<label class="form-control-label" for="PROFESSOR"> Select a Professor</label>
+						<br>
+						<div ng-repeat="prof in data.value.professors"
+						<input type="radio" ng-model="account.ROLE" value="STUDENT">Student &nbsp
+						<input type="radio" ng-model="account.ROLE" value="TUTOR">Tutor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="STUDENTTUTOR">Student/Tutor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="PROFESSOR">Professor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="ADMIN">Admin &nbsp
+						<input type="radio" ng-model="account.ROLE" value="PROFESSORADMIN">Professor/Admin &nbsp
+					 </div>
+					
+					
+					
+					
+
+					<!-- newCourse is a function in the data.tutorcscontroller. course refers to the word we used under ng-model in the input fields -->
+					<br>
+					<br>
+					<button class="btn btn-success btn-lg" ng-click="newCourse(course)" ng-disabled="newCourseForm.$invalid">Add Course</button>
+				</form>
+			</div>
+		</div>
+		<!-- include footer.html-->
+		<div ng-include src="'pages/footer.html'"></div>
+	</body>
+</html>
