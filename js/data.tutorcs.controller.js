@@ -38,7 +38,7 @@
                     } else {
                         // successful
                         // send user back to home page
-                        $window.location.href = "pages/admin_prof/newaccount.html";
+                        $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/newaccount.html";
                     }
                } else {
                     alert('unexpected error');

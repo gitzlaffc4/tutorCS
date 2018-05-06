@@ -69,44 +69,51 @@
 				<!-- form for creating a new course-->
 				<form name="newCourseForm" novalidate>
 					<!-- Course Name for account -->
-					<div class="form-group" ng-class="{ 'text-danger': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'text-success': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }">
-						<label class="form-control-label" for="COURSE_NAME">Course Name (Course Code: Course Name): </label>
-						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'is-valid': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }" name="COURSE_NAME" ng-model="account.COURSE_NAME" ng-minlength="2" id="COURSE_NAME" required/>
+					<div class="form-group" ng-class="{'text-danger': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'text-success': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }">
+						<label class="form-control-label" for="COURSE_NAME"><h4>Course Name (Course Code : Course Name): </h4></label>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'is-valid': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }" name="COURSE_NAME" ng-model="course.COURSE_NAME" ng-minlength="2" id="COURSE_NAME" required/>
 						<div ng-show="newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched" >Please enter a valud Course Name</div>
 					</div>
 
 					<!-- SEMESTER for course -->
 					<div class="form-group" ng-class="{'text-danger': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'text-success': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }">
-						<label class="form-control-label" for="SEMESTER">Semester (i.e. Spring 2019):</label>
+						<label class="form-control-label" for="SEMESTER"><h4>Semester (i.e. Spring 2019):</h4></label>
 						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'is-valid': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }" name="SEMESTER" ng-model="course.SEMESTER" ng-minlength="6" id="SEMESTER" required/>
 						<div ng-show="newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched" >The password must be at least six characters long</div>
 					</div>
 
-					<!-- role for course -->
+					<!-- Professor 1 -->
 					<div class="form-group">
-						<label for="PROFESSOR"> Select Professors</label>
-						<select id="PROFESSOR" ng-repeat="prof in data.value.professors" ng-model="course.PROFESSOR_1" >
-							<option value="{{prof.HAWKID}}">{{prof.HAWKIS}}</option>
+						<label for="PROFESSOR"> <h4>Select Professor 1</h4></label>
+						<br>
+						<select id="PROFESSOR" ng-model="course.PROFESSOR_1">
+							<option ng-repeat="prof in data.professors" value="{{prof.HAWKID}}">
+          						{{prof.FIRSTNAME}} &nbsp{{prof.LASTNAME}}
+       						</option>
 						</select>
 					</div>
 					
-					
-					
-					<!-- role for account -->
+					<!-- Professor 2 -->
 					<div class="form-group">
-						<label class="form-control-label" for="PROFESSOR"> Select a Professor</label>
+						<label for="PROFESSOR"> <h4>Select Professor 2</h4></label>
 						<br>
-						<div ng-repeat="prof in data.value.professors"
-						<input type="radio" ng-model="account.ROLE" value="STUDENT">Student &nbsp
-						<input type="radio" ng-model="account.ROLE" value="TUTOR">Tutor &nbsp
-						<input type="radio" ng-model="account.ROLE" value="STUDENTTUTOR">Student/Tutor &nbsp
-						<input type="radio" ng-model="account.ROLE" value="PROFESSOR">Professor &nbsp
-						<input type="radio" ng-model="account.ROLE" value="ADMIN">Admin &nbsp
-						<input type="radio" ng-model="account.ROLE" value="PROFESSORADMIN">Professor/Admin &nbsp
-					 </div>
+						<select id="PROFESSOR" ng-model="course.PROFESSOR_2">
+							<option ng-repeat="prof in data.professors" value="{{prof.HAWKID}}">
+          						{{prof.FIRSTNAME}} &nbsp{{prof.LASTNAME}}
+       						</option>
+						</select>
+					</div>
 					
-					
-					
+					<!-- Professor 3 -->
+					<div class="form-group">
+						<label for="PROFESSOR"> <h4>Select Professor 3</h4></label>
+						<br>
+						<select id="PROFESSOR" ng-model="course.PROFESSOR_3">
+							<option ng-repeat="prof in data.professors" value="{{prof.HAWKID}}">
+          						{{prof.FIRSTNAME}} &nbsp{{prof.LASTNAME}}
+       						</option>
+						</select>
+					</div>
 					
 
 					<!-- newCourse is a function in the data.tutorcscontroller. course refers to the word we used under ng-model in the input fields -->
