@@ -44,6 +44,24 @@
 			});
 		};
 		
+		$scope.newSession = function(availDetails) {
+			var availupload = angular.copy(availDetails);
+			
+			$http.post("newsession.php", availupload)
+				.then(function (response) {
+					if (response.status == 200){
+						if (response.data.status == 'error') {
+							alert('error: ' + response.data.message);
+						}else{
+							$window.location.href = "studentsessions.html";
+						}
+					} else {
+						alert('unexpected error 1');
+					}
+				
+			});
+		}; 
+		
 		$scope.deleteSession = function(HAWKID, AVAILSLOTID) {
 			if (confirm("Are you sure you want to cancel the session?")) {
 				

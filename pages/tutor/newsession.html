@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="avail">
+	
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+		<!-- These are the links to boostrap code -->
+		<!-- These links are from -put address here -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		
+		<!-- set base url -->
+		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/" -->
+		
+		
+		<!-- link to angular-->
+		<!-- Download from https://angularjs.org/ then upload to webdev server -->
+		<script src="angular.min.js"></script>
+
+		<!-- Angular code -->
+		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
+    	<script src="avail.module.js"></script>
+	    <script src="dataavail.controller.js"></script>
+
+<head>
+<meta charset="utf-8">
+<title>newSession</title>
+</head>
+	<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+	<div class = "row">
+		<h1>Something to work with</h1>  
+					</div>
+	</div>
+	</div>
+
+<body>
+	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
+    <div class="container" ng-controller="availControl">
+	<!-- header -->
+    <!--    <div ng-include ng-init="menuHighlight = 1;" src="'header.html'"></div> -->
+        
+        
+        <!-- form for entering new avail -->
+        <div class="row">
+            
+              
+            <form  name="newSessionForm" novalidate>
+                
+          		<!-- N O T E -->
+				<!-- Use session variable from login.php so user doesn't have to enter in there own hawkid-->
+                <!-- Hawk id -->
+                <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
+                <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
+                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched, 'text-success': !newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched}">
+                    <label>TUTOR_HAWKID </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched, 'is-valid': !newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched}" name="TUTOR_HAWKID" ng-model="avail.TUTOR_HAWKID" ng-minlength="1" required/>
+                    <p ng-show="newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched" > must be at least one character</p>
+                </div>
+                <!-- Day of the week -->
+                
+                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched, 'text-success': !newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched}">
+                    <label>SESSION_DATE: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched, 'is-valid': !newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched}" name="SESSION_DATE" ng-model="avail.SESSION_DATE" ng-minlength="4" required/>
+                    <p ng-show="newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched" > must be at least 4 characters long</p>
+                </div>
+                <!-- AVAILABLE -->
+                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched, 'text-success': !newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched}">
+                    <label>SESSION_START_TIME: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched, 'is-valid': !newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched}" name="SESSION_START_TIME" ng-model="avail.SESSION_START_TIME" ng-minlength="1" />
+                    <p ng-show="newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched" >must be at least 1 character</p>
+                </div>
+				
+				 <!-- TIME_START -->
+                	<div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched, 'text-success': !newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched}">
+                    <label>SESSION_END_TIME: </label>
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched, 'is-valid': !newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched}" name="SESSION_END_TIME" ng-model="avail.SESSION_END_TIME" ng-minlength="1" />
+                    <p ng-show="newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched" >must be at least 1 character</p>
+                </div>
+				
+				</div>
+				
+				 <!-- TIME_STOP -->
+                	<div class="form-group" ng-class="{ 'text-danger': newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched, 'text-success': !newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched}">
+                    <label>SCHEDULED: </label> 	
+                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched, 'is-valid': !newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched}" name="SCHEDULED" ng-model="avail.SCHEDULED" ng-minlength="1" />
+                    <p ng-show="newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched" >must be at least 1 character</p>
+                </div>
+				
+                
+                
+                <!-- newSession is a function in the controller. avail refers to the word we used under ng-model in the input fields -->
+                <button class="btn btn-default" ng-click="newSession(avail)" ng-disabled="newSessionForm.$invalid">Add availability</button>
+            </form>
+            
+        
+        </div> <!-- close row -->
+        
+        <!-- Footer -->
+        <!-- <div ng-include src="'footer.html'"></div> -->
+        
+    </div>
+	
+	
+</body>
+
+</html>
