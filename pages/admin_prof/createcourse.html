@@ -71,14 +71,14 @@
 					<!-- Course Name for account -->
 					<div class="form-group" ng-class="{'text-danger': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'text-success': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }">
 						<label class="form-control-label" for="COURSE_NAME"><h4>Course Name (Course Code : Course Name): </h4></label>
-						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'is-valid': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }" name="COURSE_NAME" ng-model="course.COURSE_NAME" ng-minlength="2" id="COURSE_NAME" required/>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched, 'is-valid': !newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched }" name="COURSE_NAME" ng-model="course.COURSE_NAME" style="width: 500px" ng-minlength="2" id="COURSE_NAME" required/>
 						<div ng-show="newCourseForm.COURSE_NAME.$invalid && newCourseForm.COURSE_NAME.$touched" >Please enter a valud Course Name</div>
 					</div>
 
 					<!-- SEMESTER for course -->
 					<div class="form-group" ng-class="{'text-danger': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'text-success': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }">
 						<label class="form-control-label" for="SEMESTER"><h4>Semester (i.e. Spring 2019):</h4></label>
-						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'is-valid': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }" name="SEMESTER" ng-model="course.SEMESTER" ng-minlength="6" id="SEMESTER" required/>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched, 'is-valid': !newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched }" name="SEMESTER" ng-model="course.SEMESTER" style="width: 500px" ng-minlength="6" id="SEMESTER" required/>
 						<div ng-show="newCourseForm.SEMESTER.$invalid && newCourseForm.SEMESTER.$touched" >The password must be at least six characters long</div>
 					</div>
 

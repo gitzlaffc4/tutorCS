@@ -1,10 +1,153 @@
 <!doctype html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Untitled Document</title>
-</head>
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs"><head>
+		<!-- metadata -->
+		<meta charset="utf-8"/>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"/>
 
-<body>
-</body>
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Admin/Professor</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+
+	</head>
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+	
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()">
+			
+      		<div ng-show="!isloggedin">
+				<h1> You are not authorized for this view</h1>
+			</div>
+			
+			<div ng-show="isloggedin">
+				
+				<div class="row" style="padding-top:25px;">
+					<div ng-repeat="account in data.userinfo | filter:query">
+						<div class="col-md-4">
+							<div class="embed-responsive embed-responsive-16by9">
+								<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+								<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
+							</div>
+							<h2 class="text-center">{{account.FIRSTNAME}} {{account.LASTNAME}}</h2>
+							<a href="pages/editprofile.html">
+								<h5 class="text-center"  >edit profile</h5>
+							</a>
+							<br>
+							<br>
+							<br>
+							<h4>Quick Admin Links</h4>
+							<div class="list-group" ng-show="isadmin">
+								<a href="pages/admin_prof/newaccount.html" class="list-group-item">Create Account</a>
+								<a href="pages/admin_prof/createcourse.html" class="list-group-item">Create Course</a>
+								<a href="pages/admin_prof/viewroles.html" class="list-group-item">View/Edit/Disable Users</a>
+								<a href="pages/admin_prof/courselist.html" class="list-group-item">Course Roasters</a>
+								<a href="pages/admin_prof/enrollstudent" class="list-group-item">Enroll Students</a>
+								<a href="pages/admin_prof/hiretutor.html" class="list-group-item">Hire Tutor</a>
+							</div>
+							<div class="list-group" ng-show="!isadmin">
+								<a href="pages/admin_prof/courselist.html" class="list-group-item">Course Roasters</a>
+								<a href="pages/admin_prof/enrollstudent" class="list-group-item">Enroll Students</a>
+								<a href="pages/admin_prof/hiretutor.html" class="list-group-item">Hire Tutor</a>
+							</div>
+							
+						</div>
+						<div class="col-md-8" >
+							<div class="container">
+								<form name="editProfileForm" novalidate>
+									
+									
+					
+									<!-- First name for account -->
+									<div class="form-group" ng-class="{'text-danger': editProfileForm.FIRSTNAME.$invalid && editProfileForm.FIRSTNAME.$touched, 'text-success': !editProfileForm.FIRSTNAME.$invalid && editProfileForm.FIRSTNAME.$touched }">
+										<label class="form-control-label" for="FIRSTNAME">First Name</label>
+
+										<input type="text" class="form-control" ng-class="{'is-invalid': editProfileForm.FIRSTNAME.$invalid && editProfileForm.FIRSTNAME.$touched, 'is-valid': !editProfileForm.FIRSTNAME.$invalid && editProfileForm.FIRSTNAME.$touched }" name="FIRSTNAME" ng-model="account.FIRSTNAME" style="width: 400px" ng-minlength="1" id="FIRSTNAME" required/>
+										<div ng-show="editProfileForm.FIRSTNAME.$invalid && editProfileForm.FIRSTNAME.$touched" >You did not enter a valid first name</div>
+									</div>
+
+									<!-- Last name for account -->
+									<div class="form-group" ng-class="{ 'text-danger': editProfileForm.LASTNAME.$invalid && editProfileForm.LASTNAME.$touched, 'text-success': !editProfileForm.LASTNAME.$invalid && editProfileForm.LASTNAME.$touched }">
+										<label class="form-control-label" for="LASTNAME">Last Name</label>
+
+										<input type="text" class="form-control" ng-class="{ 'is-invalid': editProfileForm.LASTNAME.$invalid && editProfileForm.LASTNAME.$touched, 'is-valid': !editProfileForm.LASTNAME.$invalid && editProfileForm.LASTNAME.$touched }" name="LASTNAME" ng-model="account.LASTNAME" style="width: 400px" ng-minlength="1" id="LASTNAME" required/>
+										<div ng-show="editProfileForm.LASTNAME.$invalid && editProfileForm.LASTNAME.$touched" >You did not enter a valid last name</div>
+									</div>
+
+									<!-- Nick name for account -->
+									<div class="form-group" ng-class="{ 'text-danger': editProfileForm.NICK_NAME.$invalid && editProfileForm.NICK_NAME.$touched, 'text-success': !editProfileForm.NICK_NAME.$invalid && editProfileForm.NICK_NAME.$touched }">
+										<label class="form-control-label" for="NICK_NAME">Prefered Name</label>
+
+										<input type="text" class="form-control" ng-class="{ 'is-invalid': editProfileForm.NICK_NAME.$invalid && editProfileForm.NICK_NAME.$touched, 'is-valid': !editProfileForm.NICK_NAME.$invalid && editProfileForm.NICK_NAME.$touched }" name="NICK_NAME" ng-model="account.NICK_NAME" style="width: 400px" ng-minlength="1" id="NICK_NAME" required/>
+										<div ng-show="editProfileForm.NICK_NAME.$invalid && editProfileForm.NICK_NAME.$touched" >You did not enter a Prefered Name</div>
+									</div>
+									
+									
+									<!-- phone number for account -->
+									<div class="form-group" ng-class="{ 'text-danger': editProfileForm.PHONE_NUMBER.$invalid && editProfileForm.PHONE_NUMBER.$touched, 'text-success': !editProfileForm.PHONE_NUMBER.$invalid && editProfileForm.PHONE_NUMBER.$touched }">
+										<label class="form-control-label" for="PHONE_NUMBER">Phone Number</label>
+
+										<input type="text" class="form-control" ng-class="{ 'is-invalid': editProfileForm.PHONE_NUMBER.$invalid && editProfileForm.PHONE_NUMBER.$touched, 'is-valid': !editProfileForm.PHONE_NUMBER.$invalid && editProfileForm.PHONE_NUMBER.$touched }" name="PHONE_NUMBER" ng-model="account.PHONE_NUMBER" style="width: 400px" ng-minlength="10" id="PHONE_NUMBER" required/>
+										<div ng-show="editProfileForm.PHONE_NUMBER.$invalid && editProfileForm.PHONE_NUMBER.$touched" >You did not a valid phone number</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="form-control-label" for="PICTURE"> Select image to upload: </label>
+										<input type="file" name="fileToUpload" ng-model="account.NEWPICTURE" id="fileToUpload">
+									</div>
+
+									<!-- newAccount is a function in the data.tutorcscontroller. account refers to the word we used under ng-model in the input fields -->
+									<br>
+									<br>
+									<a ng-show="isadmin" class="btn btn-warning" href="pages/admin_prof/home.html">Cancel</a>
+									<a ng-show="isprofessor" class="btn btn-warning" href="pages/admin_prof/home.html">Cancel</a>
+									<a ng-show="isstudent" class="btn btn-warning" href="pages/student/home.html">Cancel</a>
+									<a ng-show="istutor" class="btn btn-warning" href="pages/tutor/home.html">Cancel</a>
+									
+									<a class="btn btn-success" ng-click="editAccount(account)" ng-disabled="editProfileForm.$invalid">Save</a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Footer -->
+		<div style="padding-top: 50px" ng-include src="'pages/footer.html'"></div>
+	</body>
 </html>

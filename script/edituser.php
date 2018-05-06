@@ -1,7 +1,7 @@
 <?php
 
 // We need to include these two files in order to work with the database
-include_once('../..config.php');
+include_once('config.php');
 include_once('dbutils.php');
 
 
@@ -15,12 +15,12 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // get each piece of data
 
-// 'name' matches the name attribute in the form
-$name = $data['name'];
-$country = $data['country'];
-$club = $data['club'];
-$video = $data['video'];
-$id = $data['id'];
+// 'HAWKID' matches the name attribute in the form
+$HAWKID = $data['HAWKID'];
+$FIRSTNAME = $data['FIRSTNAME'];
+$LASTNAME = $data['LASTNAME'];
+$NICK_NAME = $data['NICK_NAME'];
+$PHONE_NUMBER = $data['PHONE_NUMBER'];
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -31,80 +31,67 @@ $errorMessage = "";
 
 // check if they are logged in
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['HAWKID'])) {
     // if the session variable username is not set, then the user is not logged in and should not edit the player
     $isComplete = false;
     $errorMessage .= "User is not logged in.";
 }
 
-
+// check to see if profile that is being updated is user that is logged in 
+$currentUser = $_SESSION['HAWKID'];
+if ($currentUser != $HAWKID){
+	$isComplete = false;
+    $errorMessage .= "You can only update your own profile.";
+} 
 //
 // Validation
 //
 if ($isComplete) {
     // check if name meets criteria
-    if (!isset($name) || (strlen($name) < 2)) {
+    if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 2)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a name with at least two characters. ";
-    } else {
-        $name = makeStringSafe($db, $name);
+        $errorMessage .= "Please enter a firstname with at least 2 characters. ";
     }
     
-    if (!isset($country) || (strlen($country) < 2)) {
+    if (!isset($LASTNAME) || (strlen($LASTNAME) < 2)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a country with at least two characters. ";
-    } else {
-        $country = makeStringSafe($db, $country);
-    }
+        $errorMessage .= "Please enter a lastname with at least two characters. ";
+    } 
     
-    if (!isset($club) || (strlen($club) < 2)) {
+    if (!isset($NICK_NAME) || (strlen($NICK_NAME) < 1)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a club with at least two characters. ";
-    } else {
-        $club = makeStringSafe($db, $club);
+        $errorMessage .= "Please enter a prefered name that is at least 1 character ";
+    } 
+    if (!isset($PHONE_NUMBER) || (strlen($PHONE_NUMBER) < 10)) {
+        $isComplete = false;
+        $errorMessage .= "Please enter a valid phone number";
     }
-    
-    $video = makeStringSafe($db, $video);
-}
+} 
 
-// check if we already have a player with the same name, country, and club as the one we are processing (and is not the one we are processing)
+
+
+
+// check if the hawkid passed to this api corresponds to an existing record in the database
 if ($isComplete) {
     // set up a query to check if this player is in the database already
-    $query = "SELECT name FROM soccerplayers WHERE name='$name' AND country='$country' AND club='$club' AND id<>$id";
-    
-    // we need to run the query
-    $result = queryDB($query, $db);
-    
-    // check on the number of records returned
-    if (nTuples($result) > 0) {
-        // if we get at least one record back it means the player is already in the database, so we have a duplicate
-        $isComplete = false;
-        $errorMessage .= "The player $name, from $country, playing for $club is already in the database. ";
-    }
-}
-
-
-// check if the id passed to this api corresponds to an existing record in the database
-if ($isComplete) {
-    // set up a query to check if this player is in the database already
-    $query = "SELECT name FROM soccerplayers WHERE id=$id";
+    $query = "SELECT FIRSTNAME FROM USER_T WHERE HAWKID = $HAWKID";
     
     // we need to run the query
     $result = queryDB($query, $db);
     
     // check on the number of records returned
     if (nTuples($result) == 0) {
-        // if we get no results it means the id we got does not correspond to any records in the soccerplayers table
+        // if we get no results it means the id we got does not correspond to any records in the USER_T table
         $isComplete = false;
-        $errorMessage .= "The id $id does not correspond to any players in the soccerplayers table. ";
+        $errorMessage .= "The HawkID $HawkID does not correspond to any user.";
     }
 }
 
 
-// if we got this far and $isComplete is true it means we should edit the player in the database
+// if we got this far and $isComplete is true it means we should edit the user in the database
 if ($isComplete) {
     // we will set up the insert statement to add this new record to the database
-    $updatequery = "UPDATE soccerplayers SET name='$name', country='$country', club='$club', video='$video' WHERE id=$id";
+    $updatequery = "UPDATE USER_T SET FIRSTNAME = '$FIRSTNAME', LASTNAME = '$LASTNAME', NICK_NAME = '$NICK_NAME', PHONE_NUMBER='$PHONE_NUMBER' WHERE HAWKID = '$currentUser';";
     
     // run the update statement
     queryDB($updatequery, $db);

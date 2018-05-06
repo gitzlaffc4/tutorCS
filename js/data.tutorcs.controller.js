@@ -46,6 +46,25 @@
             });                        
         };  
 		
+		// function to send new account information to web api to add it to the database
+        $scope.editAccount = function(accountDetails) {
+          	var accountupload = angular.copy(accountDetails);
+          	$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/edituser.php", accountupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/index.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };  
+		
 		
 		// function to send new course information to web api to add it to the database
         $scope.newCourse = function(courseDetails) {
