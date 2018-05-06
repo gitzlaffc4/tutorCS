@@ -21,11 +21,6 @@ $PASSWORD = $data['PASSWORD'];
 $EMAIL = $data['EMAIL'];
 $FIRSTNAME = $data['FIRST_NAME'];
 $LASTNAME = $data['LAST_NAME'];
-$STUDENT = $data['STUDENT'];
-$TUTOR = $data['TUTOR'];
-$STUDENTTUTOR = $data['STUDENTTUTOR'];
-$PROFESSOR = $data['PROFESSOR'];
-$ADMIN = $data['ADMIN'];
 $ROLE = $data['ROLE'];
 
 
@@ -55,6 +50,18 @@ if (!isset($PASSWORD) || (strlen($PASSWORD) < 6)) {
 if (!isset($EMAIL) || (strlen($EMAIL) < 13)) {
     $isComplete = false;
     $errorMessage .= "Please enter a valid email. ";
+}
+if (!isset($LASTNAME) || (strlen($LASTNAME) < 1)) {
+    $isComplete = false;
+    $errorMessage .= "Please enter a valid last name. ";
+}
+if (!isset($FIRSTNAME) || (strlen($FIRSTNAME) < 1)) {
+    $isComplete = false;
+    $errorMessage .= "Please enter a valid First Name. ";
+}
+if (!isset($ROLE) || (strlen($ROLE) == null)) {
+    $isComplete = false;
+    $errorMessage .= "Please select a role. ";
 }    
 
 // check if we already have a HAWKID that matches the one the user entered
@@ -80,34 +87,33 @@ if ($isComplete) {
     // create a hashed version of the password
     $HASHEDPASS = crypt($PASSWORD, getSalt());
 	
-	// define blank roles
-	$STUDENT = '0';
-	$TUTOR = '0';
-	$PROFESSOR = '0';
-	$ADMIN = '0';
-
-	// set role values to 1 based on selection
-	if ($ROLE = "STUDENT"){
-		$STUDENT = '1';
-	}
-	if ($ROLE = "TUTOR"){
-		$TUTOR = '1';
-	}
-	if ($ROLE = "PROFESSOR"){
-		$PROFESSOR = '1';
-	}
-	if ($ROLE = "ADMIN"){
-		$ADMIN = '1';
-	}
-	if ($ROLE = "STUDENTTUTOR"){
-		$STUDENT = '1';
-		$TUTOR = '1';
-	}
-	if ($ROLE = "PROFESSORADMIN"){
-		$PROFESSOR = '1';
-		$ADMIN = '1';
-	}
 	
+	$STUDENT = 0;
+	$TUTOR = 0;
+	$PROFESSOR = 0;
+	$ADMIN = 0;
+	
+	if ($ROLE == 'STUDENT'){
+		$STUDENT = '1';
+	}
+	if ($ROLE == 'TUTOR'){
+		$TUTOR = '1';
+	}
+	if ($ROLE == 'STUDENTTUTOR'){
+		$STUDENT = '1';
+		$TUTOR = '1';
+	}
+	if ($ROLE == 'PROFESSOR'){
+		$PROFESSOR = '1';
+	}
+	if ($ROLE == 'ADMIN'){
+		$ADMIN = '1';
+	}
+	if ($ROLE == 'PROFESSORADMIN'){
+		$PROFESSOR = '1';
+		$ADMIN = '1';
+	}
+
     
     // we will set up the insert statement to add this new record to the database
     $insertAccount = "INSERT INTO ACCOUNT_T(HAWKID, HASHEDPASS, ACCESS) VALUES ('$HAWKID', '$HASHEDPASS', '1');";

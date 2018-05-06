@@ -54,9 +54,19 @@
 			</div>
 			
 			
-			<!-- form for entering new account -->
+			<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
 			<div class="row" ng-show="isadmin">
-				<!-- ng-show="isloggedin"-->
+				<div class=container>
+					<!-- descriptive text on what page does -->
+					<h1> Create an account</h1><br>
+					<p> Here you can create a username and password a user. Once their account and role is selected a professor can enroll a student in a course or a hire a tutor. If professor is selected you will need to grant the professor access when you create the course</p>
+					<br>
+					<p> Get started by filling out the form below</p>
+				</div>
+				<br>
+				<br>
+				
+				<!-- form for creating a new account -->
 				<form name="newAccountForm" novalidate>
 					<!-- HawkID for account -->
 					<div class="form-group" ng-class="{ 'text-danger': newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched, 'text-success': !newAccountForm.HAWKID.$invalid && newAccountForm.HAWKID.$touched }">
@@ -100,31 +110,22 @@
 					
 					<!-- role for account -->
 					<div class="form-group">
-						<label class="form-control-label" for="ROLE"> Select ay user role</label>
+						<label class="form-control-label" for="ROLE"> Select a user role</label>
 						<br>						
-						<input type="radio" ng-model="account.STUDENT" value="'1'">Student
-					
-						<input type="radio" ng-model="account.TUTOR" value="'1'">Tutor 
-						
-						<input type="radio" ng-model="account.STUDENTTUTOR" value="'1'">Student/Tutor 
-						
-						<input type="radio" ng-model="account.PROFESSOR" value="'1'">Professor 
-						
-						<input type="radio" ng-model="account.ADMIN" value="'1'">Admin 
-						
-						<input type="radio" ng-model="account.PROFESSORADMIN" value="'1'">Professor/Admin 
-						
-											
-				   </div>
-					<!-- newAccount is a function in the controller. account refers to the word we used under ng-model in the input fields -->
-					<button class="btn btn-default" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
+						<input type="radio" ng-model="account.ROLE" value="STUDENT">Student &nbsp
+						<input type="radio" ng-model="account.ROLE" value="TUTOR">Tutor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="STUDENTTUTOR">Student/Tutor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="PROFESSOR">Professor &nbsp
+						<input type="radio" ng-model="account.ROLE" value="ADMIN">Admin &nbsp
+						<input type="radio" ng-model="account.ROLE" value="PROFESSORADMIN">Professor/Admin &nbsp
+					 </div>
+
+					<!-- newAccount is a function in the data.tutorcscontroller. account refers to the word we used under ng-model in the input fields -->
+					<br>
+					<br>
+					<button class="btn btn-success btn-lg" ng-click="newAccount(account)" ng-disabled="newAccountForm.$invalid">Add account</button>
 				</form>
-
-
-			</div> <!-- close row -->
-
-
-
+			</div>
 		</div>
 		<!-- include footer.html-->
 		<div ng-include src="'pages/footer.html'"></div>
