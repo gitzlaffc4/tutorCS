@@ -24,34 +24,6 @@
 		$scope.oneAtATime = true; // used to only display one row at a time
 		
 		
-		
-		
-	
-		/*
-		 * Set edit mode of a particular user
-		 * on is true if we are setting edit mode to be on, false otherwise
-		 * user corresponds to the user for which we are setting an edit mode
-		 */
-		// $scope.setEditMode = function(on, user) {
-		//	if (on) {
-		//		// editplayer matches the ng-model used in the form we use to edit player information
-		//		$scope.edituser = angular.copy(user);
-		//		player.editMode = true;
-		//	} else {
-		//		// if editplayer is null we assume no player is currently being edited
-		//		$scope.edituser = null;
-		//		player.editMode = false;
-		//	}
-		//};
-
-
-		/*
-		 * Gets the edit mode for a user player
-		 */
-		//$scope.getEditMode = function(user) {
-		//	return user.editMode;
-		//};
-	
 		// function to delete a player. it receives the player's name and id and call a php web api to complete deletion from the database
         $scope.deleteUser = function(FIRSTNAME, HAWKID) {
             if (confirm("Are you sure you want to delete " + FIRSTNAME + "?")) {
@@ -160,6 +132,25 @@
             
         };
 		
+		
+		// function to send new account information to web api to add it to the database
+        $scope.enrollStudent = function(enrollmentDetails) {
+			var enrollmentUpload = angular.copy(enrollmentDetails);
+          	$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/enrollstudent.php", enrollmentUpload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/home.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };  
 		
 		
 		

@@ -77,39 +77,60 @@
 			<form name="newEnrollmentForm" novalidate>
 				<!-- Course Name for account -->
 				<div class = "form-group-lg" ng-show="isprofessor">				
-					<label for="courseSelect"> <h4>Change Course</h4></label>
-					<select id="courseSelect" ng-model="viewByCourseID">
+					<label for="courseSelect"> <h4>Select Course:</h4></label>
+					<select id="courseSelect" ng-model="course.COURSE_ID">
 						<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 					</select>
 				</div> 
 
 				<!-- admin's will be able to view for all courses -->
 				<div class = "form-group-lg" ng-show="isadmin">				
-					<label for="courseSelect"> <h4>Change Course</h4></label>
-					<select id="courseSelect" ng-model="viewByCourseID" ng-init="viewByCourseID=1">
+					<label for="courseSelect"> <h4>Select Course:</h4></label>
+					<select id="courseSelect" ng-model="courseEnroll.COURSE_ID">
 						<option ng-repeat="course in data.value.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
 					</select>
 				</div> 
 				<br>
 				<br>
+				<div class = "form-group-lg">			
+					<label for="allocSessions"> <h4>Select Number of Allocated Sessions:</h4></label>
+					<select id="allocSessions" ng-model="courseEnroll.ALLOC">
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+						<option value="5"> 5 </option>
+						<option value="6"> 6 </option>
+						<option value="7"> 7 </option>
+						<option value="8"> 8 </option>
+						<option value="9"> 9 </option>
+						<option value="10"> 10 </option>
+						<option value="11"> 11 </option>
+						<option value="12"> 12 </option>
+						<option value="13"> 13 </option>
+						<option value="14"> 14 </option>
+						<option value="15"> 15 </option>
+						<option value="16"> 16 </option>
+					</select>
+				</div> 
+				<br>
 				<br>
 				<div class="form-group-lg">
 					<label for="multipleSelect"> <h4>Students to enroll</h4> <br>
 						<p>(Hold down cmd or control to select multiple students)</p></label><br>
-					<select name="multipleSelect"  style="height:400px;" id="multipleSelect" ng-model="data.multipleSelect" multiple>
-						<option ng-repeat="student in data.value.allinfo | filter : {STUDENT : '1'}" value="{{student.HAWKID}}"> {{student.HAWKID}} -- {{student.FIRSTNAME}} {{student.LASTNAME}}</option>
-					  
-						
-						
+					<select name="studentSelect"  style="height:400px;" id="studentSelect" ng-model="courseEnroll.STUDENTS" multiple>
+						<option ng-repeat="student in data.value.allinfo | filter : {STUDENT : '1'}" value="{{student.HAWKID}}"> {{student.HAWKID}} - {{student.FIRSTNAME}} {{student.LASTNAME}}</option>
 					</select>
 			 	</div>
-					  
-				multipleSelect = {{data.multipleSelect}}
+				
+				viewByCourseID = {{courseEnroll.COURSE_ID}}<br>
+				ALLOC = {{courseEnroll.ALLOC}}<br>
+				multipleSelect = {{courseEnroll.STUDENTS}}
 
 				<!-- newCourse is a function in the data.tutorcscontroller. course refers to the word we used under ng-model in the input fields -->
 				<br>
 				<br>
-				<button class="btn btn-success btn-lg" ng-click="" ng-disabled="newEnrollmentForm.$invalid">Enroll Students</button>
+				<button class="btn btn-success btn-lg" ng-click="enrollStudent(courseEnroll)" ng-disabled="newEnrollmentForm.$invalid">Enroll Students</button>
 			</form>
 		
 		
