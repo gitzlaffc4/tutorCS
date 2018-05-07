@@ -16,7 +16,7 @@ function connectDB($dbhost,$dbuser,$dbpasswd,$dbname) {
 function queryDB($query, $db) {
   $result = mysqli_query($db, $query);
   if (!$result)
-    punt ('Error in queryDB()', $query, $db); 
+    punt ('Error in queryDB()', $query, $db);
   return ($result);
 }
 
@@ -37,9 +37,17 @@ function nextTuple($result) {
 function punt($message, $query = '', $db = '') {
   $lastPart = '';
   // Check to see if error resulted from a bad query
-  if ($query != '')
+  if ($query != '') {
     $lastPart = "<br><i>$query</i>\n" . '<br>[' . mysqli_errno($db) . '] ' . mysqli_error($db) . "\n";
-  die("\n<br><br><b>Error: $message</b>\n" . $lastPart);
+  }
+  
+  // send back error response as JSON object
+  $response = array();
+  $response['status'] = 'error';
+  $response['message'] = $message . " " . $lastPart;
+  header('Content-Type: application/json');
+  echo(json_encode($response));      
+  die();
 }
 
 // Used for converting a string so it doesn't have characters

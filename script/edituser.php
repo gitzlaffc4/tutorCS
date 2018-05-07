@@ -8,19 +8,20 @@ include_once('dbutils.php');
 // get a handle to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
+
 // get data from the angular controller
 // decode the json object
 $data = json_decode(file_get_contents('php://input'), true);
 
 
 // get each piece of data
-
 // 'HAWKID' matches the name attribute in the form
 $HAWKID = $data['HAWKID'];
 $FIRSTNAME = $data['FIRSTNAME'];
 $LASTNAME = $data['LASTNAME'];
 $NICK_NAME = $data['NICK_NAME'];
 $PHONE_NUMBER = $data['PHONE_NUMBER'];
+
 
 // set up variables to handle errors
 // is complete will be false if we find any problems when checking on the data
@@ -43,6 +44,7 @@ if ($currentUser != $HAWKID){
 	$isComplete = false;
     $errorMessage .= "You can only update your own profile.";
 } 
+
 //
 // Validation
 //
@@ -68,13 +70,10 @@ if ($isComplete) {
     }
 } 
 
-
-
-
 // check if the hawkid passed to this api corresponds to an existing record in the database
 if ($isComplete) {
     // set up a query to check if this player is in the database already
-    $query = "SELECT FIRSTNAME FROM USER_T WHERE HAWKID = $HAWKID";
+    $query = "SELECT FIRSTNAME FROM USER_T WHERE HAWKID = '$HAWKID'";
     
     // we need to run the query
     $result = queryDB($query, $db);
@@ -86,7 +85,6 @@ if ($isComplete) {
         $errorMessage .= "The HawkID $HawkID does not correspond to any user.";
     }
 }
-
 
 // if we got this far and $isComplete is true it means we should edit the user in the database
 if ($isComplete) {
@@ -101,6 +99,7 @@ if ($isComplete) {
     $response['status'] = 'success';
     header('Content-Type: application/json');
     echo(json_encode($response));    
+	
 } else {
     // there's been an error. We need to report it to the angular controller.
     
@@ -116,5 +115,4 @@ if ($isComplete) {
     header('Content-Type: application/json');
     echo(json_encode($response));    
 }
-
 ?>
