@@ -1,107 +1,129 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="avail">
-	
-		<!-- These are the links to bootstrap code -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-		<!-- These are the links to boostrap code -->
-		<!-- These links are from -put address here -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-		
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Create New Tutoring Session</title>
+
 		<!-- set base url -->
-		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/" -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		<script src="js/dataavail.tutorcs.controller.js"></script>
 		
 		
-		<!-- link to angular-->
-		<!-- Download from https://angularjs.org/ then upload to webdev server -->
-		<script src="angular.min.js"></script>
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
 
-		<!-- Angular code -->
-		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
-    	<script src="avail.module.js"></script>
-	    <script src="dataavail.controller.js"></script>
+		<!--link to font awesome -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<head>
-<meta charset="utf-8">
-<title>newSession</title>
-</head>
-	<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-	<div class = "row">
-		<h1>Something to work with</h1>  
-					</div>
-	</div>
-	</div>
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
 
-<body>
-	<!-- we are defining the angular controller that we will use in this chunk of html defined by the div as 'dataControl' from data.avail.controller.js -->
-    <div class="container" ng-controller="availControl">
-	<!-- header -->
-    <!--    <div ng-include ng-init="menuHighlight = 1;" src="'header.html'"></div> -->
-        
-        
-        <!-- form for entering new avail -->
-        <div class="row">
-            
-              
-            <form  name="newSessionForm" novalidate>
-                
-          		<!-- N O T E -->
-				<!-- Use session variable from login.php so user doesn't have to enter in there own hawkid-->
-                <!-- Hawk id -->
-                <!-- ng-class sets up the style for this element. You'll find a format of 'style': condition, 'style2': condition2 -->
-                <!-- notice in ng-class we are using the name of the form, and the name of the input element in the codition statements -->
-                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched, 'text-success': !newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched}">
-                    <label>TUTOR_HAWKID </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched, 'is-valid': !newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched}" name="TUTOR_HAWKID" ng-model="avail.TUTOR_HAWKID" ng-minlength="1" required/>
-                    <p ng-show="newSessionForm.TUTOR_HAWKID.$invalid && newSessionForm.TUTOR_HAWKID.$touched" > must be at least one character</p>
-                </div>
-                <!-- Day of the week -->
-                
-                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched, 'text-success': !newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched}">
-                    <label>SESSION_DATE: </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched, 'is-valid': !newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched}" name="SESSION_DATE" ng-model="avail.SESSION_DATE" ng-minlength="4" required/>
-                    <p ng-show="newSessionForm.SESSION_DATE.$invalid && newSessionForm.SESSION_DATE.$touched" > must be at least 4 characters long</p>
-                </div>
-                <!-- AVAILABLE -->
-                <div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched, 'text-success': !newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched}">
-                    <label>SESSION_START_TIME: </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched, 'is-valid': !newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched}" name="SESSION_START_TIME" ng-model="avail.SESSION_START_TIME" ng-minlength="1" />
-                    <p ng-show="newSessionForm.SESSION_START_TIME.$invalid && newSessionForm.SESSION_START_TIME.$touched" >must be at least 1 character</p>
-                </div>
+	</head>
+	
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		
+		
+		
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()" style="padding-top:50px;">
+			<div class="row" ng-show="!istutor">
+				<h1>Access Denied -- you must be a tutor to view this page</h1>
+			</div>
+			
+			
+			<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
+			<div class="row" ng-show="istutor">
+				<div class=container>
+					<!-- descriptive text on what page does -->
+					<h1> Create an Open Tutoring Session</h1><br>
+					<p> Here you can create individual tutoring sessions that are available for students to reserve with you </p>
+					<br>
+					<p> Get started by filling out the form below</p>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container" ng-controller="availControl" ng-init="checkifloggedin()" style="padding-left: 50px">
+			<!-- form for entering new avail -->
+			<form  name="newSessionForm" novalidate>
 				
-				 <!-- TIME_START -->
-                	<div class="form-group" ng-class="{ 'text-danger': newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched, 'text-success': !newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched}">
-                    <label>SESSION_END_TIME: </label>
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched, 'is-valid': !newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched}" name="SESSION_END_TIME" ng-model="avail.SESSION_END_TIME" ng-minlength="1" />
-                    <p ng-show="newSessionForm.SESSION_END_TIME.$invalid && newSessionForm.SESSION_END_TIME.$touched" >must be at least 1 character</p>
-                </div>
 				
+
+				<!-- tutors can select their course to set up for course -->
+				<div class = "form-group-lg">		
+					<label for="courseSelect"> <h4>Select Course:</h4></label>
+					<select id="courseSelect" ng-model="avail.COURSE_ID">
+						<option ng-repeat="course in data.tutorCourses" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} &nbsp ({{course.SEMESTER}})</option>
+					</select>
+				</div> 
+				<br>
+				<br>
+				<div class = "form-group-lg">
+					<label for="DATE"><h4>Pick Available Date:</h4></label><br>
+					<input type="date" id="DATE" name="DATE" ng-model="avail.DATE" required />
+					 <!-- TIME_START -->
+				</div> 
+				<br>
+				<br>
+				<!-- START TIME for account -->
+				<div class="form-group" ng-class="{ 'text-danger': newSessionForm.TIME.$invalid && newSessionForm.TIME.$touched, 'text-success': !newSessionForm.TIME.$invalid && newSessionForm.TIME.$touched }">
+					<label class="form-control-label" for="TIME">
+						<h4>Start Time:</h4>
+						<p>Time must be made in Military Time HH:mm </p>
+					
+					</label>
+					<input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.TIME.$invalid && newSessionForm.TIME.$touched, 'is-valid': !newSessionForm.TIME.$invalid && newSessionForm.TIME.$touched }" name="TIME" ng-model="avail.TIME" style="width: 150px" ng-length="5" id="TIME" required/>
+					<div ng-show="newSessionForm.TIME.$invalid && newSessionForm.TIME.$touched" >The time must be valid</div>
 				</div>
 				
-				 <!-- TIME_STOP -->
-                	<div class="form-group" ng-class="{ 'text-danger': newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched, 'text-success': !newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched}">
-                    <label>SCHEDULED: </label> 	
-                    <input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched, 'is-valid': !newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched}" name="SCHEDULED" ng-model="avail.SCHEDULED" ng-minlength="1" />
-                    <p ng-show="newSessionForm.SCHEDULED.$invalid && newSessionForm.SCHEDULED.$touched" >must be at least 1 character</p>
-                </div>
-				
-                
-                
-                <!-- newSession is a function in the controller. avail refers to the word we used under ng-model in the input fields -->
-                <button class="btn btn-default" ng-click="newSession(avail)" ng-disabled="newSessionForm.$invalid">Add availability</button>
-            </form>
-            
-        
-        </div> <!-- close row -->
-        
-        <!-- Footer -->
-        <!-- <div ng-include src="'footer.html'"></div> -->
-        
-    </div>
-	
-	
-</body>
+				<!-- START TIME for account -->
+				<div class="form-group" ng-class="{ 'text-danger': newSessionForm.TIMEEND.$invalid && newSessionForm.TIMEEND.$touched, 'text-success': !newSessionForm.TIMEEND.$invalid && newSessionForm.TIMEEND.$touched }">
+					<label class="form-control-label" for="TIMEEND">
+						<h4>End Time:</h4>
+						<p>Sessions must be made in Military Time HH:mm </p>
+						<p>Please Limit Session Length to 30 minutes</p>
+					</label>
+					<input type="text" class="form-control" ng-class="{ 'is-invalid': newSessionForm.TIMEEND.$invalid && newSessionForm.TIMEEND.$touched, 'is-valid': !newSessionForm.TIMEEND.$invalid && newSessionForm.TIMEEND.$touched }" name="TIMEEND" ng-model="avail.TIMEEND" style="width: 150px" ng-length="5" id="TIMEEND" required/>
+					<div ng-show="newSessionForm.TIMEEND.$invalid && newSessionForm.TIMEEND.$touched" >The time must be valid</div>
+				</div>
+				<br><br>
 
+				<!-- newSession is a function in the controller. avail refers to the word we used under ng-model in the input fields -->
+				<button class="btn btn-success"  ng-click="newSession(avail)" ng-disabled="newSessionForm.$invalid">Add availability</button>
+
+			</form>	
+		</div>
+		<!-- include footer.html-->
+		<div ng-include src="'pages/footer.html'"></div>
+	</body>
 </html>
+
+
+
+
+

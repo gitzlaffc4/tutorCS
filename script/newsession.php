@@ -11,21 +11,15 @@ $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 // decode the json object
 $data = json_decode(file_get_contents('php://input'), true);
 
-//SESSION_T
-//SESSION_ID INT(6) NOT NULL AUTO_INCREMENT,
-//	TUTOR_HAWKID VARCHAR(255) NOT NULL,
-//	COURSE_ID INT(8) NOT NULL,
-//	SESSION_DATE DATE NOT NULL,
-//	SESSION_START_TIME TIME NOT NULL,
-//	SESSION_END_TIME TIME NOT NULL,
-//	SCHEDULED VARCHAR(1) NOT NULL,
 
-$SESSION_ID = $data['SESSION_ID'];
-$TUTOR_HAWKID = $data['TUTOR_HAWKID'];
-$SESSION_DATE = $data['SESSION_DATE'];
-$SESSION_START_TIME = $data["SESSION_START_TIME"];
-$SESSION_END_TIME = $data["SESSION_END_TIME"];
-$SCHEDULED = $data["SCHEDULED"];
+// get user that is logged in
+session_start();
+$HAWKID = $_SESSION['HAWKID'];
+$COURSE_ID = $data['COURSE_ID'];
+$SESSION_DATE = $data['DATE'];
+$SESSION_START_TIME = $data['TIME'];
+$SESSION_END_TIME = $data['TIMEEND'];
+
 
 // Set up variables to handle errors
 // is complete will be false if we findany problems when checkin on the data
@@ -43,7 +37,7 @@ $errorMessage = "";
 // Add availability to the database
 
 if($isComplete) {
-	$insertquery = "INSERT INTO SESSION_T (SESSION_ID, TUTOR_HAWKID, SESSION_DATE, SESSION_START_TIME, SESSION_END_TIME, SCHEDULED) VALUES ('$SESSION_ID', '$TUTOR_HAWKID', '$SESSION_DATE', '$SESSION_START_TIME', '$SESSION_END_TIME', '$SCHEDULED')";
+	$insertquery = "INSERT INTO SESSION_T (TUTOR_HAWKID, COURSE_ID, SESSION_DATE, SESSION_START_TIME, SESSION_END_TIME) VALUES ('$HAWKID', $COURSE_ID, '$SESSION_DATE', '$SESSION_START_TIME', '$SESSION_END_TIME');";
 	
 	//Run the insert statement
 	queryDB($insertquery, $db);

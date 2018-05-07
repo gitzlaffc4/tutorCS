@@ -11,8 +11,7 @@
         $http.get('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/getavailablesessions.php')
             .then(function(response) {
                 $scope.data = response.data.value;
-            }
-                   );        
+            } );        
         
       
       
@@ -47,13 +46,13 @@
 		$scope.newSession = function(availDetails) {
 			var availupload = angular.copy(availDetails);
 			
-			$http.post("newsession.php", availupload)
+			$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/newsession.php", availupload)
 				.then(function (response) {
 					if (response.status == 200){
 						if (response.data.status == 'error') {
 							alert('error: ' + response.data.message);
 						}else{
-							$window.location.href = "studentsessions.html";
+							$window.location.href = "pages/tutor/newsession.html";
 						}
 					} else {
 						alert('unexpected error 1');
@@ -83,7 +82,32 @@
 			}
 			
 		};
+		
+		
+				// function to check if user is logged in
+        $scope.checkifloggedin = function() {
+          $http.post("script/isloggedin.php")
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // set $scope.isloggedin based on whether the user is logged in or not
+                        $scope.isloggedin = response.data.loggedin;
+						$scope.isadmin = response.data.admin;
+						$scope.isprofessor = response.data.professor;
+						$scope.istutor = response.data.tutor;
+						$scope.isstudent = response.data.student;
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };
 
+		
+		
     });
 
 
