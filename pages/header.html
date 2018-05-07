@@ -118,6 +118,11 @@
 							<a id="menuid-resources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
 						</li>
 
+						
+						
+						
+						
+						
 						<!--logging in as a student --> 
 						<!-- student links will use ng-show="isstudent" -->
 						<li class=" active" ng-show="isstudent">
@@ -128,17 +133,22 @@
 							</a>
 						</li>
 						<li class="courses" ng-show="isstudent">
-							<a id="menuid-student-courses" href="#" class="courss#" title="Courses">My Courses</a>
+							<a id="menuid-student-courses" href="pages/student/viewcontent.html" class="courss#" title="Courses">My Courses</a>
 						</li>
 
 						<li class="help" ng-show="isstudent">
-							<a id="menuid-student-help" href="#" class="help" title="Help">Find Help</a>
+							<a id="menuid-student-help" href="pages/student/studentsessions.html" class="help" title="Help">Find Help</a>
 						</li>
 
 						<li class="resources" ng-show="isstudent">
 							<a id="menuid-student-sources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
 						</li>
 
+						
+						
+						
+						
+						
 
 						<!--Log in as a tutor --> 
 						<!-- tutor links will use ng-show="istutor"
@@ -151,21 +161,22 @@
 									</div>
 							</a>
 						</li>
-						<li class="Tutoring Schedule" ng-show="istutor">
-							<a id="menuid-tutor-scheduling" href="#" class="scheduling" title="Tutoring Schedule">Schedule</a>
-						</li>
 						<li class="courses" ng-show="istutor">
-							<a id="menuid-tutor-courses" href="#" class="courss#" title="Courses">My Courses</a>
+							<a id="menuid-tutor-courses" href="pages/tutor/viewcontent.html" class="courss#" title="Courses">My Courses</a>
 						</li>
 
 						<li class="help" ng-show="istutor">
-							<a id="menuid-tutor-help" href="#" class="help" title="Help">Find Help</a>
+							<a id="menuid-tutor-help" href="pages/tutor/newsession.html" class="help" title="Help">Offer Help</a>
 						</li>
 
 						<li class="resources" ng-show="istutor">
 							<a id="menuid-tutor-sources" href="https://cs.uiowa.edu/resources" target="_blank" class="sources" title="Resources">Other Resources</a>
 						</li>
 
+						
+						
+						
+						
 
 						<!--logged in as a professor -->
 						<!-- professor links will use ng-show="isprofessor" -->
@@ -177,10 +188,16 @@
 							</a>
 						</li>
 						<li class="courses" ng-show="isprofessor">
-							<a id="menuid-prof-courses" href="#" class="courss#" title="Courses">My Courses</a>
+							<a id="menuid-prof-courses" href="pages/admin_prof/viewcontent.html" class="courss#" title="Courses">My Course Content</a>
 						</li>
 						<li class="tutors" ng-show="isprofessor">
-							<a id="menuid-prof-tutor" href="#" class="tutors" title="tutors">Tutors</a>
+							<a id="menuid-prof-tutor" href="pages/admin_prof/courselist.html" class="tutors" title="tutors">Course Roaster</a>
+						</li>
+						<li class="tutors" ng-show="isprofessor">
+							<a id="menuid-prof-tutor" href="pages/admin_prof/enrollstudents.html" class="tutors" title="tutors">Enroll Students</a>
+						</li>
+						<li class="tutors" ng-show="isprofessor">
+							<a id="menuid-prof-tutor" href="pages/admin_prof/hiretutors.html" class="tutors" title="tutors">Hire Tutors</a>
 						</li>
 						<li class="Reources" ng-show="isprofessor">
 							<a id="menuid-prof-sources" href="https://cs.uiowa.edu/resources" target="_blank" title="Resources">Other Resources</a>
@@ -189,16 +206,21 @@
 							<a id="menuid-prof-help" href="#" class="help" title="Help">Find Help</a>
 						</li>
 
+						
+						
 
 						<!-- admin links will use ng-show="isadmin" -->
 						<!--Admin and falculty gets "My Tutors" and "Accounts"> -->
 						
 						<li class="Admin Home" ng-show="isadmin">
-							<a id="menuid-adminAndFalcultyhome" href="pages/admin_prof/home.html" class="Accounts" title="Account Creation">Admin Home</a>
+							<a id="menuid-adminAndFalcultyhome" href="pages/admin_prof/home.html" class="home" title="Account Creation">Admin Home</a>
 						</li>
 
 						<li class="Account Creation" ng-show="isadmin">
 							<a id="menuid-adminAndFalculty" href="pages/admin_prof/newaccount.html" class="Accounts" title="Account Creation">Create Account</a>
+						</li>
+						<li class="Course Creation" ng-show="isadmin">
+							<a id="menuid-adminAndFalculty" href="pages/admin_prof/createcourse.html" class="courses" title="Account Creation">Create Course</a>
 						</li>
 						
 						<li class="View Roles" ng-show="isadmin">
