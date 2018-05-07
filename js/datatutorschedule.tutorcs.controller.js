@@ -65,6 +65,28 @@
 			
 		};
 		
+		// app to let students reserve tutoring sessions 
+		$scope.completeSession = function(SESSIONID) {
+			if (confirm("Are you sure you want to complete this session?")) {
+				$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/completesession.php', {"SESSIONID" : SESSIONID})
+					.then(function (response) {
+						if(response.status == 200){
+							if (response.data.status == 'error'){
+								alert('error: ' + response.data.message);
+							} else {
+								//successful
+								// send user back to avail.html
+								$window.location.href = "pages/tutor/home.html";
+							}
+						} else {
+							alert('unexpected error 2');
+						}
+					}
+				 );
+			}
+			
+		};
+		
 	});
 	
 	
