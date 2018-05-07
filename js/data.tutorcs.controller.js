@@ -24,8 +24,29 @@
 		
 		// this variable will hold the page number that should be highlighted in the menu bar
         // 0 is for index.html
-		// 1 is for 
+		// 1 is for editprofile.html
+		//2 is for student/home.html
+		// 3 is for student/studentsessions.html
+		//4	is for student/viewcontent.html
+	   //5	is for tutor/home.html
+	   //6	is for tutor/avail.html
+	   //7	is for tutor/newavail.html
+	   //8	is for tutor/newsession.html
+	   //9	is for tutor/viewcontent.html
+	   //10	is for admin_prof/home.html
+	   //11	is for admin_prof/courselist.html
+	   //12	is for admin_prof/createcontent.html
+	   //13	is for admin_prof/createcourse.html
+	   //14	is for admin_prof/enrollstudent.html
+	   //15	is for admin_prof/hiretutor.html
+	   //16	is for admin_prof/newaccount.html
+	   //17	is for admin_prof/viewcontent.html
+	   //18	is for admin_prof/viewroles.html
+		
         $scope.menuHighlight = 0;
+		
+		
+		
 		
 		// function to send new account information to web api to add it to the database
         $scope.newAccount = function(accountDetails) {

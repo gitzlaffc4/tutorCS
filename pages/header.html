@@ -56,7 +56,6 @@
 					</button>
 					<a class="navbar-brand" href="http://www.uiowa.edu/" tabindex="1" title="The University of Iowa Homepage">
 						<img src="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/images/UILogo.png" width="210" height="30">
-						<!--<i style="font-size: 1.4em; color: white;" class="fa ui-glyph-icon-domewordsingle text-branded"></i>-->
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="shared-navbar-collapse">
@@ -78,6 +77,7 @@
 				</div>
 			</div>
 		</nav>
+		
 		<!--everyone gets "My Account, my courses, help, sources" tab-->
 		<!--tutor gets "Tutoring Schedule" tab -->
 		<!--Admin and proffessor gets "My Tutors" and "Accounts" -->
@@ -121,11 +121,9 @@
 						
 						
 						
-						
-						
 						<!--logging in as a student --> 
 						<!-- student links will use ng-show="isstudent" -->
-						<li class=" active" ng-show="isstudent">
+						<li class="active" ng-show="isstudent">
 							<a id="menuid-studentHome" href="pages/student/home.html" class="" title="Home">My Account
 									<div class="text-center hidden-sm hidden-xs" style="position: absolute; bottom: -9px; width: 100%; left: 0;">
 										<i class="fa fa-caret-up"></i>
