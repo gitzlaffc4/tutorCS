@@ -86,7 +86,7 @@
 		
 				// function to check if user is logged in
         $scope.checkifloggedin = function() {
-          $http.post("script/isloggedin.php")
+          $http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/isloggedin.php")
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -105,6 +105,29 @@
                }
             });                        
         };
+		
+		
+		// app to let students reserve tutoring sessions 
+		$scope.reserveSession = function(SESSIONID,COURSE_ID) {
+			if (confirm("Are you sure you want to reserve this session?")) {
+				$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/reserve.php', {"SESSIONID" : SESSIONID, "COURSE_ID" : COURSE_ID})
+					.then(function (response) {
+						if(response.status == 200){
+							if (response.data.status == 'error'){
+								alert('error: ' + response.data.message);
+							} else {
+								//successful
+								// send user back to avail.html
+								$window.location.href = "pages/student/home.html";
+							}
+						} else {
+							alert('unexpected error 2');
+						}
+					}
+				 );
+			}
+			
+		};
 
 		
 		

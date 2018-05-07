@@ -19,6 +19,12 @@ $result = queryDB($Availquery, $db);
 $tutorsQuery = "SELECT COURSE_T.*, TUTORS_T.* FROM TUTORS_T, COURSE_T WHERE TUTORS_T.COURSE_ID = COURSE_T.COURSE_ID AND TUTORS_T.HAWKID = '$currentUser';";
 $tutorResult = queryDB($tutorsQuery, $db);
 
+$openQuery = "SELECT SESSION_T.*, USER_T.* FROM SESSION_T, USER_T WHERE SESSION_T.SCHEDULED = 'N' AND SESSION_T.TUTOR_HAWKID = USER_T.HAWKID;";
+$openResult = queryDB($openQuery, $db);
+
+$studentEnrollment = "SELECT ENROLLED_T.*, COURSE_T.* FROM ENROLLED_T, COURSE_T WHERE ENROLLED_T.COURSE_ID = COURSE_T.COURSE_ID AND ENROLLED_T.HAWKID = '$currentUser';";
+$studentResult = queryDB($studentEnrollment, $db);
+
 
 
 // assign results to an array we can then send back to whomever called
@@ -42,12 +48,31 @@ while ($currCourse = nextTuple($tutorResult)) {
     $h++;
 }
 
+$openSessions = array();
+$s = 0;
+while ($currSess = nextTuple($openResult)){
+	$profilePic = $currSess['PICTURE'];
+	$currSess['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='50' height='50'>";
+	$openSessions[$s] = $currSess;
+	$s++;
+}
+
+$studentEnroll = array();
+$e = 0;
+while ($currCourse = nextTuple($studentResult)){
+	$studentEnroll[$e] = $currCourse;
+	$e++;
+}
+
+
 
 // put together a JSON object to send back the data on the available timesS
 $response = array();
 $response['status'] = 'success';
 $response['value']['avail'] = $avail;
 $response['value']['tutorCourses'] = $tutorCourses;
+$response['value']['openSessions'] = $openSessions;
+$response['value']['studentEnroll'] = $studentEnroll;
 header('Content-Type: application/json');
 echo(json_encode($response));
 

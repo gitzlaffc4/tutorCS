@@ -1,6 +1,16 @@
-<!doctype html>
-<html lang="en" ng-app="avail">
-	<!-- These are the links to bootstrap code -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Schedule Tutoring</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -9,59 +19,122 @@
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-		<!-- set base url -->
-		<!-- <base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/"> -->
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		<script src="js/dataavail.tutorcs.controller.js"></script>
+		
+		
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
+
+	</head>
 	
-		 <!-- link to angular-->
-		<!-- Download from https://angularjs.org/ then upload to webdev server -->
-		<script src="angular.min.js"></script>
-
-		<!-- Angular code -->
-		<!-- avail.module.js is where we define the angular app called 'avail'. We use the name of the app in the html element at the top of the file -->
-		<script src="avail.module.js"></script>
-		<script src="dataavail.controller.js"></script>
-
-<head>
-<meta charset="utf-8">
-<title>Student Sessions</title>
-</head>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class = "row">
-				<h1>Student Sessions</h1>  
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		<!-- header links from header.html file  -->
+		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
+		
+		
+		
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()" style="padding-top:50px;">
+			<div class="row" ng-show="!isstudent">
+				<h1>Access Denied -- you must be a tutor to view this page</h1>
+			</div>
+			
+			
+			<!-- creating a new account is only accessible by admins eventually authentication will just be one using UIOWA Shib login -->
+			<div class="row" ng-show="isstudent">
+				<div class="container">
+					<!-- descriptive text on what page does -->
+					<h1> Reserve a Tutoring Session</h1><br>
+					<p> Here you can create individual tutoring sessions that are available for students to reserve with you </p>
+					<br>
+					<p> Get started by filling out the form below</p>
+				</div>
 			</div>
 		</div>
-	</div>
-
-<body>	
-	<div class="container" ng-controller="availControl">
-	<div class="col-md-8 col-md-offset-2">
-	<div class="row">
-            
-            <!-- Card for all times -->
-            <!-- We are getting our data from $scope.data in data.avail.controller.js. The JSON object we get has the data under "times" -->
-            <!-- We are defining each "row" of data as player -->
-            <!-- | filter:query is used to filter the data based on the text entered in the input field above with ng-model="query[queryBy]", and using $scope.query and $score.queryBy variables defined in the controller -->
-            <div class="card m-1" style="width: 18rem" ng-repeat="avail in data.avail" | filter:query>
-				<div ng-init="setEditMode(false, avail);"></div>
+		<br>
+		<div class="container" ng-controller="availControl" ng-init="checkifloggedin()" style="padding-left: 50px">
+			<div class="row">
 				
-					<div class="card-header">
-					   TUTOR_HAWKID: {{avail.TUTOR_HAWKID}}
-					</div>
-                
-					<div class="card-body">
-						<p>SESSION_DATE:{{avail.SESSION_DATE}}</p>
-						<p>SESSION_START_TIME: {{avail.SESSION_START_TIME}}</p>
-						<button class="btn btn-primary" ng-click="deleteSession(avail.HAWKID, avail.AVAILSLOTID)">Cancel Session</button>
-						<button class="btn btn-primary" ng-click="addSession(avail.HAWKID, avail.AVAILABLE)">Add Session</button>
-						<button class="btn btn-primary" ng-click="dropSession(avail.HAWKID, avail.AVAILABLE)">Drop Session</button>
-					</div>
-         
-            </div>
-                   <!-- Footer -->
-        
-        </div>
-	</div>
-	</div>
-</body>
+				<h2>Remaing Tutoring Sessions</h2>
+				<div ng-repeat="option in data.studentEnroll">
+					<h4 style="padding-left: 20px">{{option.COURSE_NAME}} &nbsp ({{option.SEMESTER}}) &nbsp <span class="label label-info">{{option.ALLOC_SESSIONS}}</span></h4>
+				</div>
+				<br>
+				<br>
+				<hr>
+				<!-- Course Name for account -->
+				<div class = "form-group-lg">				
+					<label for="courseSelect"> <h3>Select Course:</h3></label>
+					<select id="courseSelect" ng-model="courseFilter.COURSE_ID">
+						<option ng-repeat="option in data.studentEnroll" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+						
+					</select>
+					
+				</div>
+				<!-- Card for all times -->
+				<!-- We are getting our data from $scope.data in data.avail.controller.js. The JSON object we get has the data under "times" -->
+				<!-- We are defining each "row" of data as player -->
+				<!-- | filter:query is used to filter the data based on the text entered in the input field above with ng-model="query[queryBy]", and using $scope.query and $score.queryBy variables defined in the controller -->
+				
+				<table class="table table-hover table-striped table-bordered table-responsive">
+					<thead>
+						<tr>
+							<th></th>
+							
+							<th scope="col">
+									Name
+							</th>
+							<th scope="col">Email</th>
+							<th scope="col">Date</th>
+							<th scope="col">Time</th>
+							<th scope="col">Reserve</th>
+						</tr>
+					</thead> 
+
+
+					<tbody>
+						<!-- iterate through student information stored in the JSON object studentInfo -->
+						<tr ng-repeat="availSlot in data.openSessions | filter: {COURSE_ID : courseFilter.COURSE_ID}">
+							<th>
+								<div class="embed-responsive embed-responsive-16by9">
+									<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorxs.filter.js -->
+									<span ng-bind-html="availSlot.PROFILEPIC | trustHtml"></span>
+								</div>
+							</th>
+							<td>{{availSlot.FIRSTNAME}} {{availSlot.LASTNAME}}</td>
+							<td>{{availSlot.EMAIL}}</td>
+							<!-- this section allows a professor or admin to add or remove allocated tutoring sessions for each student --> 
+							<td> {{availSlot.SESSION_DATE | date:"MM/dd/yyyy"}}</td>
+							<td> {{availSlot.SESSION_START_TIME}} - {{availSlot.SESSION_END_TIME}}</td>
+							<td>
+								<button type="button" ng-click="reserveSession(availSlot.SESSION_ID, availSlot.COURSE_ID)" class="btn btn-success">Reserve! >
+								</button>
+							</td>
+					</tbody>	
+				</table>
+
+
+			</div>
+			
+		</div>
+		<!-- include footer.html-->
+		<div ng-include src="'pages/footer.html'"></div>
+	</body>
 </html>
+
+
+
+
+
