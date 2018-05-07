@@ -133,10 +133,30 @@
         };
 		
 		
-		// function to send new account information to web api to add it to the database
+		// function to send new student enrollment to the database through the enrollstudent.php file
         $scope.enrollStudent = function(enrollmentDetails) {
 			var enrollmentUpload = angular.copy(enrollmentDetails);
           	$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/enrollstudent.php", enrollmentUpload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/home.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };  
+		
+		
+		// function to send new tutor hires to the data base though the hiretutor.php
+        $scope.hireTutor = function(hireDetails) {
+			var hireUpload = angular.copy(hireDetails);
+          	$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/hiretutor.php", hireUpload)
             .then(function (response) {
                if (response.status == 200) {
                     if (response.data.status == 'error') {

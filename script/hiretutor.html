@@ -5,7 +5,7 @@
 		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
 
 		<!-- shows on tabs and bookmarks-->
-		<title>Hawkeye Homework Hackers - Enroll Student</title>
+		<title>Hawkeye Homework Hackers - Hire Tutor</title>
 
 		<!-- set base url -->
 		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
@@ -43,7 +43,7 @@
 	</head>
 	
 	<body>
-		<!--Nav bar -->
+		<!--Nav bar --> 
 		<!--Hamburger collapsing System for smaller screens -->
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
@@ -61,7 +61,7 @@
 				<div class="container">
 					<!-- descriptive text on what page does -->
 					<h1> Enroll Students in your Course</h1><br>
-					<p> Here you can enroll students in your courses and set up define how many alloacted tutoring sessions they initally get for that course.</p>
+					<p> Here you can create a course for any semester and specify which professors are allowed access</p>
 					<br>
 					<p> Get started by filling out the form below</p>
 				</div>
@@ -74,11 +74,11 @@
 
 		
 			<!-- form for creating a new course-->
-			<form name="newEnrollmentForm" novalidate>
+			<form name="newHireForm" novalidate>
 				<!-- Course Name for account -->
 				<div class = "form-group-lg" ng-show="isprofessor">				
 					<label for="courseSelect"> <h4>Select Course:</h4></label>
-					<select id="courseSelect" ng-model="courseEnroll.COURSE_ID">
+					<select id="courseSelect" ng-model="hire.COURSE_ID">
 						<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 					</select>
 				</div> 
@@ -86,47 +86,28 @@
 				<!-- admin's will be able to view for all courses -->
 				<div class = "form-group-lg" ng-show="isadmin">				
 					<label for="courseSelect"> <h4>Select Course:</h4></label>
-					<select id="courseSelect" ng-model="courseEnroll.COURSE_ID">
+					<select id="courseSelect" ng-model="hire.COURSE_ID">
 						<option ng-repeat="course in data.value.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
 					</select>
 				</div> 
 				<br>
 				<br>
-				<div class = "form-group-lg">			
-					<label for="allocSessions"> <h4>Select Number of Allocated Sessions:</h4></label>
-					<select id="allocSessions" ng-model="courseEnroll.ALLOC">
-						<option value="1"> 1 </option>
-						<option value="2"> 2 </option>
-						<option value="3"> 3 </option>
-						<option value="4"> 4 </option>
-						<option value="5"> 5 </option>
-						<option value="6"> 6 </option>
-						<option value="7"> 7 </option>
-						<option value="8"> 8 </option>
-						<option value="9"> 9 </option>
-						<option value="10"> 10 </option>
-						<option value="11"> 11 </option>
-						<option value="12"> 12 </option>
-						<option value="13"> 13 </option>
-						<option value="14"> 14 </option>
-						<option value="15"> 15 </option>
-						<option value="16"> 16 </option>
-					</select>
-				</div> 
-				<br>
 				<br>
 				<div class="form-group-lg">
-					<label for="studentSelect"> <h4>Students to Enroll:</h4>
+					<label for="tutorSelect"> <h4>Students to enroll</h4> <br>
 						<p>(Hold down cmd or control to select multiple students)</p></label><br>
-					<select name="studentSelect"  style="height:400px;" id="studentSelect" ng-model="courseEnroll.STUDENTS" multiple>
-						<option ng-repeat="student in data.value.allinfo | filter : {STUDENT : '1'}" value="{{student.HAWKID}}"> {{student.HAWKID}} - {{student.FIRSTNAME}} {{student.LASTNAME}}</option>
+					<select name="tutorSelect"  style="height:400px;" id="tutorSelect" ng-model="hire.STUDENTS" multiple>
+						<option ng-repeat="tutor in data.value.allinfo | filter : {TUTOR : '1'}" value="{{tutor.HAWKID}}"> {{tutor.HAWKID}} - {{tutor.FIRSTNAME}} {{tutor.LASTNAME}}</option>
 					</select>
 			 	</div>
+				
+				viewByCourseID = {{hire.COURSE_ID}}<br>
+				multipleSelect = {{hire.STUDENTS}}
 
 				<!-- newCourse is a function in the data.tutorcscontroller. course refers to the word we used under ng-model in the input fields -->
 				<br>
 				<br>
-				<button class="btn btn-success btn-lg" ng-click="enrollStudent(courseEnroll)">Enroll Students</button>
+				<button class="btn btn-success btn-lg" ng-click="enrollStudent(courseEnroll)" ng-disabled="newEnrollmentForm.$invalid">Hire Tutors</button>
 			</form>
 		
 		
