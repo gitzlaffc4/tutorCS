@@ -43,6 +43,29 @@
             });                        
         };
 		
+		
+		// app to let students reserve tutoring sessions 
+		$scope.studentCancel = function(SESSIONID,COURSE_ID) {
+			if (confirm("Are you sure you want to cancel this session?")) {
+				$http.post('https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/studentcancel.php', {"SESSIONID" : SESSIONID, "COURSE_ID" : COURSE_ID})
+					.then(function (response) {
+						if(response.status == 200){
+							if (response.data.status == 'error'){
+								alert('error: ' + response.data.message);
+							} else {
+								//successful
+								// send user back to avail.html
+								$window.location.href = "pages/student/home.html";
+							}
+						} else {
+							alert('unexpected error 2');
+						}
+					}
+				 );
+			}
+			
+		};
+		
 	});
 	
 	

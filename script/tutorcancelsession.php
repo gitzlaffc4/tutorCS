@@ -11,73 +11,53 @@ $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 // decode the json object
 $data = json_decode(file_get_contents('php://input'), true);
 
-// get each piece of data
-//AVAILSLOTID	"1"
-//HAWKID	"cmurphy3_t"
-//DAY_OF_WEEK	"Monday"
-//AVAILABLE	"1"
-//TIME_START	"11:00:00"
-//TIME_STOP	"12:00:00"
 
-
-// get each piece of data
-
-// '' matches the '' attribute in the for
-$AVAILSLOTID = $data['AVAILSLOTID'];
-
-//set up variables to handle errors
-// is complete will be false if we find any problems when checking on the data
+// get user that is logged in
+session_start();
+$HAWKID = $_SESSION['HAWKID'];
+$SESSION_ID = $data['SESSIONID'];
+$COURSE_ID = $data['COURSE_ID'];
+$STUD_HAWKID = $data['STUD_HAWKID'];
+// Set up variables to handle errors
+// is complete will be false if we findany problems when checkin on the data
 $isComplete = true;
 
-// error message we'll send back to angular if we run into any problems.
+// error message we'll send back to angular if we run into any prolems
 $errorMessage = "";
 
-// check if logged in
-// F I X ! ! !
-
-// 
+// D O  T H I S  L A T E R
 //Validation
 //
 
-if (!isset($AVAILSLOTID) && ((int)$AVAILSLOTID == $AVAILSLOTID)) {
-	$isComplete = false;
-	$errorMessage .= "the tutorcancelseesion.php requires an integer id to be sent.";
-	
-}
+// check if we already have a avail time with the tutor
 
-// chekc if there is a record in th database matching the id
-if ($isComplete) {
-	// set up a query to chekc if the id passed to this file correspons to a record in the database
-	$query = "SELECT HAWKID FROM AVAILABILITY_T WHERE AVAILSLOTID=$AVAILSLOTID";
-	
-	// run the check query
-	$result = queryDB($query, $db);
-	
-	// check on the number of records returned
-	if (nTuples($result) == 0) {
-		// if we bet no records back, it means no records match the	AVAILSLOTID that we get
-		$isComplete = false;
-		$errorMessage .= "the AVAILSLOTID $AVAILSLOTID did not match any records in th AVAILABILITY_T table.";
-	}
-}
+// Add availability to the database
 
-// if we got this far and $isComplete is true it means we should delete the AVAILABILITY_T
-if ($isComplete) {
+if($isComplete) {
+	// query to update session_t to reflect change in schedule status
+	$sessionUpdate = "UPDATE SESSION_T SET SCHEDULED = 'N' WHERE SESSION_ID = $SESSION_ID;";
+	queryDB($sessionUpdate, $db);
 	
-	//we will set up the delete statement to remove the movie from the database
-	$deletequery = "DELETE FROM AVAILABILITY_T WHERE AVAILSLOTID=$AVAILSLOTID";
-	//run the delete statement
-	queryDB($deletequery, $db);
+	// remove one allocated session from students enrollment for course being reserved
+	$allocSessionUpdate = "UPDATE ENROLLED_T SET ALLOC_SESSIONS = ALLOC_SESSIONS + 1 WHERE HAWKID = '$STUD_HAWKID' AND COURSE_ID = $COURSE_ID;";
+	queryDB($allocSessionUpdate, $db);
 	
-	//send a response back to angular
+	
+	// insert reserved session into scheduled_t
+	$shedInsert = "DELETE FROM SCHEDULED_T WHERE SESSION_ID = $SESSION_ID";
+	//Run the insert statement
+	queryDB($shedInsert, $db);
+	
+	// send a response back to angular
 	$response = array();
 	$response['status'] = 'success';
+	$response['id'] = $availid;
 	header('Content-Type: application/json');
 	echo(json_encode($response));
 } else {
-	// there's been an error. We need to report it the angular controller.
+	// there's been an error. We need to report it to the angular controller.
 	
-	// one of the things we want to send back is the data that this php file recieved.
+	// one of the things we want to send back is the data that this php file received
 	ob_start();
 	var_dump($data);
 	$postdump = ob_get_clean();
@@ -89,5 +69,5 @@ if ($isComplete) {
 	header('Content-Type: application/json');
 	echo(json_encode($response));
 }
-
 ?>
+

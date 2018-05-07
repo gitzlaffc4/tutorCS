@@ -91,7 +91,7 @@
 								<div ng-if="session.STUD_HAWKID = currentHawkID">
 									<p style="text-indent: 20px;"><b>{{session.SESSION_DATE | date: short}}</b> for {{session.COURSE_NAME}} ({{session.SEMESTER}})</p>
 									<p style="text-indent: 40px;"> with {{session.FIRSTNAME}} {{session.LASTNAME}} at {{session.SESSION_START_TIME}} - {{session.SESSION_END_TIME}} | <a href="https://maps.uiowa.edu/mlh" target="_blank">301 MLH</a>
-										<button class="btn btn-danger" ng-click="#">
+										<button class="btn btn-danger" ng-click="tutorCancel(session.SESSION_ID, session.COURSE_ID, session.STUD_HAWKID)">
 											<span class="glyphicon glyphicon-remove"></span>
 										</button>
 									</p>
