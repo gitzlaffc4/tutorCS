@@ -66,14 +66,14 @@
 				</div>
 				<br>
 				<br>
-				<form>
+				<form name="newcontent" novalidate>
 					<!-- form group that allows professors to filter course list on different courses as well as admins to view all courses these forms change the value for js value of viewByCourseID and search role in our dataprofile.tutorcs.controller.js-->
 					<div class="form-group">
 						<div class="row">
 							<!-- if the user that is logged in is a professor they can only view courses that they are teaching -->
 							<div class = "input-group" ng-show="isprofessor">				
-								<label for="courseSelect"> <h4>Change Course</h4></label>
-								<select id="courseSelect" ng-model="viewByCourseID" >
+								<label for="courseSelect"> <h5>Change Course</h5></label>
+								<select id="courseSelect" ng-model="material.COURSE_ID" >
 									<option ng-repeat="option in data.enrollmentInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 								</select>
 							</div> 
@@ -81,38 +81,44 @@
 							<!-- admin's will be able to view for all courses -->
 							<div class = "input-group" ng-show="isadmin">				
 								<label for="courseSelect"> <h4>Change Course</h4></label>
-								<select id="courseSelect" ng-model="viewByCourseID" >
+								<select id="courseSelect" ng-model="material.COURSE_ID" >
 									<option ng-repeat="course in data.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
 								</select>
 							</div>
-							<div align="left"> 
-								<a type="button" class="btn btn-success" href="pages/admin_prof/newcontent.html">
-									<span class="glyphicon glyphicon-plus"></span>
-									Create New Content
-								</a>
-							</div>
+							
 
 						</div>
 					</div>
-				</form>
-				
-				
-				
-				<div class="panel-group" >
-					<div class="panel panel-default" ng-repeat="material in data.Materials | filter : {COURSE_ID : viewByCourseID}">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#{{material.MATERIAL_ID}}">{{material.MATERIAL_NAME}}</a>
-							</h4>
-						</div>
-						<div id="{{material.MATERIAL_ID}}" class="panel-collapse collapse">
-							<div class="panel-body">{{material.MATERIAL_DESC}}</div>
-						</div>
-					</div>
-				</div> 
-
-				
 			
+					<!-- content name -->
+					<div class="form-group" ng-class="{ 'text-danger': newcontent.MAT_NAME.$invalid && newcontent.MAT_NAME.$touched, 'text-success': !newcontent.MAT_NAME.$invalid && newcontent.MAT_NAME.$touched }">
+						<label class="form-control-label" for="MAT_NAME">Material Name: </label>
+						<input type="text" class="form-control" ng-class="{ 'is-invalid': newcontent.MAT_NAME.$invalid && newcontent.MAT_NAME.$touched, 'is-valid': !newcontent.MAT_NAME.$invalid && newcontent.MAT_NAME.$touched }" name="MAT_NAME" ng-model="material.MAT_NAME" style="width: 500px" ng-minlength="2" id="MAT_NAME" required/>
+						<div ng-show="newcontent.MAT_NAME.$invalid && newcontent.MAT_NAME.$touched" >The Material's name must be at least two characters long</div>
+					</div>
+					
+					
+					<div class="form-group" ng-class="{ 'text-danger': newcontent.MAT_DESC.$invalid && newcontent.MAT_DESC.$touched, 'text-success': !newcontent.MAT_DESC.$invalid && newcontent.MAT_DESC.$touched }">
+						<label class="form-control-label" for="MAT_DESC">Material content:</label>
+						
+						<textarea id="MAT_DESC" class="form-control" name="MAT_DESC" ng-class="{ 'is-invalid': newcontent.MAT_DESC.$invalid && newcontent.MAT_DESC.$touched, 'is-valid': !newcontent.MAT_DESC.$invalid && newcontent.MAT_DESC.$touched }" name="MAT_DESC" ng-model="material.MAT_DESC"></textarea>
+				  	</div>
+					{{material.MAT_NAME}}
+					{{material.MAT_DESC}}
+					
+				</form>
+				<div class="row">
+					<div align="left"> 
+						<a type="button" class="btn btn-warning" href="pages/admin_prof/viewcontent.html">
+							<span class="glyphicon glyphicon-remove"></span>
+							Cancel
+						</a>
+						<a type="button" class="btn btn-success" ng-click="newContent(material)">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+							Save
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 			<!-- Footer -->

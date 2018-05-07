@@ -43,6 +43,25 @@
             });                        
         };
 		
+		// function to send new new content to newcontent.php
+        $scope.newContent = function(materialDetails) {
+			var materialUpload= angular.copy(materialDetails);
+          	$http.post("https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/script/newcontent.php", materialUpload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/pages/admin_prof/viewcontent.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };  
+		
 	});
 	
 	
