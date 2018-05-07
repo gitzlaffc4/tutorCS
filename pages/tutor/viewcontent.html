@@ -7,7 +7,7 @@
 		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
 
 		<!-- shows on tabs and bookmarks-->
-		<title>Hawkeye Homework Hackers - Course Content</title>
+		<title>Hawkeye Homework Hackers - Course Content Tutor</title>
 
 		<!-- set base url -->
 		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
@@ -59,7 +59,7 @@
 				<div class=container>
 					<!-- descriptive text on what page does -->
 					<h1> View Course Material</h1><br>
-					<p>View course content you have created</p>
+					<p>View course content for your classes that you are authroized to tutor in</p>
 					
 					
 					<hr>
@@ -71,25 +71,11 @@
 					<div class="form-group">
 						<div class="row">
 							<!-- if the user that is logged in is a professor they can only view courses that they are teaching -->
-							<div class = "input-group" ng-show="isprofessor">				
+							<div class = "input-group">				
 								<label for="courseSelect"> <h4>Change Course</h4></label>
 								<select id="courseSelect" ng-model="viewByCourseID" >
-									<option ng-repeat="option in data.enrollmentInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+									<option ng-repeat="option in data.tutorTutors" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
 								</select>
-							</div> 
-
-							<!-- admin's will be able to view for all courses -->
-							<div class = "input-group" ng-show="isadmin">				
-								<label for="courseSelect"> <h4>Change Course</h4></label>
-								<select id="courseSelect" ng-model="viewByCourseID" >
-									<option ng-repeat="course in data.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
-								</select>
-							</div>
-							<div align="left"> 
-								<a type="button" class="btn btn-success" href="pages/admin_prof/createcontent.html">
-									<span class="glyphicon glyphicon-plus"></span>
-									Create New Content
-								</a>
 							</div>
 
 						</div>
@@ -99,7 +85,7 @@
 				
 				
 				<div class="panel-group" >
-					<div class="panel panel-default" ng-repeat="material in data.Materials | filter : {COURSE_ID : viewByCourseID}">
+					<div class="panel panel-default" ng-repeat="material in data.TutorMaterials | filter : {COURSE_ID : viewByCourseID}">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a data-toggle="collapse" href="#{{material.MATERIAL_ID}}">{{material.MATERIAL_NAME}}</a>
