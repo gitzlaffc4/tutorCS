@@ -125,6 +125,20 @@ if ($isComplete) {
 	$insertUser = "INSERT INTO USER_T(HAWKID, FIRSTNAME, LASTNAME, EMAIL, STUDENT, TUTOR, PROFESSOR, ADMIN) VALUES('$HAWKID', '$FIRSTNAME', '$LASTNAME', '$EMAIL', '$STUDENT', '$TUTOR', '$PROFESSOR', '$ADMIN');";
     
 	queryDB($insertUser, $db);
+	
+	// IF ROLE IS STUDENT THEN ADD THEM TO STUDENT TABLE
+	if ($STUDENT == '1'){
+		$studentInsert = "INSERT INTO STUDENT_T(HAWKID, GRADE_LEVEL) VALUES ('$HAWKID', 1);";
+		queryDB($studentInsert, $db);
+	}
+	
+	// IF ROLE IS Tutor THEN ADD THEM TO STUDENT TABLE
+	if ($TUTOR == '1'){
+		$tutorInsert = "INSERT INTO TUTOR_T(HAWKID) VALUES ('$HAWKID');";
+		queryDB($tutorInsert, $db);
+	}
+    
+	
     
     // send a response back to angular
     $response = array();

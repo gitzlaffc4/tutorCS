@@ -1,5 +1,3 @@
-<!doctype html>
-<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
 <html lang="en" ng-app="tutorcs">
 	<head>
 		<!-- metadata -->
@@ -7,7 +5,7 @@
 		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
 
 		<!-- shows on tabs and bookmarks-->
-		<title>Hawkeye Homework Hackers - Enrolled Student</title>
+		<title>Hawkeye Homework Hackers - Enroll Student</title>
 
 		<!-- set base url -->
 		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
@@ -21,7 +19,6 @@
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-
 		<!-- link to angular -->
 		<script src="js/angular.min.js"></script>
 
@@ -31,226 +28,96 @@
 
 		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
 		<script src="js/data.tutorcs.controller.js"></script>
-		
 		<!-- dataprofile.tutorcs.controller.js is where we are getting data from. It defines a controller under the 'tutorcs' app called 'profileDataControl', and data is under $scope.data -->
 		<script src="js/dataprofile.tutorcs.controller.js"></script>
 		
 		<!-- tutorcs.filter.js enables us to display HTML Code -->
 		<script src="js/tutorcs.filter.js"></script>
 
-		<!--link to font awesome --> 
+		<!--link to font awesome -->
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 		<!--link to css file -->
-		<link rel="stylesheet" type="text/css" href="styles/stylefile.css">
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css"/>
 
 	</head>
+	
 	<body>
 		<!--Nav bar -->
 		<!--Hamburger collapsing System for smaller screens -->
-		
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
-
-		<div class="container">
-
-			<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">
-				<div class=container>
-					<!-- descriptive text on what page does -->
-					<h1> View Course List</h1><br>
-					<p> Here you can view students that are enrolled in your courses and edit their Allocated Tutoring Sessions. Additionally you can view tutors that are authroized for your course, remove them from your course and view how many tutoring sessions and with whom they have completed sessions with.</p>
-					<br>
-					<p> Get started by selecting a course you are authroized to teach below</p>
-				</div>
-				<br>
-				<br>
-				<form>
-					<!-- form group that allows professors to filter course list on different courses as well as admins to view all courses these forms change the value for js value of viewByCourseID and search role in our dataprofile.tutorcs.controller.js-->
-					<div class="form-group">
-						<!-- if the user that is logged in is a professor they can only view courses that they are teaching -->
-						<div class = "input-group" ng-show="isprofessor">				
-							<label for="courseSelect"> <h4>Change Course</h4></label>
-							<select id="courseSelect" ng-model="viewByCourseID" >
-								<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
-							</select>
-						</div> 
-						
-						<!-- admin's will be able to view for all courses -->
-						<div class = "input-group" ng-show="isadmin">				
-							<label for="courseSelect"> <h4>Change Course</h4></label>
-							<select id="courseSelect" ng-model="viewByCourseID" >
-								<option ng-repeat="course in data.value.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
-							</select>
-						</div> 
-						
-						<!-- allows admin or professor to change view between students and tutors --> 
-						<div class = "input-group">
-							<label for="roleSelect"><h4>Change Enrollment view</h4></label>
-							<select id="roleSelect" ng-model="searchRole">
-								<option value="Student">Students</option>
-								<option value="Tutor">Tutors</option>
-							</select>
-						</div>
-						<br>
-						<br>
-						<div class="row">
-							
-							<!-- search for a user within the table --> 
-							<div class="col-12 col-sm-6 col-md-8">
-								<div class="input-group">
-									<div class="input-group-addon">
-										<i class="fa fa-search"></i>
-									</div>
-									<input type="text" class="form-control" placeholder="Search for a user" ng-model="searchUser">
-								</div>   
-							</div>
-							
-							<!-- if search by searchRole == student this button will appear and navigate to a page that professors and admins can enroll students in a course --> 
-							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Student'"> 
-								<button type="button" class="btn btn-success">
-									<span class="glyphicon glyphicon-plus"></span>
-									Add Student
-								</button>
-							</div>
-							
-							<!-- if search by searchRole == tutor this button will appear and navigate to a page that professors and admins can allow a tutor to tutor a course --> 
-							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Tutor'"> 
-								<button type="button" class="btn btn-success">
-									<span class="glyphicon glyphicon-plus"></span>
-									Add Tutor
-								</button>
-							</div>
-						</div>
-					</div>
-				</form>
-				
-				
-				
-				<!-- table for when student option is selected -->
-				<div ng-show="searchRole == 'Student'">
-					<table class="table table-hover table-striped table-bordered table-responsive">
-						<thead>
-							<tr>
-								<th></th>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
-										HawkID
-										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
-										First Name
-										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
-											Last Name
-											<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">Email</th>
-								<th scope="col">Allocated Sessions</th>
-								<th scope="col">Scheduled Sessions</th>
-								<th scope="col">Completed Sessions</th>
-							</tr>
-						</thead> 
-
-
-						<tbody>
-							<!-- iterate through student information stored in the JSON object studentInfo -->
-							<tr ng-repeat="student in data.value.studentInfo | filter : {COURSE_ID : viewByCourseID}">
-								<th>
-									<div class="embed-responsive embed-responsive-16by9">
-										<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorxs.filter.js -->
-										<span ng-bind-html="student.PROFILEPIC | trustHtml"></span>
-									</div>
-								</th>
-								<th scope="row"> {{student.HAWKID}} </th>
-								<td>{{student.FIRSTNAME}}</td>
-								<td>{{student.LASTNAME}}</td>
-								<td>{{student.EMAIL}}</td>
-								<!-- this section allows a professor or admin to add or remove allocated tutoring sessions for each student --> 
-								<td  style="text-align: center;">
-									<div class="row">
-										<!-- subtract a allocated session from users sessions -->
-										<button class="btn btn-danger" ng-click="removeAllocSession(student.HAWKID, viewByCourseID)">
-											<span class="glyphicon glyphicon-minus"></span>
-										</button>
-										{{student.ALLOC_SESSIONS}}
-										<!-- add a allocated session from users sessions -->
-										<button class="btn btn-success" ng-click="addAllocSession(student.HAWKID, viewByCourseID)">
-											<span class="glyphicon glyphicon-plus" ></span>
-										</button>
-									</div>
-								</td>
-							</tr>
-						</tbody>	
-					</table>
-				</div>
-				
-				
-				<!-- table for when tutor option is selected -->
-				<div ng-show="searchRole == 'Tutor'">
-					<table class="table table-hover table-striped table-bordered table-responsive">
-						<thead>
-							<tr>
-								<th></th>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'HAWKID'">
-										HawkID
-										<span ng-show="sortType == 'HAWKID'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									<a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'FIRSTNAME'">
-										First Name
-										<span ng-show="sortType == 'FIRSTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">
-									 <a href="pages/admin_prof/viewroles.html" ng-click="sortType = 'LASTNAME'">
-											Last Name
-											<span ng-show="sortType == 'LASTNAME'" class="fa fa-caret-down"></span>
-									</a>
-								</th>
-								<th scope="col">Email</th>
-								<th scope="col">Available Sessions</th>
-								<th scope="col">Scheduled Sessions</th>
-								<th scope="col">Completed Sessions</th>
-							</tr>
-						</thead>
-
-
-						<tbody>
-							<tr ng-repeat="tutor in data.value.tutorInfo | filter : {COURSE_ID : viewByCourseID}">
-								<!-- View information for tutors-->
-								<td height="50">
-									<div class="embed-responsive embed-responsive-16by9">
-										<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorcs.filter.js -->
-										<span ng-bind-html="tutor.PROFILEPIC | trustHtml"></span>
-									</div>
-								</th>
-								<th scope="row"> {{tutor.HAWKID}} </th>
-								<td>{{tutor.FIRSTNAME}}</td>
-								<td>{{tutor.LASTNAME}}</td>
-								<td>{{tutor.EMAIL}}</td>
-								<td>{{tutor.availSessions}}</td>
-								<td>{{tutor.totalSched}}</td>
-								<td>{{tutor.totalComp}}</td>
-							</tr>
-						</tbody>	
-					</table>
-				</div>
-				
-				
-				<!-- This would be where you insert information about professors that are the selected course!-->
+		
+		
+		
+		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()" style="padding-top:50px;">
+			<div class="row" ng-show="!isadmin">
+				<h1>Access Denied -- Please contact a system admin</h1>
+			</div>
 			
+			
+			<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
+			<div class="row" ng-show="isadmin || isprofessor">
+				<div class="container">
+					<!-- descriptive text on what page does -->
+					<h1> Enroll Students in your Course</h1><br>
+					<p> Here you can create a course for any semester and specify which professors are allowed access</p>
+					<br>
+					<p> Get started by filling out the form below</p>
+				</div>
+				<br>
+				<br>
 			</div>
 		</div>
-			<!-- Footer -->
-		<div ng-include src="'pages/footer.html'"></div>
 				
+		<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">
+
+		
+			<!-- form for creating a new course-->
+			<form name="newEnrollmentForm" novalidate>
+				<!-- Course Name for account -->
+				<div class = "form-group-lg" ng-show="isprofessor">				
+					<label for="courseSelect"> <h4>Change Course</h4></label>
+					<select id="courseSelect" ng-model="viewByCourseID">
+						<option ng-repeat="option in data.value.enrollementInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+					</select>
+				</div> 
+
+				<!-- admin's will be able to view for all courses -->
+				<div class = "form-group-lg" ng-show="isadmin">				
+					<label for="courseSelect"> <h4>Change Course</h4></label>
+					<select id="courseSelect" ng-model="viewByCourseID" ng-init="viewByCourseID=1">
+						<option ng-repeat="course in data.value.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
+					</select>
+				</div> 
+				<br>
+				<br>
+				<br>
+				<div class="form-group-lg">
+					<label for="multipleSelect"> <h4>Students to enroll</h4> <br>
+						<p>(Hold down cmd or control to select multiple students)</p></label><br>
+					<select name="multipleSelect"  style="height:400px;" id="multipleSelect" ng-model="data.multipleSelect" multiple>
+						<option ng-repeat="student in data.value.allinfo | filter : {STUDENT : '1'}" value="{{student.HAWKID}}"> {{student.HAWKID}} -- {{student.FIRSTNAME}} {{student.LASTNAME}}</option>
+					  
+						
+						
+					</select>
+			 	</div>
+					  
+				multipleSelect = {{data.multipleSelect}}
+
+				<!-- newCourse is a function in the data.tutorcscontroller. course refers to the word we used under ng-model in the input fields -->
+				<br>
+				<br>
+				<button class="btn btn-success btn-lg" ng-click="" ng-disabled="newEnrollmentForm.$invalid">Enroll Students</button>
+			</form>
+		
+		
+		
+		
+		
+		</div>
+		<!-- include footer.html-->
+		<div ng-include src="'pages/footer.html'"></div>
 	</body>
 </html>

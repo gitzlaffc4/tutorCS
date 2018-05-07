@@ -64,6 +64,7 @@ while ($currAccount = nextTuple($resultall)){
 	$allinfo[$j] = $currAccount;
 	$profilePic = $allinfo[$j]['PICTURE'];
 	$allinfo[$j]['PROFILEPIC'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='175' height='175'>";
+	$allinfo[$j]['PROFILEPICSMALL'] ="<img src='images/profilepictures/$profilePic' class='img-circle center-block'  alt='profile pic' width='45' height='45'>";
 	$j++;
 }
 
