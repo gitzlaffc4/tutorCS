@@ -114,7 +114,7 @@
 											<span ng-show="sortType == 'ROLE'" class="fa fa-caret-down"></span>
 									</a></th>
 
-								<th scope="col">View/Edit/Disable</th>
+								<th scope="col">View/Disable</th>
 							</tr>
 						</thead>
 
@@ -147,11 +147,13 @@
 										<span ng-show="expanded" class="glyphicon glyphicon-eye-close"></span>
 									</button>
 
+									
+									<!-- this is supposed to be a drop down to edit but for now users can edit thir basic information on their profile -->
 									<!-- edit user -->
-									<button class="btn btn-primary">
+									<!-- <button class="btn btn-primary"> -->
 										<!-- ng-click="setEditMode(true, user)" ng-disabled="edituser != null"-->
-										<span class="glyphicon glyphicon-pencil">
-									</button>
+										<!-- <span class="glyphicon glyphicon-pencil">
+									</button> -->
 									<!-- close edit -->
 
 									<!-- delete user -->
@@ -175,7 +177,7 @@
 											<div class="row">
 												<div class="col-lg-4">
 													<div class="embed-responsive embed-responsive-16by9">
-														<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
+														<!-- trustHtml is the filter that enables html to be put out. the name is defined under tutorcs.filter.js -->
 														<span ng-bind-html="user.PROFILEPIC | trustHtml"></span>
 													</div>
 												</div>
