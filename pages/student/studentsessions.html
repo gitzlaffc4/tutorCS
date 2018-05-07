@@ -69,7 +69,9 @@
 				
 				<h2>Remaing Tutoring Sessions</h2>
 				<div ng-repeat="option in data.studentEnroll">
-					<h4 style="padding-left: 20px">{{option.COURSE_NAME}} &nbsp ({{option.SEMESTER}}) &nbsp <span class="label label-info">{{option.ALLOC_SESSIONS}}</span></h4>
+					<h4 style="padding-left: 20px">{{option.COURSE_NAME}} &nbsp ({{option.SEMESTER}}) &nbsp 
+							<span class="label label-success label-md">{{option.ALLOC_SESSIONS}}</span>
+					</h4>
 				</div>
 				<br>
 				<br>

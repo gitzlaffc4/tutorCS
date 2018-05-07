@@ -31,6 +31,7 @@
 		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
 		<script src="js/data.tutorcs.controller.js"></script>
 		<script src="js/datastudschedule.tutorcs.controller.js"></script>
+		<script src="js/dataavail.tutorcs.controller.js"></script>
 		
 		<!-- tutorcs.filter.js enables us to display HTML Code -->
 		<script src="js/tutorcs.filter.js"></script>
@@ -69,10 +70,18 @@
 								<a href="pages/editprofile.html">
 									<h5 class="text-center"  >edit profile</h5>
 								</a>
+								<hr>
+								<div class="container" ng-controller="availControl" ng-init="checkifloggedin()">
+									<h3>Remaing Tutoring Sessions</h3>
+									<div ng-repeat="option in data.studentEnroll">
+										<h5 style="padding-left: 20px">{{option.COURSE_NAME}} &nbsp
+											<span class="label label-success">{{option.ALLOC_SESSIONS}}</span>
+										</h5>
+									</div>
+								</div>
+								<hr>
 								<br>
-								<br>
-								<br>
-								<h4>Quick Student Links</h4>
+								<h4>Quick Links</h4>
 
 								<div class="list-group" ng-show="!isadmin">
 									<a href="#" class="list-group-item">My Courses</a>

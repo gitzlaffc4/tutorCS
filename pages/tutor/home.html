@@ -55,10 +55,10 @@
 				<h1> You are not authorized for this view</h1>
 			</div>
 			
-			<div >
+			<div>
 				
 				<div class="row" style="padding-top:25px;">
-					<div ng-controller="dataControl" ng-init="checkifloggedin()" ng-show="isloggedin">
+					<div ng-controller="dataControl" ng-init="checkifloggedin()" ng-show="istutor">
 						<div ng-repeat="account in data.userinfo | filter:query">
 							<div class="col-md-4">
 								<div class="embed-responsive embed-responsive-16by9">
@@ -69,10 +69,9 @@
 								<a href="pages/editprofile.html">
 									<h5 class="text-center"  >edit profile</h5>
 								</a>
+								<hr>
 								<br>
-								<br>
-								<br>
-								<h4>Quick tutor Links</h4>
+								<h4>Quick Links</h4>
 
 								<div class="list-group" ng-show="!isadmin">
 									<a href="#" class="list-group-item">Tutoring Schedule</a>
@@ -83,7 +82,7 @@
 							</div>
 						</div>
 					</div>
-					<div  ng-controller="tutorSchedControl" ng-init="checkifloggedin()">
+					<div  ng-controller="tutorSchedControl" ng-init="checkifloggedin()" ng-show="istutor">
 						<h3> Upcoming Scheduled Tutoring Appointments</h3>
 						<br>
 						<div class="col-md-8">

@@ -1,6 +1,7 @@
 <!doctype html>
 <!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
-<html lang="en" ng-app="tutorcs"><head>
+<html lang="en" ng-app="tutorcs">
+	<head>
 		<!-- metadata -->
 		<meta charset="utf-8"></meta>
 		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
@@ -30,6 +31,7 @@
 
 		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
 		<script src="js/data.tutorcs.controller.js"></script>
+		<script src="js/dataprofile.tutorcs.controller.js"></script>
 		
 		<!-- tutorcs.filter.js enables us to display HTML Code -->
 		<script src="js/tutorcs.filter.js"></script>
@@ -48,17 +50,18 @@
 		<!-- header links from header.html file  -->
 		<div ng-include ng-controller="dataControl" ng-int="menuHightlight = 0;" src="'pages/header.html'"></div>
 	
-		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()">
+		<div class="container">
 			
-      		<div ng-show="!isloggedin">
+      		<div  ng-controller="dataControl" ng-init="checkifloggedin()" ng-show="!isloggedin">
 				<h1> You are not authorized for this view</h1>
 			</div>
 			
-			<div ng-show="isloggedin">
+			<div class="container">
 				
 				<div class="row" style="padding-top:25px;">
-					<div ng-repeat="account in data.userinfo | filter:query">
-						<div class="col-md-4">
+					
+					<div class="col-md-4" ng-controller="dataControl" ng-init="checkifloggedin()" ng-show="isloggedin">
+						<div ng-repeat="account in data.userinfo | filter:query">
 							<div class="embed-responsive embed-responsive-16by9">
 								<!-- trustHtml is the filter that enables html to be put out. the name is defined under soccer.filter.js -->
 								<span ng-bind-html="account.PROFILEPIC | trustHtml"></span>
@@ -67,11 +70,11 @@
 							<a href="pages/editprofile.html">
 								<h5 class="text-center"  >edit profile</h5>
 							</a>
+							<hr>
 							<br>
-							<br>
-							<br>
-							<h4>Quick Admin Links</h4>
+							<h4>Quick Links</h4>
 							<div class="list-group" ng-show="isadmin">
+								
 								<a href="pages/admin_prof/newaccount.html" class="list-group-item">Create Account</a>
 								<a href="pages/admin_prof/createcourse.html" class="list-group-item">Create Course</a>
 								<a href="pages/admin_prof/viewroles.html" class="list-group-item">View/Edit/Disable Users</a>
@@ -83,14 +86,21 @@
 								<a href="pages/admin_prof/courselist.html" class="list-group-item">Course Roasters</a>
 								<a href="pages/admin_prof/enrollstudent.html" class="list-group-item">Enroll Students</a>
 								<a href="pages/admin_prof/hiretutor.html" class="list-group-item">Hire Tutor</a>
+								<a href="pages/admin_prof/viewcontent.html" class="list-group-item">Course Content</a>
 							</div>
-							
-						</div>
-						<div class="col-md-8" >
-							<br>
-							<br>
 						</div>
 					</div>
+					<div class="col-md-8" ng-controller="profileDataControl" ng-init="isloggedin()">
+						<div ng-repeapt="course in data.enrollementInfo">
+							
+							This is a test
+							{{course.COURSE_ID}}
+						</div>
+
+						<br>
+						<br>
+					</div>
+					
 				</div>
 			</div>
 		</div>

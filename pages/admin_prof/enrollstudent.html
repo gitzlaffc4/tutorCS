@@ -47,27 +47,19 @@
 		<!--Hamburger collapsing System for smaller screens -->
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
-		
-		
-		
-		<div class="container" ng-controller="dataControl" ng-init="checkifloggedin()" style="padding-top:50px;">
-			<div class="row" ng-show="!isadmin">
-				<h1>Access Denied -- Please contact a system admin</h1>
-			</div>
+	
 			
-			
-			<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
-			<div class="row" ng-show="isadmin || isprofessor">
-				<div class="container">
-					<!-- descriptive text on what page does -->
-					<h1> Enroll Students in your Course</h1><br>
-					<p> Here you can enroll students in your courses and set up define how many alloacted tutoring sessions they initally get for that course.</p>
-					<br>
-					<p> Get started by filling out the form below</p>
-				</div>
+		<!-- creating a new account is only accessible by admins eventually authentication will just be done using UIOWA Shib login -->
+		<div class="row" style="padding-top: 25px;">
+			<div class="container">
+				<!-- descriptive text on what page does -->
+				<h1> Enroll Students in your Course</h1><br>
+				<p> Here you can enroll students in your courses and set up define how many alloacted tutoring sessions they initally get for that course.</p>
 				<br>
-				<br>
+				<p> Get started by filling out the form below</p>
 			</div>
+			<br>
+			<br>
 		</div>
 				
 		<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">

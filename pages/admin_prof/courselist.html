@@ -52,7 +52,7 @@
 		<!-- header links from header.html file  -->
 		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
 
-		<div class="container">
+		<div class="container" tyle="padding-top: 25px">
 
 			<div class="container" ng-controller="profileDataControl" ng-init="checkifloggedin()">
 				<div class=container>
@@ -106,19 +106,19 @@
 							</div>
 							
 							<!-- if search by searchRole == student this button will appear and navigate to a page that professors and admins can enroll students in a course --> 
-							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Student'"> 
-								<button type="button" class="btn btn-success">
+							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Student'" > 
+								<a type="button" class="btn btn-success" href="pages/admin_prof/enrollstudent.html">
 									<span class="glyphicon glyphicon-plus"></span>
 									Add Student
-								</button>
+								</a>
 							</div>
 							
 							<!-- if search by searchRole == tutor this button will appear and navigate to a page that professors and admins can allow a tutor to tutor a course --> 
 							<div class="col-6 col-md-4" align="right" ng-show="searchRole == 'Tutor'"> 
-								<button type="button" class="btn btn-success">
+								<a type="button" class="btn btn-success" href="pages/admin_prof/hiretutor.html">
 									<span class="glyphicon glyphicon-plus"></span>
 									Add Tutor
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>

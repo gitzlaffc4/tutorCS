@@ -1,0 +1,122 @@
+<!doctype html>
+<!-- ng-app"tutorCS" defines the angular app that we are using, the name is defined under the tutorcs.module.js -->
+<html lang="en" ng-app="tutorcs">
+	<head>
+		<!-- metadata -->
+		<meta charset="utf-8"></meta>
+		<meta name="author" content="Informatics Project Group 4, Cameron Gitlaff, Tram Messerly, Conlan Murphy"></meta>
+
+		<!-- shows on tabs and bookmarks-->
+		<title>Hawkeye Homework Hackers - Course Content</title>
+
+		<!-- set base url -->
+		<base href="https://webdev.cs.uiowa.edu/~cgitzlaff/tutorCS/">
+		
+		<!-- These are the links to bootstrap code -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+		<!-- link to angular -->
+		<script src="js/angular.min.js"></script>
+
+		<!-- angular code we wrote -->
+		<!-- tutorcs.module.js is where we define the angular app called 'tutorcs'. we use the name of the app in the html element at the top of the file -->
+		<script src="js/tutorcs.module.js"></script>
+
+		<!-- data.tutorcs.controller.js is where we are getting the data from. It defines a controller under the 'tutorcs' app called 'dataControl', and data is under $scope.data -->
+		<script src="js/data.tutorcs.controller.js"></script>
+		
+		<!-- dataprofile.tutorcs.controller.js is where we are getting data from. It defines a controller under the 'tutorcs' app called 'profileDataControl', and data is under $scope.data -->
+		<script src="js/dataprofile.tutorcs.controller.js"></script>
+		<script src="js/datamaterial.tutorcs.controller.js"></script>
+
+		<!-- tutorcs.filter.js enables us to display HTML Code -->
+		<script src="js/tutorcs.filter.js"></script>
+
+		<!--link to font awesome --> 
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--link to css file -->
+		<link rel="stylesheet" type="text/css" href="styles/stylefile.css">
+
+	</head>
+	<body>
+		<!--Nav bar -->
+		<!--Hamburger collapsing System for smaller screens -->
+		
+		<!-- header links from header.html file  -->
+		<div ng-include ng-int="menuHightlight = 0;" ng-controller="dataControl" src="'pages/header.html'"></div>
+
+		<div class="container" style="padding-top: 25px" ng-controller="materialControl" ng-init="checkifloggedin()">
+
+			<div class="container" >
+				<div class=container>
+					<!-- descriptive text on what page does -->
+					<h1> View Course Material</h1><br>
+					<p>View course content you have created</p>
+					
+					
+					<hr>
+				</div>
+				<br>
+				<br>
+				<form>
+					<!-- form group that allows professors to filter course list on different courses as well as admins to view all courses these forms change the value for js value of viewByCourseID and search role in our dataprofile.tutorcs.controller.js-->
+					<div class="form-group">
+						<div class="row">
+							<!-- if the user that is logged in is a professor they can only view courses that they are teaching -->
+							<div class = "input-group" ng-show="isprofessor">				
+								<label for="courseSelect"> <h4>Change Course</h4></label>
+								<select id="courseSelect" ng-model="viewByCourseID" >
+									<option ng-repeat="option in data.enrollmentInfo" value="{{option.COURSE_ID}}">{{option.COURSE_NAME}} ({{option.SEMESTER}})</option>
+								</select>
+							</div> 
+
+							<!-- admin's will be able to view for all courses -->
+							<div class = "input-group" ng-show="isadmin">				
+								<label for="courseSelect"> <h4>Change Course</h4></label>
+								<select id="courseSelect" ng-model="viewByCourseID" >
+									<option ng-repeat="course in data.courseInfo" value="{{course.COURSE_ID}}">{{course.COURSE_NAME}} ({{course.SEMESTER}})</option>
+								</select>
+							</div>
+							<div align="left"> 
+								<a type="button" class="btn btn-success" href="pages/admin_prof/newcontent.html">
+									<span class="glyphicon glyphicon-plus"></span>
+									Create New Content
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</form>
+				
+				
+				
+				<div class="panel-group" >
+					<div class="panel panel-default" ng-repeat="material in data.Materials | filter : {COURSE_ID : viewByCourseID}">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" href="#{{material.MATERIAL_ID}}">{{material.MATERIAL_NAME}}</a>
+							</h4>
+						</div>
+						<div id="{{material.MATERIAL_ID}}" class="panel-collapse collapse">
+							<div class="panel-body">{{material.MATERIAL_DESC}}</div>
+						</div>
+					</div>
+				</div> 
+
+				
+			
+			</div>
+		</div>
+			<!-- Footer -->
+		<div ng-include src="'pages/footer.html'"></div>
+				
+	</body>
+</html>
